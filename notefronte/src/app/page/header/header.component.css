@@ -1,0 +1,161 @@
+/* .form-control {
+  padding: 10px;
+  padding: 5px;
+  padding-left: 42px;
+  width: 250px;
+  margin-right: 50px;
+  border: 1px solid #ced4da;
+  border-radius: 30px;
+  font-size: 1em;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+} */
+
+h6 {
+  padding-right: 1020px !important;
+}
+.salutation {
+  padding-top: 10px;
+  font-size: 20px;
+}
+
+/* .divsearchinput input:focus {
+  outline: none;
+} */
+
+/* .divsearchinput button {
+  border: none;
+  position: absolute;
+  top: -10px;
+  right: 406px;
+  width: 50px;
+  height: 100%;
+  border-radius: 80%;
+  background: none;
+} */
+
+.i {
+  font-family: "Iconify Explorer Font" !important;
+  font-size: 1.5em;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.divsearchinput i {
+  color: rgb(93, 94, 95);
+}
+
+.divsearchinput i:hover {
+  color: rgb(162, 163, 163);
+}
+
+.divsearchinput i:active {
+  color: rgb(77, 121, 255)
+}
+
+
+#navbarBlur {
+  left: 30%;
+  position: sticky;
+  width: 90%;
+}
+
+.container-fluid {
+  position: relative;
+}
+
+form {
+  display:flex;
+  flex-direction:row;
+  justify-content: end;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 5px;
+  border-radius: 5%;
+  padding-right: 40px;
+  width: 50%;
+  margin-top: 1%;
+  left: 50%;
+  transform: translate(-32%);
+  padding:1px;
+}
+
+input {
+  flex-grow:2;
+  border:none;
+  font-size: 1em;
+
+}
+/*
+form:focus-within {
+  outline: 1px solid blue
+} */
+
+button {
+  background: none;
+  border: none;
+  margin-top: 5px;
+  margin-left: 5px
+}
+
+form {
+  border: 1px solid #ced4da;
+  border-radius: 30px;
+  font-size: 1em;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  font-size: 1em;
+}
+form:hover {
+  border-color: #3d3f41;
+  box-shadow: 0 0 5px rgba(64, 92, 122, 0.5);
+  outline: none;
+}
+
+form:focus-within {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+.bouchetrou {
+  background-color: #007bff;
+}
+
+nav {
+  margin-bottom: 5px;
+}
+
+.hiuser {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  height: 5px;
+  width: 20%;
+}
+
+.hicon {
+  font-size: 2.5em;
+}
+
+
+@media screen and (max-width: 993px) {
+  .hiuser {
+    position: static;
+    width: 30%;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+
+}

@@ -1,0 +1,105 @@
+.print-button {
+  border: none;
+  background: none;
+  font-size: 20px; /* Taille de l'icône */
+  cursor: pointer;
+}
+.print-button:hover {
+  color: #007bff; /* Couleur au survol */
+}
+.print-button:active {
+  color: #007bff; /* Couleur au survol */
+}
+.badge {
+  top: 1px; /* Ajustez la position verticalement */
+  background-color: red; /* Couleur de fond du badge */
+  color: white; /* Couleur du texte */
+  border-radius: 50%; /* Forme ronde */
+  padding: 0 0.5em; /* Espacement à l'intérieur */
+  font-size: 0.7em; /* Taille de police */
+  display: flex; /* Pour centrer le texte */
+  justify-content: center; /* Pour centrer le texte */
+  align-items: center; /* Pour centrer le texte */
+}
+.profile-container {
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px; 
+ 
+  }
+  .print-button {
+    border: none;
+    background: none;
+    font-size: 20px; /* Taille de l'icône */
+    cursor: pointer;
+  }
+  .print-button:hover {
+    color: #007bff; /* Couleur au survol */
+  }
+  .profile-card {
+    width: 400px;
+    padding: 20px;
+ 
+  }
+  
+  .avatar-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .avatar-container img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+  }
+  
+  .user-details {
+    text-align: center;
+  }
+  
+  .user-details h2 {
+    margin-bottom: 10px;
+  }
+  
+  .user-details p {
+    margin: 5px 0;
+  }
+
+  button{
+    width: 150px;
+    border-radius: 2px;
+    margin-left: 100px;
+  }
+
+  strong{
+    position: block;
+  }
+  
+
+  .profile-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .profile-card {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .details-card {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-image img {
+    border: 3px solid #007bff;
+  }
+  
+  .profile-name {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  .profile-actions .btn {
+    width: 100%;
+  }
+  

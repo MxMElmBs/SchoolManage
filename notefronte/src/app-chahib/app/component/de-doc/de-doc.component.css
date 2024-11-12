@@ -1,0 +1,290 @@
+/* Main container styling */
+.container {
+  display: flex;
+  height: 100vh;
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5;
+  overflow: hidden; /* Fix sidebar and header */
+}
+
+/* Sidebar styling */
+.sidebar {
+  width: 240px;
+  background-color: #2c3e50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Fixes sidebar above main content */
+}
+
+.sidebar .logo {
+  margin-bottom: 20px;
+}
+
+.sidebar img {
+  width: 100px;
+  height: auto;
+}
+
+.sidebar .menu {
+  font-size: 20px;
+  color: #ecf0f1;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Main content wrapper */
+.main-content-wrapper {
+  margin-left: 240px; /* Sidebar width */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden; /* Prevents scrolling outside main content */
+}
+
+/* Top bar styling */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+  background-color: #f9f9f9;
+  position: fixed;
+  top: 0;
+  width: calc(88% - 240px); /* Full width minus sidebar */
+  z-index: 1000;
+}
+
+.ri-account-circle-line {
+  font-size: 30px;
+  color: #2980b9;
+}
+
+.user-name {
+  font-size: 18px;
+  color: #2980b9;
+}
+
+.no-documents{
+  width: 40%;
+  height: 40%;
+}
+
+/* Main content area */
+.main-content {
+  padding: 70px 30px 30px; /* Adjust padding for fixed top bar */
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Scroll only in the main content */
+}
+
+
+
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.filter-group {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-group label {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.filter-group div {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+
+
+
+
+/* Hide scrollbar while still enabling scrolling */
+.main-content::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* Make scrollbar invisible */
+}
+
+/* Header section */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header h2 {
+  color: #2980b9;
+  font-size: 28px;
+}
+
+.search-input {
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #2980b9;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #1abc9c;
+  outline: none;
+}
+
+/* Document list and grid */
+.document-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.year-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Responsive grid */
+.document-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.document-card {
+  border: 2px solid #1abc9c;
+  padding: 15px;
+  background-color: #fff;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.document-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.document-type {
+  color: #2980b9;
+  font-size: 18px;
+}
+
+.pdf-icon {
+  width: 60px;
+  margin: 10px 0;
+}
+
+.document-theme {
+  background-color: #ecf0f1;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+/* No documents */
+.no-documents {
+  text-align: center;
+  color: #888;
+  font-size: 18px;
+}
+
+.no-documents img {
+  width: 180px;
+  margin-top: 20px;
+}
+
+/* Popup for document details */
+.document-details-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay with transparency */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Popup container styling */
+.document-details-popup .container {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Hide scrollbar inside popup */
+.document-details-popup .container::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+/* Blur the background when popup is active */
+.main-content.blur {
+  filter: blur(8px); /* Blurs the main content */
+  pointer-events: none; /* Disable interactions */
+}
+
+/* Logout section */
+.logout-section {
+  margin-top: auto;
+  padding-bottom: 20px;
+}
+
+.logout-button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+
+.logout-button i {
+  margin-right: 8px;
+}
+
+.logout-button:hover {
+  background-color: #c0392b;
+}
+
+.card-header {
+  background-color:#2980b9;
+  text-align: center;
+  color: whitesmoke;
+}

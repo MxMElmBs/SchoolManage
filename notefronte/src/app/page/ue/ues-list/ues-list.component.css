@@ -1,0 +1,58 @@
+.action-link {
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.action-link i {
+  margin-right: 5px;
+  transition: transform 0.3s ease;
+}
+
+.action-link:hover {
+  color: #007bff;
+  transform: translateY(-2px);
+}
+
+.action-link:hover i {
+  transform: scale(1.2);
+}
+
+
+.suppicon {
+  font-size: 1.3em;
+  color: #f44335;
+}
+
+.modicon {
+  font-size: 1.3em;
+  color: #343a40;
+}
+.supprimer {
+  color: #f44335;
+}
+
+.modifier {
+  color: #343a40;
+}
+
+.action-column {
+  width: 220px;
+}
+
+.widthsupprimer {
+  width: 550px
+}
+
+.btn-large {
+  width: 100px; /* Vous pouvez ajuster la largeur selon vos besoins */
+}
+
+.modal-header {
+  padding-bottom: 0.1rem !important; /* Réduit l'espace autour du titre */
+  min-height: unset !important; /* Permet de ne pas imposer une hauteur minimum */
+}
+
+.marge {
+  margin-top: -20px;
+}

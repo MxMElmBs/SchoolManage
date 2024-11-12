@@ -1,0 +1,43 @@
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+<form userForm=[formGroup] (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Nom:</label>
+      <input type="text" id="name" formControlName="name" class="form-control">
+      <div *ngIf="name?.invalid && (name?.touched || name?.dirty)" class="error">
+        <div *ngIf="name?.errors?.['required']">Le nom est requis.</div>
+        <div *ngIf="name?.errors?.['minlength']">Le nom doit contenir au moins 3 caractères.</div>
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" formControlName="email" class="form-control">
+      <div *ngIf="email?.invalid && (email?.touched || email?.dirty)" class="error">
+        <div *ngIf="email?.errors?.['required']">L'email est requis.</div>
+        <div *ngIf="email?.errors?.['email']">Veuillez saisir un email valide.</div>
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="password">Mot de passe:</label>
+      <input type="password" id="password" formControlName="password" class="form-control">
+      <div *ngIf="password?.invalid && (password?.touched || password?.dirty)" class="error">
+        <div *ngIf="password?.errors?.['required']">Le mot de passe est requis.</div>
+        <div *ngIf="password?.errors?.['minlength']">Le mot de passe doit contenir au moins 6 caractères.</div>
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="role">Rôle:</label>
+      <select id="role" formControlName="role" class="form-control">
+        <option value="" disabled>Sélectionner un rôle</option>
+        <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+      </select>
+      <div *ngIf="role?.invalid && (role?.touched || role?.dirty)" class="error">
+        <div *ngIf="role?.errors?.['required']">Le rôle est requis.</div>
+      </div>
+    </div>
+  
+    <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Soumettre</button>
+  </form>
+  

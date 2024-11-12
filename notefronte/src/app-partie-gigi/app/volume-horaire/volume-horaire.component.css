@@ -1,0 +1,23 @@
+/* Styles pour le conteneur du graphique */  
+.chart-container {  
+  width: 100%; /* Prend toute la largeur disponible */  
+  max-width: 900px; /* Largeur maximale pour le conteneur */  
+  margin: 20px auto; /* Centrage du conteneur avec une marge verticale */  
+  padding: 20px; /* Espacement intérieur pour aérer le contenu */  
+  border-radius: 8px; /* Coins arrondis pour un aspect plus doux */  
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre douce pour donner de la profondeur */  
+  background-color: #ffffff; /* Couleur de fond blanche pour un bon contraste */  
+}  
+
+/* Styles pour le titre du graphique */  
+.chart-title {  
+  text-align: center; /* Centre le titre au-dessus du graphique */  
+  font-size: 24px; /* Taille de la police */  
+  margin-bottom: 20px; /* Espace entre le titre et le graphique */  
+  color: #333; /* Couleur du texte */  
+}  
+
+/* Styles pour le canvas du graphique   
+.chart-canvas {  
+  /* Vous pourriez ajouter des styles supplémentaires ici si nécessaire  
+}*/

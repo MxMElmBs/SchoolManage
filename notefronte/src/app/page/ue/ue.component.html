@@ -1,0 +1,176 @@
+<p class="h3">UE</p>
+<!-- Message de succès caché au départ -->
+
+<div *ngIf="showSuccessMessage" class="alert alert-success alert-dismissible text-white fade alert-transition show"
+  role="alert">
+  <span class="alert-icon me-3 align-middle">
+    <i class="i emojione-monotone:heavy-check-mark"></i>
+  </span>
+  <span class="alert-text"> Enrégistrement <strong>réussi</strong></span>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">X</span>
+  </button>
+</div>
+<div class="container-fluid py-1">
+  <div class="row">
+    <div class="col-12">
+      <div class="card my-1">
+        <div class="card-body px-3 pb-2">
+          <div class="row">
+            <div class="col-6 d-flex align-items-center">
+              <p class="h5"> <small>Liste des UE</small></p>
+            </div>
+            <div class="col-6 text-end">
+              <!-- Bouton pour le modal -->
+              <button type="button" class="btn btn-success m-1" data-bs-toggle="modal"
+                data-bs-target="#ajoutUE">Ajouter</button>
+            </div>
+
+            <div class="mt-4 row">
+              <div class="col-md-12">
+                <app-ues-list ></app-ues-list>
+              </div>
+            </div>
+            <!-- Le modal de l'ajout d'une -->
+            <div class="modal fade" id="ajoutUE" tabindex="-1" role="dialog" aria-labelledby="ajoutUEModal"
+              aria-hidden="true" data-bs-backdrop="false">
+              <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h3 class="modal-title font-weight-bolder opacity-8 d-flex align-items-center" id="ajoutUEModal"><i
+                        class="i me-2 ic:outline-plus"></i>Ajouter une Unité d'Enseignement</h3>
+                    <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">X</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form [formGroup]="ueForm" (ngSubmit)="onSubmit()">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="input-group input-group-dynamic mb-1">
+                            <label class="form-label">Code</label>
+                            <input type="text" class="form-control" formControlName="code" />
+                          </div>
+                          <div *ngIf="ueForm.get('code')?.invalid && ueForm.get('code')?.touched" class="text-danger mb-3">
+                            Le code est requis.
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="input-group input-group-dynamic mb-4">
+                            <label class="form-label">Libellé</label>
+                            <input type="text" class="form-control" formControlName="libelle" />
+                          </div>
+                          <div *ngIf="ueForm.get('libelle')?.invalid && ueForm.get('libelle')?.touched" class="text-danger marge mb-3">
+                            Le libelle est requis.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="input-group input-group-dynamic mb-4">
+                            <label class="form-label">Type</label>
+                            <input type="text" class="form-control" formControlName="type" />
+                          </div>
+                          <div *ngIf="ueForm.get('type')?.invalid && ueForm.get('type')?.touched" class="text-danger marge mb-3">
+                            Entrez le type de l'UE.
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="input-group input-group-dynamic mb-4">
+                            <label class="form-label">Description</label>
+                            <input type="text" class="form-control" formControlName="description" />
+                          </div>
+                          <div *ngIf="ueForm.get('description')?.invalid && ueForm.get('description')?.touched" class="text-danger marge mb-3">
+                            La description est manquante.
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="ms-0 input-group input-group-dynamic mb-4">
+                            <label class="form-label">Crédit</label>
+                            <input type="number" class="form-control" formControlName="credit" />
+                          </div>
+                          <div *ngIf="ueForm.get('credit')?.invalid && ueForm.get('credit')?.touched" class="text-danger marge mb-3">
+                            Le crédit est obligatoire.
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="input-group input-group-static mb-4">
+                            <select class="form-control" formControlName="niveauEtude">
+                              <option value="" selected disabled hidden>Sélectionnez le niveau</option>
+                              <option [value]="NiveauEtude.PREMIERE_ANNEE">Première Année</option>
+                              <option [value]="NiveauEtude.DEUXIEME_ANNEE">Deuxième Année</option>
+                              <option [value]="NiveauEtude.TROISIEME_ANNEE">Troisième Année</option>
+                            </select>
+                          </div>
+                          <div *ngIf="ueForm.get('niveauEtude')?.invalid && ueForm.get('niveauEtude')?.touched" class="text-danger marge mb-3">
+                            Sélectionner le nivau est essentiel.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="input-group input-group-static mb-4">
+                            <select class="form-control" formControlName="professeurId">
+                              <option value="" selected disabled hidden>Sélectionnez le professeur</option>
+                              <option *ngFor="let prof of professeurs" [value]="prof.professeurId">
+                                {{ prof.nom }} {{ prof.prenom }}
+                              </option>
+                            </select>
+                          </div>
+                          <div *ngIf="ueForm.get('professeurId')?.invalid && ueForm.get('professeurId')?.touched" class="text-danger marge mb-3">
+                            Sélectionner un professeur
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="input-group input-group-static mb-4">
+                            <select class="form-control" formControlName="typeSemestre">
+                              <option value="" selected disabled hidden>Sélectionnez le semestre</option>
+                              <option [value]="TypeSemestre.SEMESTRE_1">Semestre 1</option>
+                              <option [value]="TypeSemestre.SEMESTRE_2">Semestre 2</option>
+                              <option [value]="TypeSemestre.SEMESTRE_3">Semestre 3</option>
+                              <option [value]="TypeSemestre.SEMESTRE_4">Semestre 4</option>
+                              <option [value]="TypeSemestre.SEMESTRE_5">Semestre 5</option>
+                              <option [value]="TypeSemestre.SEMESTRE_6">Semestre 6</option>
+                            </select>
+                          </div>
+                          <div *ngIf="ueForm.get('typeSemestre')?.invalid && ueForm.get('typeSemestre')?.touched" class="text-danger marge mb-3">
+                            La selection du semestre est obligatoire.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="input-group input-group-static mb-4">
+                            <label for="filièeremultiple" class="ms-0">Filière :</label>
+                            <select multiple="" class="form-control"  formControlName="filiereIds" id="filièeremultiple">
+                                <option value="" selected disabled hidden>Filière</option>
+                                <option *ngFor="let fil of filieres" [value]="fil.filiereId">
+                                  {{ fil.nomFiliere }}
+                                </option>
+                              </select>
+                          </div>
+                          <div *ngIf="ueForm.get('filiereIds')?.invalid && ueForm.get('filiereIds')?.touched" class="text-danger marge mb-3">
+                            Sélectionnez la ou les filières correspondante à l'UE
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Annuler</button>
+                        <button type="submit" [disabled]="ueForm.invalid"
+                          class="btn bg-gradient-info" data-bs-dismiss="modal">Enrégistrer</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

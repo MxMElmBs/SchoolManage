@@ -1,0 +1,18 @@
+package com.defitech.GestUni.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class UserDto {
+    private Long idUser;
+    private String nom;
+    private String prenom;
+    private String username;
+    private String password;
+    private String email;
+    private String actif;
+}

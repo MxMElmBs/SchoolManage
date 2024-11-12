@@ -1,0 +1,141 @@
+
+/* styles.css du datatable*/
+.table-container {
+    max-height: 250px;
+    margin-top: 50px;
+    margin-left: 20px;
+    overflow-y: auto; /* Permet un défilement horizontal si le tableau est trop large */
+}
+
+.table-container{
+    width: 90%;
+
+}
+.table-container table {
+    width: 100%;
+    border-collapse: collapse; /* Supprime l'espacement entre les bordures des cellules */
+}
+
+thead {
+    background-color: rgba(20, 0, 100, 1); /* Couleur de fond pour l'en-tête du tableau */
+    color: rgba(20, 0, 100, 1); /* Couleur du texte pour l'en-tête du tableau */
+}
+
+tbody{
+    max-height: 200px;
+    border-collapse: collapse;
+    overflow-x: auto;
+}
+
+.table-container th, td {
+    padding: 8px; /* Espacement à l'intérieur des cellules */
+    text-align: left; /* Alignement du texte à gauche */
+    border-bottom: 1px solid black; /* Ligne de séparation entre les lignes */
+}
+
+.table-container tr:nth-child(odd) {
+    background-color: #f2f2f2; /* Couleur de fond pour les lignes impaires */
+}
+
+.table-container tr:nth-child(even) {
+    background-color: #ffffff; /* Couleur de fond pour les lignes paires */
+}
+
+.table-container tr:hover {
+    background-color: #ddd; /* Couleur de fond au survol d'une ligne */
+}
+
+
+
+/* Ajout de styles supplémentaires pour les boutons et les inputs si nécessaire */
+input[type="text"], input[type="number"], select {
+    padding: 5px;
+    margin: 2px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.button button{
+    margin-left: 700px;
+    border: none;
+    padding: 5px 50px 5px 50px;
+    margin-top: 60px;
+    background: green;
+    color: #fff;
+    font-size: 20px;
+    font-size: medium;
+    font-weight: 18;
+    border-radius: 5px 5px 5px 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.haut{
+    display: flex;
+    width: 90%;
+    margin-top: 60px;
+    margin-left: 14px;
+}
+
+ .annee{
+    margin-left: 10PX;
+ }
+ .filiere{
+    margin-left: 50px;
+ }
+input[type="search"] {
+    
+    border-radius: 5px;
+    background: none;
+    width: 345px;
+    height: 26px;
+    font-size: 20px;
+    opacity: 30%;
+    margin-left:100px;
+    margin-top: 10px;
+}
+
+.search-bar {
+    display: flex;
+    margin-top: 10px;
+}
+
+.search-bar  i{
+    cursor: pointer;
+    font-size: 25px;
+    color: rgba(20, 0, 100, 1);
+    margin-top: 14px;
+    background: none;
+    
+}
+
+.button-table td {  
+    padding: 50px; /* Espace intérieur dans chaque cellule */  
+  }  
+  
+  .btn-red {  
+    background-color: blue;  
+    color: white;  
+    padding: 10px 15px;  
+    border: none;  
+    border-radius: 5px;  
+    cursor: pointer;  
+  }  
+  
+  .btn-blue {  
+    background-color: red;  
+    color: white;  
+    padding: 10px 15px;  
+    border: none;  
+    border-radius: 5px;  
+    cursor: pointer;  
+  }  
+
+  label{
+    margin-top: 12px;
+    margin-left: 15px;
+  }
+
+  .filter-container{
+    margin-top: 40px;
+  }

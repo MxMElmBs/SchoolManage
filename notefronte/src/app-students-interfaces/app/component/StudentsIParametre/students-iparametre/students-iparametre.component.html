@@ -1,0 +1,55 @@
+<app-students-iheader></app-students-iheader>
+<app-students-idash-b></app-students-idash-b>
+
+<div class="settings-container">
+  <div class="profile-section">
+    <div class="profile-picture">
+      <mat-icon>account_circle</mat-icon>
+    </div>
+    <div class="matricule-info">
+      <mat-label>Matricule: {{ student.matricule }}</mat-label>
+    </div>
+  </div>
+
+  <div class="form-container">
+    <div class="form-group">
+      <mat-form-field appearance="outline">
+        <mat-label>Nom</mat-label>
+        <input matInput [value]="student.nom" [disabled]="true" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Prénom</mat-label>
+        <input matInput [value]="student.prenom" [disabled]="true" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput [value]="student.email" [disabled]="true" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Sexe</mat-label>
+        <mat-select [value]="getGenderLabel()" [disabled]="true">
+          <mat-option value="Homme">Homme</mat-option>
+          <mat-option value="Femme">Femme</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+
+    <div class="form-group">
+      <mat-form-field appearance="outline">
+        <mat-label>Lieu de naissance</mat-label>
+        <input matInput [value]="student.lieuNaiss" [disabled]="true" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Date de naissance</mat-label>
+        <input matInput [value]="student.dob" [disabled]="true" />
+      </mat-form-field>
+    </div>
+  </div>
+</div>

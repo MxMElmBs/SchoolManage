@@ -1,0 +1,57 @@
+<app-students-iheader></app-students-iheader>
+<app-students-idash-b></app-students-idash-b>
+
+<div class="header-container">
+  <!-- Dropdown for selecting semester -->
+  <div class="semester-dropdown">
+    <mat-form-field appearance="outline">
+      <mat-label>Sélectionnez un semestre</mat-label>
+      <mat-select [(value)]="selectedSemester" (selectionChange)="getCoursByIdUserAndSemestre()">
+        <mat-option *ngFor="let semester of semesters" [value]="semester">
+          {{ semester }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <!-- Legend for UE types -->
+  <div class="legend-container">
+    <div class="legend-item">
+      <span class="legend-color specialite"></span> Spécialité
+    </div>
+    <div class="legend-item">
+      <span class="legend-color fondamentale"></span> Fondamentale
+    </div>
+    <div class="legend-item">
+      <span class="legend-color transversale"></span> Transversale
+    </div>
+    <div class="legend-item">
+      <span class="legend-color complementaire"></span> Complémentaire
+    </div>
+    <div class="legend-item">
+      <span class="legend-color libre"></span> Libre
+    </div>
+  </div>
+</div>
+
+<div class="card-container">
+  <div class="card" *ngFor="let card of cards" [ngStyle]="{ 'background-color': card.color }" (click)="openCourseDetails(card)">
+    <div class="course-semester">{{ card.semestre }}</div>
+    <div class="course-filiere">{{ card.filiere }}</div>
+    <div class="course-niveau">{{ card.niveau }}</div>
+    <div class="course-info">
+      <div class="course-code">{{ card.code }}</div>
+      <div class="course-name">{{ card.name }}</div>
+      <div class="course-credit">{{ card.credit }} :  {{ card.coef }}</div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for showing course details -->
+<div class="modal" *ngIf="showModal">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>{{ selectedCourse?.name }}</h2>
+    <p>{{ selectedCourse?.description }}</p>
+  </div>
+</div>

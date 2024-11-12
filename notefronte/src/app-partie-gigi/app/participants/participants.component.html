@@ -1,0 +1,30 @@
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+<div class="container">  
+  <div class="table-container">
+    <table>  
+        <thead>  
+          <tr>  
+            <th>Matricule</th>  
+            <th>Nom</th>  
+            <th>Prénom</th>  
+          </tr>  
+        </thead>  
+        <tbody>  
+          <tr *ngFor="let student of students; let i = index">  
+            <td>{{ student.matricule }}</td>  
+            <td>{{ student.nom }}</td>  
+            <td>{{ student.prenom }}</td> 
+            <!--
+            <td>  
+              <input type="checkbox" [checked]="participant.presence" (change)="togglePresence(participant, $event)">  
+            </td>  
+            -->
+          </tr>  
+        </tbody>  
+      </table> 
+  </div>
+  <!--
+  
+  <button mat-raised-button (click)="openPoppresence()">Soumettre</button> 
+  -->
+    </div>

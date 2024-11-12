@@ -1,0 +1,92 @@
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+<button><a href="app-gigi/professeur/dashboard-prof">Retour</a></button>
+<div class="menup">
+    <div class="etat">
+        <div *ngIf="seanceId && !seanceFermee" class="seance-info">
+          <p>Seance ID : {{ seanceId }} | Date : {{ seanceDate }} | Heure de début : {{ seanceStartTime }}</p>
+          <span class="chrono">
+            <i class="ri-information-line info-icon"></i>
+            <span class="tooltip">La séance se fermera automatiquement après 12 heures d'ouverture.</span>
+            <span class="chrono-value">{{ heuresRestantes }}h {{ minutesRestantes }}m restants</span>
+          </span>
+          <button (click)="fermerSeance()">Fermer la séance</button>
+        </div>
+      
+        <div *ngIf="seanceFermee">
+          <p>La séance est fermée.</p>
+        </div>
+      
+        <div *ngIf="!seanceId && !seanceFermee">
+          <button (click)="ouvrirSalle()">Créer une nouvelle salle</button>
+        </div>
+      </div>
+      
+
+    <div class="box1">
+        <div class="box">
+            <div class="card">
+                <div class="box">
+                    <div class="text">
+                        <a href="/app-gigi/professeur/attendance">
+                            <img [src]="'https://th.bing.com/th/id/OIP.KYcEaSzl_Xpx3r__S-U3zQHaHb?rs=1&pid=ImgDetMain'" height="60" width="80" priority/>
+                        </a>
+                        <div class="dash">Presences</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <div class="card">
+                <div class="box">
+                    <div class="text">
+                        <a href="/app-gigi/professeur/participants">
+                            <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=441x10000:format=png/path/s34d84d63702c200c/image/i9a18c31f5bfa9750/version/1556921951/image.png" height="60" width="80" priority>
+                        </a>
+                        <div class="Doc">Liste de classe</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <div class="card">
+                <div class="box">
+                    <div class="text">
+                        <a href="/app-gigi/professeur/emploidutemps">
+                            <img [src]="'https://pulsioprint.com/wp-content/uploads/2020/05/notebooks_hidden-wire-o-binding-5.jpg'" height="60" width="80" priority>
+                        </a>
+                        <div class="Dep">Cahier de texte</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+        </div>
+    </div>
+    <div class="box2">
+        <div class="box">
+            <div class="card">
+                <div class="box">
+                    <div class="text">
+                        <a href="/app-gigi/professeur/profil">
+                            <img src="https://cdn-icons-png.flaticon.com/512/56/56832.png" height="60" width="80" priority>
+                        </a>
+                        <div class="dash">Profil</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <div class="card">
+                <div class="box">
+                    <div class="text">
+                        <a href="#">
+                            <img src="https://st3.depositphotos.com/14846838/19149/v/950/depositphotos_191495706-stock-illustration-graphic-illustration-system-configuration-vector.jpg" height="60" width="80" priority>
+                        </a>
+                        <div class="dash">Configuration</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

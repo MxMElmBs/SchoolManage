@@ -1,0 +1,15 @@
+footer {
+  background-color: #d9d9d9;
+  height: 60px; /* Assurez-vous que la hauteur correspond à celle du header */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+p {
+  margin: 0;
+}

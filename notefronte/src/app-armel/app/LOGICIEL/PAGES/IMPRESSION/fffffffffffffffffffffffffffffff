@@ -1,0 +1,65 @@
+export class FicheComponent implements OnInit {
+  paiements: any[] = [];
+  echeances: any[] = [];
+  filiere: string = '';
+  niveau: string = ''; dateDuJour: string;
+  currentYear: number = 0;
+
+
+  constructor(private http: HttpClient, private route: ActivatedRoute) {
+    this.dateDuJour = new Date().toLocaleDateString('fr-FR'); // Date du jour au format français
+  }
+
+
+
+ngOnInit(): void {
+  this.currentYear = new Date().getFullYear();
+  window.print();
+
+  // Récupérer les paiements du localStorage
+  this.filiere = localStorage.getItem('selectedFiliere') || '';
+  this.niveau = localStorage.getItem('selectedNiveau') || '';
+
+  // Récupérer les paiements du localStorage
+  const paiementsData = localStorage.getItem('paiements');
+  if (paiementsData) {
+    const allPaiements: Paiement[] = JSON.parse(paiementsData);
+
+    // Obtenir la date actuelle et la date dans deux mois
+    const currentDate = new Date();
+    const oneMonthLater = new Date();
+    oneMonthLater.setMonth(currentDate.getMonth() + 2);
+
+    this.paiements = allPaiements.filter(paiement => {
+      console.log('Paiement:', paiement); // Affiche le paiement courant
+      const validEcheances = paiement.echeances.filter(echeance => {
+        const isValid =
+          (echeance.statut === "EN_ATTENTE" || echeance.statut === "PARTIELLEMENT_PAYEE") &&
+          new Date(echeance.dateEcheance) <= oneMonthLater &&
+          new Date(echeance.dateEcheance) >= currentDate;
+    
+        console.log('Echéance:', echeance, 'Valide:', isValid); // Affiche chaque échéance et si elle est valide
+        return isValid;
+      });
+    
+      return validEcheances.length > 0; // Retourne true si au moins une échéance est valide
+    });
+    
+
+    console.log('Paiements filtrés avec suceess:', this.paiements);
+  }
+
+console.log('Filière récupérée:', this.filiere);
+console.log('Niveau récupéré:', this.niveau);
+console.log('Paiements récupérés:', paiementsData);
+
+
+
+
+}
+
+
+
+
+
+}

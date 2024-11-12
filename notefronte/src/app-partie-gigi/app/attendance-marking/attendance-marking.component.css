@@ -1,0 +1,197 @@
+/* Style général */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f7fa;
+  margin: 0;
+  padding: 0;
+}
+
+h4 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  margin-left: 50px;
+}
+
+p {
+  font-size: 1rem;
+  color: #555;
+  margin-left: 100px;
+}
+
+/* Style pour centrer le bouton dans son conteneur */
+.seance-control {
+  display: flex;
+  justify-content: center;  /* Centre le bouton horizontalement */
+  align-items: center;      /* Centre le bouton verticalement */
+  margin-bottom: 20px;      /* Ajoute un peu d'espace en dessous */
+  padding: 20px;            /* Ajoute du padding autour du bouton */
+}
+
+.seance-control button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.seance-control button:hover {
+  background-color: #2980b9;
+}
+
+.seance-control p {
+  text-align: center;  
+}
+
+.filter-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+label {
+  margin-left: 100px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #34495e;
+}
+
+input[type="date"] {
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  color: #34495e;
+  background-color: white;
+  transition: border-color 0.3s ease;
+}
+
+input[type="date"]:hover, input[type="date"]:focus {
+  border-color: #3498db;
+}
+
+/* Table styling with fixed height and scrolling */
+table {
+  width: 70%;
+  margin-left: 100px;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+
+h5 {
+  margin-left: 100px;
+}
+
+.retour{
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+table th, table td {
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  border: 1px solid #757575;
+  text-align: left;
+}
+
+table th {
+  background-color: #2980b9;
+  font-weight: bold;
+}
+
+table td {
+  color: #555;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #c6e5ec;
+}
+
+.present-text {
+  font-size: 1rem;
+  color: rgb(2, 128, 2);
+  font-weight: bold;
+}
+
+.absent-text {
+  font-size: 1rem;
+  color: red;
+  font-weight: bold;
+}
+
+/* Fix the height of the table and enable scrolling for the tbody */
+table tbody {
+  display: block;
+  max-height: 200px; /* Fixed height */
+  overflow-y: auto;
+  width: 100%;
+}
+
+table thead, table tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed; /* Maintain column width consistency */
+}
+
+tbody tr td:last-child {
+  font-weight: bold;
+}
+
+.present-text {
+  font-size: 1rem;
+  color: rgb(2, 128, 2);
+  font-weight: bold;
+}
+.present-text {
+  color: green;
+}
+.absent-text {
+  color: red;
+}
+.permission-text {
+  color: orange;
+}
+
+
+.absent-text {
+  font-size: 1rem;
+  color: red;
+  font-weight: bold;
+}
+
+/* Responsivité */
+@media (max-width: 768px) {
+  .seance-control {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .filter-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  table th, table td {
+    padding: 8px 10px;
+  }
+
+  button {
+    width: 100%;
+    text-align: center;
+  }
+}

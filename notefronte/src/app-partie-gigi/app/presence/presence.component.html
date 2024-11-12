@@ -1,0 +1,27 @@
+<div class="container">
+  <h2>Marquer la présence</h2>
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>Matricule</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Présent</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let etudiant of etudiants">
+        <td>{{ etudiant.matriculeEtudiant }}</td>
+        <td>{{ etudiant.nomEtudiant }}</td>
+        <td>{{ etudiant.prenomEtudiant }}</td>
+        <td>
+          <input type="checkbox" [(ngModel)]="etudiant.present" name="present-{{etudiant.nom}}-{{etudiant.prenom}}" [disabled]="etudiant.enPermission">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="actions">
+    <button type="submit" class="styled-button" (click)="openPresenceDialog()">Soumettre</button>
+  </div>
+</div>

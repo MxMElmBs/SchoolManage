@@ -1,0 +1,57 @@
+<div *ngIf="isLoading" class="loading-container">
+    <div class="spinner"></div>
+    <p>Chargement en cours...</p>
+  </div>
+  
+  <div class="urgences-content" *ngIf="!isLoading">
+    <div class="button">
+      <a href="/app-gigi/dashboard/ue-form">
+        <button class="submit">Ajouter un cours</button>
+      </a>
+    </div>
+  
+    <div class="filter-container">
+      <label for="nom">Filtrer par Nom:</label>
+      <input type="text" id="nom" [(ngModel)]="filter.nom" (input)="onFilterChange()" />
+  
+      <label for="code">Filtrer par Code:</label>
+      <input type="text" id="code" [(ngModel)]="filter.code" (input)="onFilterChange()" />
+  
+      <label for="chargecours">Filtrer par Chargé du Cours:</label>
+      <input type="text" id="chargecours" [(ngModel)]="filter.chargecours" (input)="onFilterChange()" />
+    </div>
+  
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Code</th>
+            <th>Crédit</th>
+            <th>Chargé du cours</th>
+            <th>Taux d'achevement</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of filteredData; let i = index">
+            <td>{{ data.libelle }}</td>
+            <td>{{ data.code }}</td>
+            <td>{{ data.credit }}</td>
+            <td>{{ data.professeurNom }}</td>
+            <td>{{ data.tauxAchevement }} %</td>
+            <td>
+              <a [routerLink]="['/app-gigi/dashboard/detail', data.ueId]">
+                <button class="btn-red">View</button>
+              </a>
+            </td>
+            <td>
+              <button class="btn-blue" (click)="signaler(data.ueId)">Signaler</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

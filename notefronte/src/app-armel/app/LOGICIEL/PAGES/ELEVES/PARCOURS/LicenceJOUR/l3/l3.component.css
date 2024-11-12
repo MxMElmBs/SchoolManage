@@ -1,0 +1,82 @@
+.print-button {
+  border: none;
+  background: none;
+  font-size: 20px; /* Taille de l'icône */
+  cursor: pointer;
+}
+.print-button:hover {
+  color: #007bff; /* Couleur au survol */
+}
+.print-button:active {
+  color: #007bff; /* Couleur au survol */
+}
+.badge {
+  top: 1px; /* Ajustez la position verticalement */
+  background-color: red; /* Couleur de fond du badge */
+  color: white; /* Couleur du texte */
+  border-radius: 50%; /* Forme ronde */
+  padding: 0 0.5em; /* Espacement à l'intérieur */
+  font-size: 0.7em; /* Taille de police */
+  display: flex; /* Pour centrer le texte */
+  justify-content: center; /* Pour centrer le texte */
+  align-items: center; /* Pour centrer le texte */
+}
+.home-content .sales-boxes .recent-sales {
+  width: 95%;
+  background: white;
+  padding: 30px 30px;
+  margin: 0 20px;
+  border-radius: 12px;
+  border: 5px solid #cccaca;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+.table td {
+  padding: 20px; /* Ajoute 10px de padding à l'intérieur de chaque cellule */
+}
+
+.superimposed-container {
+position: absolute;
+top: -30px;
+left: 50%;
+transform: translateX(-50%);
+width: 89%; /* Par exemple, 95% de la largeur du parent */
+max-width: none; /* Assurez-vous qu'il n'y a pas de largeur maximale */
+margin-left: 0px; /* Supprimez les marges négatives */
+margin-right: 0; /* Supprimez les marges négatives */
+}
+
+
+header {
+  justify-content: center;
+  width: 92%;
+  background-color: rgb(200, 204, 198);
+  padding: 7px;
+  margin-left: 54px;
+  text-align: center;
+  color: black;
+  height: 110px;
+}
+.fas.fa-filter {
+  font-size: 25px; /* Ajuste la taille de l'icône */
+  color: blue /* Ajuste la couleur de l'icône */
+}
+
+.print-button {
+  border: none;
+  background: none;
+  font-size: 20px; /* Taille de l'icône */
+  cursor: pointer;
+}
+.print-button:hover {
+  color: #007bff; /* Couleur au survol */
+}
+.arragement {
+  display: flex;                  /* Utiliser Flexbox pour la mise en page */
+  justify-content: center;        /* Centrer les éléments horizontalement */
+  align-items: center;            /* Centrer les éléments verticalement */
+}
+.colfiliere{
+  justify-content: center;
+  margin-right: 50px;
+}
+

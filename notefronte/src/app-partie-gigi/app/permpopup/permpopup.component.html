@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>{{ data.type === 'approve' ? 'Entrer une remarque (facultatif)' : 'Entrer une raison (facultatif)' }}</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill" style="width: 100%;">
+    <mat-label>{{ data.type === 'approve' ? 'Remarque' : 'Raison' }}</mat-label>
+    <input matInput [(ngModel)]="inputText">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Annuler</button>
+  <button mat-button (click)="onSave()">Enregistrer</button>
+</div>

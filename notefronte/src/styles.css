@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+/* .form-control {
+  padding: 10px;
+  padding: 5px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 1em;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+
+.form-group {
+  padding-top: 10px;
+} */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

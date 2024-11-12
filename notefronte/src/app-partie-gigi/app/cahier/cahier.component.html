@@ -1,0 +1,70 @@
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+<div class="container">  
+    <h3>Ajouter un UE</h3>  
+    <form (ngSubmit)="ajouterUE()" #ueForm="ngForm">  
+      <div class="flex">
+        <div class="prm">
+            <div>  
+              <label for="filiere">Filière :</label>  
+              <input type="text" id="filiere" [(ngModel)]="filiere" name="filiere" required>  
+            </div>  
+            <div>  
+              <label for="nom">Nom de l'UE :</label>  
+              <input type="text" id="nom" [(ngModel)]="nom" name="nom" required>  
+            </div> 
+             
+        </div>
+        <div class="sec">
+            <div>  
+                <label for="nom">Semestr :</label>  
+                <input type="number" id="semestre" [(ngModel)]="semestre" name="semestre" required>  
+              </div> 
+            <div>  
+                <label for="heures">Heures :</label>  
+                <input type="number" id="heures" [(ngModel)]="heures" name="heures" required>  
+              </div> 
+        </div>
+        <div class="sec">
+          <div>  
+              <label for="nom">Code de l'UE :</label>  
+              <input type="text" id="nom" [(ngModel)]="nom" name="nom" required>  
+            </div> 
+          <div>  
+              <label for="heures">Heures :</label>  
+              <input type="number" id="heures" [(ngModel)]="heures" name="heures" required>  
+            </div> 
+      </div>
+      
+      </div>
+      <div *ngFor="let filiere of filieres" class="trois">  
+        <label>  
+          <input type="checkbox" [(ngModel)]="filiere.selected" name="{{filiere.name}}" required/>  
+          {{ filiere.name }}  
+        </label>  
+      </div> 
+      <div class="bou">
+
+        <button type="submit" [disabled]="!ueForm.form.valid">Ajouter UE</button>  
+      </div>
+    </form>  
+  <!--
+    <h5>Emploi du Temps  de chaque filière:</h5>  
+    <div *ngFor="let item of getUesParFiliere() | keyvalue">  
+        <h3>{{ item.key }}</h3>  Nom de la filière 
+        <table>  
+          <thead>  
+            <tr>  
+              <th>Nom de l'UE</th>  
+              <th>Heures</th>  
+            </tr>  
+          </thead>  
+          <tbody>  
+            <tr *ngFor="let ue of item.value">  
+              <td>{{ ue.nom }}</td>  
+              <td>{{ ue.heures }}</td>  
+            </tr>  
+          </tbody>  
+        </table>  
+      </div>
+      -->  
+</div>

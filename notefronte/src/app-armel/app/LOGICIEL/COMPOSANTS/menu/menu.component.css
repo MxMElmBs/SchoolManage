@@ -1,0 +1,86 @@
+.image {
+    padding-top: 1px;
+    text-align: center;
+  }
+  
+  .image img {
+    max-width: 100%; /* S'adapte à la largeur du conteneur */
+    height: auto; /* Maintient les proportions de l'image */
+  }
+
+
+
+.logo-details {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.logo-details i {
+    font-size: 1.8rem;
+    margin-right: 5px;
+}
+
+.nav-links {
+    margin-top: 20px;
+    list-style: none;
+    padding: 0;
+}
+
+.nav-links li {
+    margin-bottom: 15px;
+}
+
+.nav-links a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #160101;
+    transition: all 0.3s ease;
+    padding: 8px 20px;
+    border-radius: 5px;
+}
+
+
+.links_name {
+    margin-left: 15px;
+}
+
+.log_out {
+    position: absolute;
+    bottom: 0px;
+}
+
+.log_out span{
+    color: rgb(245, 59, 59);
+}
+
+  .nav-links li{
+    padding-top: 15px;
+  }
+
+  .nav-links a {
+    background-color: transparent; /* Couleur de fond par défaut */
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #000;
+    border: 1px solid transparent;
+    transition: background-color 0.3s ease;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.nav-links a:hover {
+    background-color: #007bff; /* Couleur lors du survol */
+    color: #fff;
+}
+
+.nav-links a.active {
+    background-color: #007bff;  /* Couleur cendrée pour l'élément actif */
+    color: #fff;
+    border: 1px solid #948a8a;
+}

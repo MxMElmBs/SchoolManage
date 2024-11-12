@@ -1,0 +1,14 @@
+.alert-transition {
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.alert-transition.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.marge {
+  margin-top: -20px;
+}

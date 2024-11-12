@@ -1,0 +1,159 @@
+/* Container principal */
+.container {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  margin-left: 270px; /* Décalage pour éviter le chevauchement avec la sidebar */
+  margin-top: 70px; /* Espace en haut pour éviter le chevauchement avec le header */
+  margin-bottom: 60px; /* Espace en bas pour éviter le chevauchement avec le footer */
+  padding: 20px;
+  gap: 20px; /* Espacement entre les éléments */
+  width: calc(100% - 270px); /* Ajustement de la largeur pour le décalage */
+  overflow: auto; /* Permet le défilement si le contenu dépasse la fenêtre */
+}
+
+/* Carte pour Comptables */
+.card {
+  width: 300px;
+  height: 190px;
+  background-color: #2C9D22; /* Couleur de fond similaire à l'ancien design */
+  color: white;
+  position: relative;
+  box-shadow: 0 15px 8px rgba(0, 0, 0, 0.2); /* Ombre portée pour un effet visuel */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Informations de la carte */
+.card .info {
+  position: absolute;
+  bottom: 5px;
+  left: 10px;
+  text-align: left;
+}
+
+.card .info .count {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.card .info .name {
+  font-size: 16px;
+}
+
+/* Icône dans la carte */
+.card .icon {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 91px; /* Largeur fixe de l'icône */
+  height: 106px; /* Hauteur fixe de l'icône */
+}
+
+.card .icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Partie de contrôle */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.textfields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.textfields mat-form-field {
+  flex: 1 1 30%;
+  min-width: 200px; /* Assure une largeur minimale pour les champs */
+}
+
+.buttons {
+  display: flex;
+  gap: 2px;
+  margin-top: 10px;
+}
+
+.buttons button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Styles spécifiques aux boutons avec icônes */
+.buttons button mat-icon {
+  margin-right: 5px;
+}
+
+/* Tableau des utilisateurs */
+.table-wrapper {
+  width: 100%;
+  max-height: 200px; /* Ajustez la hauteur selon vos besoins */
+  overflow-y: auto;
+}
+
+table {
+  width: 100%;
+}
+
+th.mat-header-cell {
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 1;
+}
+
+/* Styles pour les rangées du tableau */
+.mat-row:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* Paginateur */
+mat-paginator {
+  margin-top: 10px;
+}
+
+/* Réactivité pour les écrans plus petits */
+@media (max-width: 768px) {
+  .container {
+    margin-left: 0;
+    padding: 10px;
+  }
+
+  .card {
+    width: 100%;
+    height: auto;
+  }
+
+  .textfields mat-form-field {
+    flex: 1 1 100%;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+
+  .buttons button {
+    width: 100%;
+  }
+}

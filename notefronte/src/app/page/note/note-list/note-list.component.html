@@ -1,0 +1,435 @@
+<!-- Pour le semestre 1 -->
+<div class="container-fluid py-1">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="card my-1">
+        <div class="card-body px-3 pb-2">
+          <div class="row" >
+            <div class="col-6 d-flex align-items-center">
+              <p class="h5"> <small>Semestre 1</small></p>
+            </div>
+            <div class="mt-4 row">
+              <div class="col-md-12">
+                <div class="table-responsive">
+                  <table id="semestre1" class="display" style="width:100%">
+                    <thead>
+                      <tr>
+                        <th class="font-weight-semibold mb-0 text-center">CODE</th>
+                        <th class="font-weight-semibold mb-0 text-center">UE</th>
+                        <th class="font-weight-semibold mb-0 text-center">TYPE EVALUATION</th>
+                        <th class="font-weight-semibold mb-0 text-center">CREDIT</th>
+                        <!-- <th class="font-weight-semibold mb-0 text-center">ETUDIANTS INSCRITS</th>
+                        <th class="font-weight-semibold mb-0 text-center">ETUDIANTS NOTES</th> -->
+                        <th class="action-column text-md font-weight-bold mb-0"></th>
+                        <!-- <i class="i codicon:edit"></i><i class="i codicon:trash"></i> -->
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let ue of uesBySemestre['SEMESTRE_1']">
+                        <td class="text-center">{{ ue.code }}</td>
+                        <td class="text-center">{{ ue.libelle }}</td>
+                        <td class="text-center">{{ ue.typeNote }}</td>
+                        <td class="text-center">{{ ue.credit }}</td>
+                        <!-- <td class="text-center">29</td>
+                        <td class="text-center">23</td> -->
+                        <td class="action-column">
+                          <a href="#" class="text-secondary font-weight-normal action-link text-xs"
+                          data-bs-toggle="modal" (click)="onModifierNotes(ue.id, ue.typeNote)"
+                          data-bs-target="#modifierNote">
+                            <i class="i material-symbols:edit-rounded modicon"></i> <span
+                              class="text-center modifier"><strong>MODIFIER</strong></span>
+                          </a>
+                          <a href="#" class="text-secondary font-weight-normal action-link text-xs ms-3"
+                            data-bs-toggle="modal" data-bs-target="#supprimerNote" (click)="openSupprimerModal(ue, ue.typeNote)">
+                            <i class="i material-symbols-light:delete-rounded suppicon"></i> <span
+                              class="text-center supprimer"><strong>SUPPRIMER</strong></span>
+                          </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+<!-- Pour le semestre 2 -->
+<div class="container-fluid py-1">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="card my-1">
+        <div class="card-body px-3 pb-2">
+          <div class="row">
+            <div class="col-6 d-flex align-items-center">
+              <p class="h5"> <small>Semestre 2</small></p>
+            </div>
+            <div class="mt-4 row">
+              <div class="col-md-12 table-responsive">
+                <table id="semestre2" class="display" style="width:100%">
+                  <thead>
+                    <tr>
+                      <th class="font-weight-semibold mb-0 text-center">CODE</th>
+                      <th class="font-weight-semibold mb-0 text-center">UE</th>
+                      <th class="font-weight-semibold mb-0 text-center">TYPE EVALUATION</th>
+                      <th class="font-weight-semibold mb-0 text-center">CREDIT</th>
+                      <!-- <th class="font-weight-semibold mb-0 text-center">ETUDIANTS INSCRITS</th>
+                      <th class="font-weight-semibold mb-0 text-center">ETUDIANTS NOTES</th> -->
+                      <th class="action-column text-md font-weight-bold mb-0"></th>
+                      <!-- <i class="i codicon:edit"></i><i class="i codicon:trash"></i> -->
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let ue of uesBySemestre['SEMESTRE_2']">
+                      <td class="text-center">{{ ue.code }}</td>
+                      <td class="text-center">{{ ue.libelle }}</td>
+                      <td class="text-center">{{ ue.typeNote }}</td>
+                      <td class="text-center">{{ ue.credit }}</td>
+                      <!-- <td class="text-center">29</td>
+                      <td class="text-center">23</td> -->
+                      <td class="action-column">
+                        <a href="#" class="text-secondary font-weight-normal action-link text-xs"
+                        data-bs-toggle="modal" (click)="onModifierNotes(ue.id, ue.typeNote)"
+                        data-bs-target="#modifierNote">
+                          <i class="i material-symbols:edit-rounded modicon"></i> <span
+                            class="text-center modifier"><strong>MODIFIER</strong></span>
+                        </a>
+                        <a href="#" class="text-secondary font-weight-normal action-link text-xs ms-3"
+                          data-bs-toggle="modal" data-bs-target="#supprimerNote" (click)="openSupprimerModal(ue, ue.typeNote)">
+                          <i class="i material-symbols-light:delete-rounded suppicon"></i> <span
+                            class="text-center supprimer"><strong>SUPPRIMER</strong></span>
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+<!-- Pour le semestre 3 -->
+<div class="container-fluid py-1">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="card my-1">
+        <div class="card-body px-3 pb-2">
+          <div class="row">
+            <div class="col-6 d-flex align-items-center">
+              <p class="h5"> <small>Semestre 3</small></p>
+            </div>
+            <div class="mt-4 row">
+              <div class="col-md-12 table-responsive">
+                <table id="semestre3" class="display" style="width:100%">
+                  <thead>
+                    <tr>
+                      <th class="font-weight-semibold mb-0 text-center">CODE</th>
+                      <th class="font-weight-semibold mb-0 text-center">UE</th>
+                      <th class="font-weight-semibold mb-0 text-center">TYPE EVALUATION</th>
+                      <th class="font-weight-semibold mb-0 text-center">CREDIT</th>
+                      <!-- <th class="font-weight-semibold mb-0 text-center">ETUDIANTS INSCRITS</th>
+                      <th class="font-weight-semibold mb-0 text-center">ETUDIANTS NOTES</th> -->
+                      <th class="action-column text-md font-weight-bold mb-0"></th>
+                      <!-- <i class="i codicon:edit"></i><i class="i codicon:trash"></i> -->
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let ue of uesBySemestre['SEMESTRE_3']">
+                      <td class="text-center">{{ ue.code }}</td>
+                      <td class="text-center">{{ ue.libelle }}</td>
+                      <td class="text-center">{{ ue.typeNote }}</td>
+                      <td class="text-center">{{ ue.credit }}</td>
+                      <!-- <td class="text-center">29</td>
+                      <td class="text-center">23</td> -->
+                      <td class="action-column">
+                        <a href="#" class="text-secondary font-weight-normal action-link text-xs"
+                        data-bs-toggle="modal" (click)="onModifierNotes(ue.id, ue.typeNote)"
+                        data-bs-target="#modifierNote">
+                          <i class="i material-symbols:edit-rounded modicon"></i> <span
+                            class="text-center modifier"><strong>MODIFIER</strong></span>
+                        </a>
+                        <a href="#" class="text-secondary font-weight-normal action-link text-xs ms-3"
+                          data-bs-toggle="modal" data-bs-target="#supprimerNote" (click)="openSupprimerModal(ue, ue.typeNote)">
+                          <i class="i material-symbols-light:delete-rounded suppicon"></i> <span
+                            class="text-center supprimer"><strong>SUPPRIMER</strong></span>
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+<!-- Pour le semestre 4 -->
+<div class="container-fluid py-1">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="card my-1">
+        <div class="card-body px-3 pb-2">
+          <div class="row">
+            <div class="col-6 d-flex align-items-center">
+              <p class="h5"> <small>Semestre 4</small></p>
+            </div>
+            <div class="mt-4 row">
+              <div class="col-md-12 table-responsive">
+                <table id="semestre4" class="display" style="width:100%">
+                  <thead>
+                    <tr>
+                      <th class="font-weight-semibold mb-0 text-center">CODE</th>
+                      <th class="font-weight-semibold mb-0 text-center">UE</th>
+                      <th class="font-weight-semibold mb-0 text-center">TYPE EVALUATION</th>
+                      <th class="font-weight-semibold mb-0 text-center">CREDIT</th>
+                      <!-- <th class="font-weight-semibold mb-0 text-center">ETUDIANTS INSCRITS</th>
+                      <th class="font-weight-semibold mb-0 text-center">ETUDIANTS NOTES</th> -->
+                      <th class="action-column text-md font-weight-bold mb-0"></th>
+                      <!-- <i class="i codicon:edit"></i><i class="i codicon:trash"></i> -->
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let ue of uesBySemestre['SEMESTRE_4']">
+                      <td class="text-center">{{ ue.code }}</td>
+                      <td class="text-center">{{ ue.libelle }}</td>
+                      <td class="text-center">{{ ue.typeNote }}</td>
+                      <td class="text-center">{{ ue.credit }}</td>
+                      <!-- <td class="text-center">29</td>
+                      <td class="text-center">23</td> -->
+                      <td class="action-column">
+                        <a href="#" class="text-secondary font-weight-normal action-link text-xs"
+                        data-bs-toggle="modal" (click)="onModifierNotes(ue.id, ue.typeNote)"
+                        data-bs-target="#modifierNote">
+                          <i class="i material-symbols:edit-rounded modicon"></i> <span
+                            class="text-center modifier"><strong>MODIFIER</strong></span>
+                        </a>
+                        <a href="#" class="text-secondary font-weight-normal action-link text-xs ms-3"
+                          data-bs-toggle="modal" data-bs-target="#supprimerNote" (click)="openSupprimerModal(ue, ue.typeNote)">
+                          <i class="i material-symbols-light:delete-rounded suppicon"></i> <span
+                            class="text-center supprimer"><strong>SUPPRIMER</strong></span>
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+<!-- Pour le semestre 5 -->
+<div class="container-fluid py-1">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="card my-1">
+        <div class="card-body px-3 pb-2">
+          <div class="row">
+            <div class="col-6 d-flex align-items-center">
+              <p class="h5"> <small>Semestre 5</small></p>
+            </div>
+            <div class="mt-4 row">
+              <div class="col-md-12 table-responsive">
+                <table id="semestre5" class="display" style="width:100%">
+                  <thead>
+                    <tr>
+                      <th class="font-weight-semibold mb-0 text-center">CODE</th>
+                      <th class="font-weight-semibold mb-0 text-center">UE</th>
+                      <th class="font-weight-semibold mb-0 text-center">TYPE EVALUATION</th>
+                      <th class="font-weight-semibold mb-0 text-center">CREDIT</th>
+                      <!-- <th class="font-weight-semibold mb-0 text-center">ETUDIANTS INSCRITS</th>
+                      <th class="font-weight-semibold mb-0 text-center">ETUDIANTS NOTES</th> -->
+                      <th class="action-column text-md font-weight-bold mb-0"></th>
+                      <!-- <i class="i codicon:edit"></i><i class="i codicon:trash"></i> -->
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let ue of uesBySemestre['SEMESTRE_5']">
+                      <td class="text-center">{{ ue.code }}</td>
+                      <td class="text-center">{{ ue.libelle }}</td>
+                      <td class="text-center">{{ ue.typeNote }}</td>
+                      <td class="text-center">{{ ue.credit }}</td>
+                      <!-- <td class="text-center">29</td>
+                      <td class="text-center">23</td> -->
+                      <td class="action-column">
+                        <a href="#" class="text-secondary font-weight-normal action-link text-xs"
+                        data-bs-toggle="modal" (click)="onModifierNotes(ue.id, ue.typeNote)"
+                        data-bs-target="#modifierNote">
+                          <i class="i material-symbols:edit-rounded modicon"></i> <span
+                            class="text-center modifier"><strong>MODIFIER</strong></span>
+                        </a>
+                        <a href="#" class="text-secondary font-weight-normal action-link text-xs ms-3"
+                          data-bs-toggle="modal" data-bs-target="#supprimerNote" (click)="openSupprimerModal(ue, ue.typeNote)">
+                          <i class="i material-symbols-light:delete-rounded suppicon"></i> <span
+                            class="text-center supprimer"><strong>SUPPRIMER</strong></span>
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+<!-- Pour le semestre 6 -->
+<div class="container-fluid py-1 pb-5">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="card my-1">
+        <div class="card-body px-3 pb-2">
+          <div class="row">
+            <div class="col-6 d-flex align-items-center">
+              <p class="h5"> <small>Semestre 6</small></p>
+            </div>
+            <div class="mt-4 row">
+              <div class="col-md-12 table-responsive">
+                <table id="semestre6" class="display" style="width:100%">
+                  <thead>
+                    <tr>
+                      <th class="font-weight-semibold mb-0 text-center">CODE</th>
+                      <th class="font-weight-semibold mb-0 text-center">UE</th>
+                      <th class="font-weight-semibold mb-0 text-center">TYPE EVALUATION</th>
+                      <th class="font-weight-semibold mb-0 text-center">CREDIT</th>
+                      <!-- <th class="font-weight-semibold mb-0 text-center">ETUDIANTS INSCRITS</th>
+                      <th class="font-weight-semibold mb-0 text-center">ETUDIANTS NOTES</th> -->
+                      <th class="action-column text-md font-weight-bold mb-0"></th>
+                      <!-- <i class="i codicon:edit"></i><i class="i codicon:trash"></i> -->
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let ue of uesBySemestre['SEMESTRE_6']">
+                      <td class="text-center">{{ ue.code }}</td>
+                      <td class="text-center">{{ ue.libelle }}</td>
+                      <td class="text-center">{{ ue.typeNote }}</td>
+                      <td class="text-center">{{ ue.credit }}</td>
+                      <!-- <td class="text-center">29</td>
+                      <td class="text-center">23</td> -->
+                      <td class="action-column">
+                        <a href="#" class="text-secondary font-weight-normal action-link text-xs"
+                        data-bs-toggle="modal" (click)="onModifierNotes(ue.id, ue.typeNote)"
+                        data-bs-target="#modifierNote">
+                          <i class="i material-symbols:edit-rounded modicon"></i> <span
+                            class="text-center modifier"><strong>MODIFIER</strong></span>
+                        </a>
+                        <a href="#" class="text-secondary font-weight-normal action-link text-xs ms-3"
+                          data-bs-toggle="modal" data-bs-target="#supprimerNote" (click)="openSupprimerModal(ue, ue.typeNote)">
+                          <i class="i material-symbols-light:delete-rounded suppicon"></i> <span
+                            class="text-center supprimer"><strong>SUPPRIMER</strong></span>
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Button trigger modal -->
+
+<!-- Modal pour la modification des notes -->
+<div class="modal fade" id="modifierNote" tabindex="-1" role="dialog" aria-labelledby="modifierNoteModal"
+  aria-hidden="true" data-bs-backdrop="false">
+  <div class="modal-dialog modal-dialog-centered modal-xl modal-custom-width" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title font-weight-bolder opacity-8 d-flex align-items-center " id="modifierNoteModal"><i
+          class="i me-2 material-symbols:edit-rounded modicon"></i>Modifier les Notes - {{typeNote}}</h3>
+        <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">X</span>
+        </button>
+      </div>
+      <div class="modal-body pb-0">
+        <div class="table-responsive">
+          <table *ngIf="notes.length > 0" class="table justify-content-center align-items-center mb-0">
+            <thead>
+              <tr>
+                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">ID</th>
+                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 ms-2">NOM</th>
+                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">PRENOM</th>
+                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">NOTE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let note of notes">
+                <td class="align-middle">
+                  <p class="text-md font-weight-bold mb-0">{{ note.matricule }}</p>
+                </td>
+                <td class="align-middle">
+                  <p class="text-md font-weight-bold mb-0">{{ note.nom }}</p>
+                </td>
+                <td class="align-middle">
+                  <p class="text-md font-weight-bold mb-0">{{ note.prenom }}</p>
+                </td>
+                <td class="align-middle">
+                  <div class="input-group  input-group-static">
+                    <input type="number" class="form-control small-input note"
+                       placeholder="Note" [(ngModel)]="note.valeur" min="0" max="20"
+                      onfocus="focused(this)" onfocusout="defocused(this)">
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="text-end mt-3">
+            <button type="button" class="btn bg-gradient-secondary btn-sm me-3" data-bs-dismiss="modal">Annuler</button>
+            <button type="submit" (click)="onEnregistrerNotes()"
+              class="btn bg-gradient-warning btn-sm" data-bs-dismiss="modal">Modifier</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal pour la suppression des Notes -->
+<div class="modal fade" id="supprimerNote" tabindex="-1" role="dialog" aria-labelledby="supprimerNoteModal"
+aria-hidden="true" data-bs-backdrop="false">
+<div class="modal-dialog modal-dialog-centered modal-md widthsupprimer" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 class="modal-title font-weight-bolder opacity-8 d-flex align-items-center " id="supprimerNoteModal"><i
+          class="i me-2  material-symbols-light:delete-rounded suppicon pb-0"></i>Supprimer l'UE</h3>
+      <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">X</span>
+      </button>
+    </div>
+    <div class="modal-body pb-0">
+      <div class="row">
+        <!-- <span class="font-weight-normal">Êtes-vous sûr de vouloir supprimer cette UE de façon permanente ?</span> -->
+        <p class="font-weight-normal mb-1">Supprimer de façon permanente les notes de l'UE :</p>
+        <h4 class="mb-1">     Libellé &nbsp;:&nbsp; {{ selectedUeLibelle }}</h4>
+        <h4 class="mt-0 mb-0">Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp; {{ selectedTypeNote }}</h4>
+      </div>
+      <div class="row mt-4">
+        <div class="col text-end">
+          <button type="button" class="btn bg-gradient-secondary  btn-sm" data-bs-dismiss="modal">Annuler</button>
+          <button type="button" class="btn bg-gradient-danger ms-3 btn-sm" data-bs-dismiss="modal" (click)="onConfirmerSuppression()">Supprimer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

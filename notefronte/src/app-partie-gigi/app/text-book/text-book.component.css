@@ -1,0 +1,103 @@
+.doc-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #4a4a4a;
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h2 i {
+  margin-right: 8px;
+}
+
+.fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.field {
+  flex: 1;
+  min-width: 200px;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #5a5a5a;
+  font-size: 14px;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.button-container {
+  text-align: center;
+}
+
+button {
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.3s;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+button i {
+  font-size: 20px;
+}
+
+.btn-approve {
+  background-color: #28a745;
+}
+
+.btn-approve:hover {
+  background-color: #218838;
+}

@@ -1,0 +1,37 @@
+<div *ngIf="showButton">
+  <button (click)="navigateToPage()">
+    Confirmer cahier
+  </button>
+</div>
+
+<div *ngIf="cahierTextes.length > 0">
+  <h2>Cahiers de texte pour l'UE {{ nomCours }}</h2> <!-- Affiche le nom du cours -->
+  <table>
+    <thead>
+      <tr>
+        <th>Date de la séance</th>
+        <th>Heure de début</th>
+        <th>Heure de fin</th>
+        <th>Durée en heures</th>
+        <th>Contenu du cours</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cahier of cahierTextes">
+        <td>{{ cahier.date | date:'dd/MM/yyyy' }}</td>
+        <td>{{ cahier.heureDebut }}</td>
+        <td>{{ cahier.heureFin }}</td>
+        <td>{{ cahier.duree | duration }}</td> <!-- Assurez-vous d'avoir un pipe pour formater la durée -->
+        <td>{{ cahier.contenuSeance }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="cahierTextes.length === 0">
+  <p>Aucun cahier de texte trouvé pour cette UE.</p>
+</div>
+
+<button>
+  <a href="app-gigi/professeur/salle">Retour</a>
+</button>

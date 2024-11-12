@@ -1,0 +1,184 @@
+/* .doc-content{
+    margin-left: 17px;
+
+}
+.doc-content p{
+    margin: 20px 0 20px 31px;
+    font-size: medium;
+    font-weight: 24px;
+    color: rgb(165, 186, 238);
+
+}
+.fields{
+    display: flex;
+    background-color: rgba(234, 234, 234, 1);
+    padding: 0 15px 30px 50px;
+}
+.field input{
+    margin: 15px 20px 0px 30px;
+    width: 255px;
+    outline: none;
+    border: none;
+    background: none;
+    border-bottom: 2px solid black;
+    font-size: 17px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+form .button button{
+    margin-left: 85.5%;
+    border: none;
+    padding: 5px 50px 5px 50px;
+    margin-top: 15px;
+    background: rgb(82, 12, 247);
+    color: #fff;
+    font-size: 20px;
+    font-size: medium;
+    font-weight: 28;
+    border-radius: 55px 55px 55px 55px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+} */
+
+  
+  /* Contenu principal */
+  .doc-content {
+    max-width: 800px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 20px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Titre principal */
+  .doc-content p {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #0056b3;
+  }
+  
+  /* Formulaire */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Champ de formulaire */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+    color: #444;
+  }
+  
+  input, select, .radio input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+  }
+  
+  input:focus, select:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .radio {
+    display: flex;
+    align-items: center;
+  }
+  
+  .radio input {
+    width: auto;
+    margin-right: 10px;
+  }
+  
+  .radio label {
+    margin-left: 10px;
+  }
+  
+  .radio input:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  /* Bouton de soumission */
+  button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Ajouter des icônes aux labels si nécessaire */
+  label[for="nom"]::before {
+    content: '\e606';
+    font-family: 'remixicon';
+    margin-right: 8px;
+  }
+  
+  label[for="code"]::before {
+    content: '\e6ab';
+    font-family: 'remixicon';
+    margin-right: 8px;
+  }
+  
+  label[for="credit"]::before {
+    content: '\e85c';
+    font-family: 'remixicon';
+    margin-right: 8px;
+  }
+  
+  label[for="professeur"]::before {
+    content: '\e681';
+    font-family: 'remixicon';
+    margin-right: 8px;
+  }
+  
+  label[for="filiere"]::before {
+    content: '\e62d';
+    font-family: 'remixicon';
+    margin-right: 8px;
+  }
+  
+  label[for="niveauEtude"]::before {
+    content: '\e6c5';
+    font-family: 'remixicon';
+    margin-right: 8px;
+  }
+  
+  label[for="typeSemestre"]::before {
+    content: '\e62c';
+    font-family: 'remixicon';
+    margin-right: 8px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .doc-content {
+      padding: 20px;
+    }
+  
+    form {
+      gap: 15px;
+    }
+  }
+  

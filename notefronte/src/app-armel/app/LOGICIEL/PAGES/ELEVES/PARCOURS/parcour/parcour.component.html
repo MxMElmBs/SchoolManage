@@ -1,0 +1,101 @@
+<div class="container-fluid">
+  <div class="row align-items-center" style="background-color: #fff; height: 55px;">
+    <div class="col d-flex justify-content-between align-items-center">
+      <h1 class="mb-0"><strong>Parcours</strong></h1>
+      <div class="comp d-flex align-items-center">
+        <button class="print-button" aria-label="Imprimer">
+          <span class="badge">{{ nombreRappels }}</span>
+          <i class="fas fa-bell" [routerLink]="['/rappel']"></i>
+        </button>
+        
+        &nbsp; &nbsp;&nbsp; &nbsp;
+        <span class="mr-2">COMPTABLE : &nbsp; &nbsp;</span>
+        <a href="javascript:void(0);" [routerLink]="['/profil']">
+          <i class="fas fa-user"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="home-section">
+  <div class="home-content">
+    <div class="overview-boxes">
+
+      <div class="box">
+        <div class="image">
+          <img [routerLink]="['/licence-du-jour']" src="assets/parcours/ldj.png" alt="Licence du jour"
+            class="clickable-image">
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="image">
+          <img [routerLink]="['/BTS']" src="assets/parcours/bts.png" alt="BTS" class="clickable-image">
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="image">
+          <img [routerLink]="['/licence-du-soir']" src="assets/parcours/lds.png" alt="Licence du soir"
+            class="clickable-image">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<pre></pre>
+<pre></pre>
+<pre></pre>
+<section class="home-section">
+  <div class="home-content">
+    <div class="sales-boxes position-relative">
+      <!-- Background container -->
+      <div class="recent-sales box">
+        <pre></pre>
+        <div class="sales-details">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Parcours</th>
+                <th>Effectif total</th>
+                <th>Garçons</th>
+                <th>Filles</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let stat of stats">
+                <td>{{ stat.nom }}</td>
+                <td>{{ stat.totalEtudiants }}</td>
+                <td>{{ stat.totalGarcons }}</td>
+                <td>{{ stat.totalFilles }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+
+      <!-- Superimposed container -->
+      <div class="container bg-primary text-white p-3 rounded position-absolute superimposed-container">
+        <div class="row justify-content-between align-items-center">
+          <div class="col-12 col-md-auto">
+            <span class="h4">STATISTIQUES DES ETUDIANTS</span>
+          </div>
+          <div class="col-12 col-md-auto mt-3 mt-md-0">
+            <button class="btn btn-light newUser" [routerLink]="['/inscrire-étudiant']" style="color: black;">
+              <i class="fas fa-plus"></i> &nbsp; Ajouter Etudiant
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,40 @@
+.dialog-container {  
+    width: 400px; /* Largeur du popup */  
+    padding: 20px; /* Espacement interne */  
+    border-radius: 0; /* Bordures carrées */  
+    background-color: #fff; /* Couleur de fond */  
+    text-align: center; /* Centrer le texte */  
+  }  
+  
+  .dialog-title {  
+    font-size: 20px; /* Taille du titre */  
+    margin-bottom: 20px; /* Espacement en bas du titre */  
+  }  
+  
+  .dialog-buttons {  
+    display: flex; /* Utiliser flexbox pour les boutons */  
+    justify-content: space-around; /* Espacement entre les boutons */  
+    margin-top: 20px; /* Espacement en haut des boutons */  
+  }  
+  
+  .dialog-button {  
+    padding: 10px 20px; /* Espacement interne des boutons */  
+    border: none; /* Pas de bordure */  
+    border-radius: 0; /* Bordures carrées */  
+    cursor: pointer; /* Curseur pointer */  
+  }  
+  
+  .button-yes {  
+    background-color: #4CAF50; /* Vert */  
+    color: black; /* Couleur du texte */  
+  }  
+  
+  .button-no {  
+    background-color: #FFC107; /* Jaune */  
+    color: black; /* Couleur du texte */  
+  }  
+  
+  .button-cancel {  
+    background-color: #F44336; /* Rouge */  
+    color: black; /* Couleur du texte */  
+  }

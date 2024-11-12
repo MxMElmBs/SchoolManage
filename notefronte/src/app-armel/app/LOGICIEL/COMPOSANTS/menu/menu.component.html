@@ -1,0 +1,72 @@
+
+
+<div class="image">
+  <img src="assets/logoNom.png">
+</div>
+
+<div class="sidebar">
+  <ul class="nav-links">
+    <li>
+      <a
+        [routerLink]="['/app-armel/statistique']"
+        [class.active]="activeLink === 'statistique'"
+        (click)="setActive('statistique')">
+        <i class="fas fa-chart-bar"></i>
+        <span class="links_name">Table de bord</span>
+      </a>
+    </li>
+
+    <li>
+      <a
+        [routerLink]="['/app-armel/inscrire-étudiant']"
+        [class.active]="activeLink === 'inscrire étudiant'"
+        (click)="setActive('inscrire étudiant')">
+        <i class="fas fa-user-graduate"></i>
+        <span class="links_name">Ajouter étudiant</span>
+      </a>
+    </li>
+
+    <li>
+      <a
+        [routerLink]="['/app-armel/parcours']"
+        [class.active]="activeLink === 'choix du parcours'"
+        (click)="setActive('choix du parcours')">
+        <i class="fas fa-users"></i>
+        <span class="links_name">Étudiants</span>
+      </a>
+    </li>
+
+    <li>
+      <a
+        [routerLink]="['/app-armel/scolarite']"
+        [class.active]="activeLink === 'scolarite'"
+        (click)="setActive('scolarite')">
+        <img [src]="'assets/png.png'"  style="color: black;" height="40" width="40" priority>
+        <span class="links_name">Scolarité</span>
+      </a>
+    </li>
+
+    <li>
+      <a
+        [routerLink]="['/app-armel/rappel']"
+        [class.active]="activeLink === 'profil'"
+        (click)="setActive('profil')">
+        <i class="fas fa-bell"></i>
+        <span class="links_name">Rappel</span>
+      </a>
+    </li>
+
+    <li class="log_out">
+      <a
+        [routerLink]="['/login']"
+        [class.active]="activeLink === 'login'"
+        (click)="setActive('login')">
+        <i class="fas fa-sign-out-alt"></i>
+        <span class="links_name">Déconnexion</span>
+      </a>
+    </li>
+
+    
+  </ul>
+
+</div>

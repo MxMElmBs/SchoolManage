@@ -1,0 +1,207 @@
+<div class="container-fluid" >
+  <div class="row align-items-center"
+  style="background-color: #fff; height: 55px;">    <div class="col d-flex justify-content-between align-items-center">
+      <h1 class="mb-0"><strong>Tableau  de bord</strong></h1>
+      <div class="comp d-flex align-items-center">
+        <button class="print-button" aria-label="Imprimer">
+          <span class="badge">{{ nombreRappels }}</span>
+          <i class="fas fa-bell" [routerLink]="['/rappel']"></i>
+        </button>
+        &nbsp; &nbsp;&nbsp; &nbsp;
+        <span class="mr-2">COMPTABLE : &nbsp; &nbsp;</span>
+        <a href="javascript:void(0);" [routerLink]="['/profil']">
+          <i class="fas fa-user"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card-container">
+  <mat-card class="card etudiants">
+    <div class="image">
+      <img [src]="'https://static.vecteezy.com/system/resources/previews/001/963/329/large_2x/happy-graduated-student-in-black-hat-and-coat-with-diploma-free-vector.jpg'"  height="60" width="80" priority>
+    </div>
+    <div class="ess">
+      <h3>Étudiants</h3>
+      <div class="number">{{ count }}</div>
+    </div>
+  </mat-card>
+<pre><pre>
+<pre></pre>
+</pre></pre>
+<pre></pre>
+  <mat-card class="card professeurs">
+    <div class="image">
+      <img [src]="'https://static.vecteezy.com/system/resources/previews/001/963/329/large_2x/happy-graduated-student-in-black-hat-and-coat-with-diploma-free-vector.jpg'"  height="60" width="80" priority>
+    </div>
+    <div class="ess">
+      <h3>Etudiants à jour  </h3>
+      <div class="number">{{ ajour }}</div>
+    </div>
+  </mat-card>
+<pre></pre>
+<pre></pre>
+<mat-card class="card filieres">
+  <div class="image">
+    <img [src]="'https://static.vecteezy.com/system/resources/previews/001/963/329/large_2x/happy-graduated-student-in-black-hat-and-coat-with-diploma-free-vector.jpg'"  height="60" width="80" priority>
+  </div>
+
+  <div class="ess">
+    <h3>Etudiant non à jour  </h3>
+    <div class="number">{{ nonjour }}</div>
+  </div>
+</mat-card>
+
+<!----
+<pre></pre>
+<pre></pre>
+<mat-card class="card filieres">
+  <div class="image">
+    <img [src]="'https://static.vecteezy.com/system/resources/previews/001/963/329/large_2x/happy-graduated-student-in-black-hat-and-coat-with-diploma-free-vector.jpg'"  height="60" width="80" priority>
+  </div>
+
+  <div class="ess">
+    <h3>Etudiant ayant solde la scolarite</h3>
+    <div class="number">{{ nonjour }}</div>
+  </div>
+</mat-card>-->
+</div>
+
+
+
+<!----
+<section class="home-section">
+  <div class="home-content">
+    <div class="overview-boxes">
+
+      <div class="box" id="box3">
+        <div class="right-side">
+          <div class="box-content">
+            <img src="path/to/your/image1.png" alt="Icon 1" class="box-icon">
+            <div class="box-name">Box 1</div>
+          </div>
+          <div class="number">{{ studentCount }}</div>
+        </div>
+      </div>
+
+      <div class="box" id="box1">
+        <div class="right-side">
+          
+          <div class="number">{{ studentRegle }}</div>
+        </div>
+      </div>
+
+      <div class="box " id="box2">
+        <div class="right-side">
+          
+          <div class="number">{{ studentNon }}</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<section class="home-section">
+  <div class="home-content">
+    <div class="sales-boxes position-relative">
+      <div class="recent-sales box">
+        <pre></pre>
+        <div class="sales-details">
+         eleves en 
+
+        </div>
+      </div>
+    
+
+    
+      <div class="container bg-primary text-white p-3 rounded position-absolute superimposed-container">
+        <div class="row justify-content-between align-items-center">
+          <div class="col-12 col-md-auto">
+            <span class="h4">STATISTIQUES DE LA SCOLAIRITE</span>
+          </div>
+          <div class="col-12 col-md-auto mt-3 mt-md-0">
+            <button class="btn btn-light newUser" [routerLink]="['/inscrire étudiant']" style="color: black;">
+              <i class="fas fa-plus"></i> &nbsp; Ajouter Etudiant
+            </button>
+          </div>
+        </div>
+      </div>
+    
+      
+      
+    </div>
+  </div>
+</section>
+-->
+
+
+
+
+<!--<div class="container-fluid py-5">
+  <div class="row">
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-header p-3 pt-2 bg-gradient-light border-radius-lg">
+          <div
+            class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute d-flex align-items-center justify-content-center">
+            <span class="text-white"></span>
+            <i class="i ph:student-fill"></i>
+          </div>
+          <div class="text-end pt-1 ">
+            <p class="text-lg mb-0 text-capitalize">Total</p>
+            <p class="mb-0 display-2"></p>
+          </div>
+        </div>
+        <hr class="dark horizontal my-0">
+        <div class="card-footer p-3">
+          <h3 class="">Unité d'Enseignement</h3>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-header p-3 pt-2 bg-gradient-light border-radius-lg">
+          <div
+            class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute d-flex align-items-center justify-content-center">
+            <span class="text-white"></span>
+            <i class="i ph:student-fill"></i>
+          </div>
+          <div class="text-end pt-1 ">
+            <p class="text-lg mb-0 text-capitalize">Total UE</p>
+            <p class="mb-0 display-2"></p>
+          </div>
+        </div>
+        <hr class="dark horizontal my-0">
+        <div class="card-footer p-3">
+          <h3 class="">2 ème année</h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-sm-6">
+      <div class="card">
+        <div class="card-header p-3 pt-2 bg-gradient-light border-radius-lg">
+          <div
+            class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute d-flex align-items-center justify-content-center">
+            <span class="text-white"></span>
+            <i class="i ph:student-fill"></i>
+          </div>
+          <div class="text-end pt-1">
+            <p class="text-lg mb-0 text-capitalize">Total UE</p>
+            <p class="mb-0 display-2"></p>
+          </div>
+        </div>
+        <hr class="dark horizontal my-0">
+        <div class="card-footer p-3">
+          <h3 class="">3 ème année</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+--->
+
+

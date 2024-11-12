@@ -1,0 +1,84 @@
+/* Container for the welcome section */
+.welcome-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #4A90E2, #003C8F); /* Gradient from primary to deep blue */
+  color: #fff; /* White text for contrast */
+  text-align: center; /* Center the text */
+  padding: 20px;
+}
+
+.welcome-content {
+  max-width: 800px;
+  padding: 40px;
+  background-color: rgba(255, 255, 255, 0.1); /* Transparent white background */
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Light shadow */
+}
+
+/* Styling for the main welcome message */
+h1 {
+  font-size: 48px; /* Larger font for main title */
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #A1D4FD; /* Light Blue */
+}
+
+/* Introductory text style */
+.intro-text {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: #ECEFF1; /* Cool Grey for less emphasis */
+}
+
+/* Detailed text style */
+.details-text {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  font-weight: 300;
+  color: #FFFFFF; /* White */
+}
+
+/* Explore button style */
+.explore-button {
+  background-color: #FFC107; /* Warm Yellow button */
+  color: #003C8F; /* Deep Blue text */
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.explore-button:hover {
+  background-color: #FFD54F; /* Lighter Yellow on hover */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .welcome-container {
+    padding: 20px;
+  }
+
+  .welcome-content {
+    padding: 30px;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+
+  .intro-text {
+    font-size: 20px;
+  }
+
+  .details-text {
+    font-size: 16px;
+  }
+}

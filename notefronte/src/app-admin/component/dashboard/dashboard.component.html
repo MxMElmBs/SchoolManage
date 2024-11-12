@@ -1,0 +1,10 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="sidebar">
+    <ul>
+      <li *ngFor="let item of menuItems" (click)="navigateTo(item.name)">
+        <mat-icon>{{ item.icon }}</mat-icon>
+        <span>{{ item.name }}</span>
+      </li>
+    </ul>
+</div>

@@ -1,0 +1,85 @@
+<app-header></app-header>
+<app-dashboard></app-dashboard>
+<app-footer></app-footer>
+<div class="container">
+  <div class="top-section">
+    <div class="controls">
+      <div class="buttons">
+          <button mat-icon-button color="primary" (click)="createUser()">
+            <mat-icon>add</mat-icon>
+          </button>
+          <button mat-icon-button color="accent" (click)="updateUser()">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn"  (click)="sendUserPass()">
+            <mat-icon>email</mat-icon>
+          </button>
+        </div>
+    </div>
+    <div class="card">
+      <div class="icon">
+        <img src="/src/app/assets/many.png" alt="" >
+      </div>
+      <div class="info">
+        <div class="count">{{ TeacherCount }} Comptes</div>
+        <div class="name">Enseignants</div>
+      </div>
+    </div>
+  </div>
+  <div class="table-wrapper">
+    <table mat-table [dataSource]="user" class="mat-elevation-z8">
+
+      <!-- Checkbox Column -->
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-checkbox
+            (change)="$event ? toggleAllRows() : null"
+            [checked]="isAllSelected()"
+            [indeterminate]="isSomeSelected()">
+          </mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <mat-checkbox
+            (click)="$event.stopPropagation()"
+            (change)="$event ? toggleRow(element) : null"
+            [checked]="selection.isSelected(element)">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Matricule </th>
+        <td mat-cell *matCellDef="let element"> {{element.idUser}} </td>
+      </ng-container>
+
+      <!-- Nom Column -->
+      <ng-container matColumnDef="nom">
+        <th mat-header-cell *matHeaderCellDef> Nom </th>
+        <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
+      </ng-container>
+
+      <!-- Prénom Column -->
+      <ng-container matColumnDef="prenom">
+        <th mat-header-cell *matHeaderCellDef> Prénom </th>
+        <td mat-cell *matCellDef="let element"> {{element.prenom}} </td>
+      </ng-container>
+
+      <!-- Username Column -->
+      <ng-container matColumnDef="username">
+        <th mat-header-cell *matHeaderCellDef> Identifiant </th>
+        <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+      </ng-container>
+
+      <!-- Password Column -->
+      <ng-container matColumnDef="password">
+        <th mat-header-cell *matHeaderCellDef> Mot de passe </th>
+        <td mat-cell *matCellDef="let element"> {{element.password}} </td>
+      </ng-container>
+
+      <!-- Header and Row Definitions -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>

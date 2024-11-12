@@ -1,0 +1,129 @@
+/* Header Styling */
+app-students-iheader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Higher z-index to make it stay above other elements */
+  background-color: #f8f9fa; /* Adjust to your header color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for a raised effect */
+}
+
+/* Dashboard Styling */
+app-students-idash-b {
+  position: fixed;
+  top: 60px; /* Adjust to the height of your header */
+  left: 0;
+  width: 200px; /* Adjust to your sidebar width */
+  height: 100%;
+  z-index: 999; /* Slightly lower than header but still above other elements */
+  background-color: #ffffff; /* Adjust to your sidebar color */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Add shadow for a raised effect */
+  overflow-y: auto; /* Allow scrolling if content exceeds window height */
+}
+
+.settings-container {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.profile-picture {
+  font-size: 80px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-group {.settings-container {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  background-color: #f9f9f9;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 50px auto;
+}
+
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.profile-picture {
+  font-size: 100px;
+  color: #3f51b5;
+  margin-bottom: 10px;
+}
+
+.matricule-info {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+}
+
+.form-container {
+  width: 100%;
+}
+
+.form-group {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.mat-form-field {
+  width: 48%;
+  background-color: white;
+}
+
+.mat-form-field.mat-focused .mat-form-field-outline-thick {
+  border-color: #3f51b5; /* Custom outline color for focused input */
+}
+
+.update-button {
+  margin-top: 30px;
+}
+
+button {
+  width: 250px;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #3f51b5;
+  color: white;
+  border-radius: 25px;
+}
+
+button:hover {
+  background-color: #303f9f;
+}
+
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+
+.mat-form-field {
+  width: 48%;
+}
+
+
+
+.update-button {
+  margin-top: 20px;
+}
+
+button {
+  width: 200px;
+}

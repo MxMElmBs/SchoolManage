@@ -1,0 +1,100 @@
+/* Conteneur principal avec respect des espaces réservés */
+.container {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  position: fixed;
+  margin: 90px 90px 60px 270px; /* Ajuste les marges pour l'espacement */
+  gap: 50px; /* Espace entre la carte et les contrôles */
+  width: calc(100% - 270px); /* Assure que le conteneur occupe tout l'espace disponible */
+}
+
+
+/* Conteneur pour la section supérieure (carte + contrôles) */
+.top-section {
+  width: 90%; /* Prend toute la largeur disponible */
+}
+
+/* Style de la carte */
+.card {
+  width: 300px;
+  height: 190px;
+  background-color: #0029ff;
+  color: white;
+  box-shadow: 0 15px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px; /* Espace entre la carte et le tableau */
+  position: relative;
+}
+
+.card .icon {
+  margin-bottom: 10px;
+  width: 91px;
+  height: 106px;
+}
+
+.card .info {
+  text-align: center;
+}
+
+.card .info .count {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.card .info .name {
+  font-size: 16px;
+}
+
+/* Style du conteneur des contrôles */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.buttons {
+  display: flex;
+  gap: 2px;
+  margin-top: 10px;
+}
+
+.buttons button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Styles spécifiques aux boutons avec icônes */
+.buttons button mat-icon {
+  margin-right: 5px;
+}
+/* Style du tableau */
+.table-wrapper {
+  margin-top: 5px; /* Espace entre la section supérieure et le tableau */
+  width: 90%;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f1f1f1;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}

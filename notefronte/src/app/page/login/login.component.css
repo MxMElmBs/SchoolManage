@@ -1,0 +1,31 @@
+h2 {
+  /* font-family: 'Roboto'; */
+  text-transform: uppercase;
+  font-size: 27px;
+}
+
+/* input:hover {
+  border-color: blue !important;
+  "node_modules/bootstrap/dist/css/bootstrap.min.css",
+} */
+/*
+.form-control {
+  padding: 10px;
+  padding: 5px;
+  border: 1px solid #ced4da;
+  border-radius: 7px;
+  font-size: 1em;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+
+.form-group {
+  padding-top: 10px;
+} */
+

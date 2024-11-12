@@ -1,0 +1,43 @@
+.dialog-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.dialog-title {
+  font-size: 18px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.dialog-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.dialog-button {
+  padding: 10px 20px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.button-yes {
+  background-color: #3498db;
+  color: white;
+}
+
+.button-no {
+  background-color: #27ae60;
+  color: white;
+}
+
+.button-cancel {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.dialog-button:hover {
+  opacity: 0.9;
+}

@@ -1,0 +1,35 @@
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+<div class="cours-container"> 
+    <form action="#">
+        <p><strong>Demande de permission soumise le:</strong> {{ permission.dateDemande }}</p>  
+        <p><strong>Demande de permission soumise par:</strong> {{ permission.nom }} {{ permission.prenom }}</p>  
+        <p><strong>Demande de permission pour le:</strong> {{ permission.dateDebutAbsence }} au {{ permission.dateFinAbsence }}</p>  
+        <p><strong>Permission pour une durée de:</strong> {{ permission.duree }} jours</p>  
+        <p><strong>Raison:</strong> {{ permission.raison }}</p>
+        <p><strong>Statut:</strong> {{ permission.status }}</p>
+        <div *ngIf="permission.status != 'EN_ATTENTE'">
+            <p *ngIf="permission.status === 'REJETER'"><strong>Raison du refus :</strong> {{ permission.raisonR }}</p>
+            <p *ngIf="permission.status === 'ACCEPTER'"><strong>Remarque :</strong> {{ permission.remarque }}</p>
+        </div>
+
+        <!-- La description est maintenant dans la labeldiv -->
+        <div class="labeldiv">
+            <label for="contenu"><strong>Description de la permission:</strong></label>
+            <textarea id="contenu" [(ngModel)]="permission.description" name="contenu" required disabled></textarea> 
+        </div>
+
+        <!-- Afficher le bouton de téléchargement si un fichier est disponible -->
+        <div *ngIf="permission.fileUrl">
+            <button class="btn-download" type="button" (click)="downloadFile(permission.permissionId)">
+                <i class="ri-download-line"></i> Télécharger le fichier
+            </button>
+        </div>
+
+        <!-- Afficher les boutons uniquement si le statut est EN_ATTENTE -->
+        <div class="buttons" *ngIf="permission.status === 'EN_ATTENTE'">
+            <button class="btn-blue" type="button" (click)="openApprovePopup()">Accepter</button>  
+            <button class="btn-red" type="button" (click)="openRejectPopup()">Rejeter</button>         
+        </div>
+    </form> 
+</div>

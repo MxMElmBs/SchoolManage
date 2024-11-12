@@ -1,0 +1,88 @@
+/* Overall Dashboard Container */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f4f7fc; /* Light background for the entire dashboard */
+}
+
+/* Sidebar styling */
+.sidebar {
+  background-color: #ffffff;
+  width: 250px;
+  height: calc(100vh - 60px); /* Adjust to the height of header */
+  position: fixed;
+  top: 60px; /* Header height */
+  left: 0;
+  padding-top: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for separation */
+  overflow-y: auto;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar li {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  color: #2c3e50; /* Dark grey for text */
+  cursor: pointer;
+  font-size: 16px; /* Slightly larger font for readability */
+  font-weight: 500; /* Make text bold */
+  transition: all 0.3s ease;
+}
+
+.sidebar li:hover {
+  background-color: #0a0aac;
+  color: white;
+}
+
+.sidebar li.active {
+  background-color: #4A90E2; /* Primary blue for active menu item */
+  color: white;
+}
+
+.sidebar mat-icon {
+  margin-right: 15px;
+  color: inherit; /* Inherits the text color */
+}
+
+/* Main content area next to the sidebar */
+.main-content {
+  margin-left: 270px; /* Adjust to the sidebar width */
+  padding: 40px;
+  height: calc(100vh - 120px); /* Adjust according to the footer */
+  overflow-y: auto;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for separation */
+  border-radius: 8px;
+}
+
+/* Header and Footer spacing */
+.dashboard-content {
+  display: flex;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100px; /* Collapse sidebar width on smaller screens */
+    padding-top: 15px;
+  }
+
+  .sidebar li {
+    justify-content: center;
+  }
+
+  .sidebar mat-icon {
+    margin-right: 0;
+  }
+
+  .main-content {
+    margin-left: 100px;
+    padding: 20px;
+  }
+}

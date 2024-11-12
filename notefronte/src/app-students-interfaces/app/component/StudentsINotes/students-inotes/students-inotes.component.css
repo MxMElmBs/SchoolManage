@@ -1,0 +1,197 @@
+
+/* Header Styling */
+app-students-iheader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Higher z-index to make it stay above other elements */
+  background-color: #f8f9fa; /* Adjust to your header color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for a raised effect */
+}
+
+/* Dashboard Styling */
+app-students-idash-b {
+  position: fixed;
+  top: 60px; /* Adjust to the height of your header */
+  left: 0;
+  width: 200px; /* Adjust to your sidebar width */
+  height: 100%;
+  z-index: 999; /* Slightly lower than header but still above other elements */
+  background-color: #ffffff; /* Adjust to your sidebar color */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Add shadow for a raised effect */
+  overflow-y: auto; /* Allow scrolling if content exceeds window height */
+}
+
+/* Use shades of gray and blue for consistent color styling */
+body {
+  font-family: 'Roboto', sans-serif; /* Clean and modern font */
+  background-color: #f5f7fa; /* Light background color */
+  color: #333; /* Dark text color for better readability */
+}
+
+/* Heading styles */
+h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #0029FF; /* Matching blue */
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #555;
+}
+
+.main-container {
+  margin-left: 250px;
+  padding: 20px;
+}
+
+.semester-dropdown {
+  margin-top: 70px;
+  margin-bottom: 20px;
+}
+
+.course-content {
+  margin-top: 30px;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Conteneur principal pour la dropdown et le contenu */
+
+
+/*  .semester-dropdown {
+  position: absolute;
+  top: 70px; /* Place la liste déroulante juste sous le header */
+/*  right: 50px;
+  /* Aligne la liste déroulante à droite */
+  /* z-index: 1000;  Assure que la liste déroulante est au-dessus des autres éléments */
+/*  padding: 10px;
+  /* Réduit l'espace de padding */
+/*  background-color: white; /* Assurez-vous que la dropdown reste visible */
+/*  border-radius: 10px; /* Adoucir les bords */
+/*  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ajouter une légère ombre */
+/*}*/
+
+/* Style pour le conteneur du contenu des cours */
+/*.course-content {
+  margin-left: 270px; /* Décalage à gauche pour éviter la sidebar */
+/*  margin-top: 150px;  /* Décalage en haut pour éviter le header et la dropdown */
+/*  padding: 20px;
+/*  overflow-y: auto; /* Active le défilement vertical si le contenu dépasse */
+/*  max-height: none; /*calc(100vh - 150px);  Limite la hauteur visible pour assurer un bon espace */
+/*}*/
+
+.mat-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.mat-header-cell {
+  font-weight: bold;
+  background-color: #f0f4f8;
+  color: #333;
+  padding: 15px;
+}
+
+.mat-cell {
+  padding: 12px;
+  font-size: 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.mat-row:hover {
+  background-color: #f0f4f8;
+}
+
+.average-row {
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-top: 1px solid #e0e0e0;
+  font-weight: bold;
+}
+
+
+/* Style pour les tableaux */
+.course-content table {
+  width: 100%;
+  margin-bottom: 20px; /* Espacement entre les tableaux */
+  border-collapse: collapse; /* Réduit les espaces entre les bordures */
+}
+
+.course-content td {
+  border: 1px solid #000;
+  padding: 10px;
+  vertical-align: middle; /* Centrer verticalement les cellules */
+}
+
+/* Ligne d'en-tête */
+.header-row {
+  background-color: #f0f0f0;
+}
+
+.level {
+  font-size: 16px;
+  font-weight: bold;
+  color: blue;
+}
+
+.semester {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: right;
+}
+
+/* Ligne des cours */
+.course-row {
+  background-color: #d3d3d3;
+}
+
+.course-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.course-code {
+  font-size: 16px;
+  color: blue;
+  text-align: right;
+}
+
+/* Ligne des notes */
+.grades-row {
+  background-color: #d3d3d3;
+}
+
+.grade-label {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.grade {
+  font-size: 16px;
+  color: blue;
+  text-align: right;
+}
+
+/* Ligne des moyennes */
+.average-row {
+  background-color: #f0f0f0;
+}
+
+.average-label {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.average-grade {
+  font-size: 18px;
+  color: blue;
+  text-align: right;
+}

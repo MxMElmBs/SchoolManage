@@ -1,0 +1,202 @@
+/* Style global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Style du bouton principal "Faire une demande" */
+button.grand {
+    background-color: #007bff;
+    width: 250px;
+    height: 50px;
+    border-radius: 5px;
+    margin: 20px auto;
+    display: block;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+button.grand:hover {
+    background-color: #0056b3;
+}
+
+/* Titre des sections */
+h6 {
+    margin: 20px 40px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Conteneur du tableau */
+.table-container {
+    width: 90%;
+    max-height: 450px;
+    margin: 20px auto;
+    background-color: rgb(0, 4, 255);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+}
+
+/* Style du tableau */
+.table-container table {
+    width: 100%;
+    background-color: rgb(0, 4, 255);
+    border-collapse: collapse;
+    font-size: 16px;
+    margin: 0;
+}
+
+/* En-tête du tableau */
+thead {
+    background-color: rgb(0, 4, 255);
+    color: rgb(0, 0, 0);
+}
+
+thead th {
+    padding: 12px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+/* Corps du tableau */
+tbody {
+    font-size: 14px;
+}
+
+.table-container td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.table-container tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.table-container tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.table-container tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Style des boutons dans les lignes du tableau */
+.table-container button {
+    background-color: #28a745;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.table-container button:hover {
+    background-color: #218838;
+}
+
+/* Détails de la permission */
+.permission-details {
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+}
+
+.permission-details h6 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #007bff;
+}
+
+.permission-details p {
+    font-size: 16px;
+    margin: 8px 0;
+    color: #555;
+}
+
+/* Boutons de téléchargement et désactivé */
+.permission-details button {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.permission-details button:hover {
+    background-color: #0056b3;
+}
+
+.permission-details button[disabled] {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Style des inputs et boutons */
+input[type="text"], input[type="number"], select {
+    padding: 10px;
+    width: 100%;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+input[type="checkbox"] {
+    margin-left: 10px;
+}
+
+.boutton {
+    width: 120px;
+    margin-left: 20px;
+    margin-top: 20px;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.boutton:hover {
+    background-color: #218838;
+}
+
+.btn-blue {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-blue:hover {
+    background-color: #0056b3;
+}

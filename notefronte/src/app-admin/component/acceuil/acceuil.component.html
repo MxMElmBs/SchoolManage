@@ -1,0 +1,15 @@
+<link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+
+<div class="card-container">
+  <div class="card" *ngFor="let card of cards" [ngStyle]="{ 'background-color': card.color }">
+    <i [class]="card.icon" class="icon"></i> <!-- Remix Icon class -->
+    <div class="info">
+      <div class="count">{{ card.count }} comptes</div>
+      <div class="name">{{ card.name }}</div>
+    </div>
+  </div>
+</div>
+
+<app-header></app-header>
+<app-dashboard></app-dashboard>
+<app-footer></app-footer>

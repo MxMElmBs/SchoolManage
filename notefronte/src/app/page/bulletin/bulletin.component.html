@@ -1,0 +1,330 @@
+<p class="h3">Bulletin</p>
+<!-- Pour sélectionner un éutudiant -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="row">
+        <div class="col-6">
+          <h3>Sélectionnez un niveau :</h3>
+        </div>
+        <div class="col-6">
+          <div class="input-group input-group-static largeur mb-4 move-up">
+            <select class="form-control" id="niveauSelect" [(ngModel)]="selectedNiveau" (change)="onNiveauChange()">
+              <option *ngFor="let niveau of niveaux" [value]="niveau">{{ niveau }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <h3>Sélectionnez l'étudiant :</h3>
+        </div>
+        <div class="col-6">
+          <div class="input-group input-group-static largeur mb-4 move-up">
+            <select class="form-control" id="etudiant" [(ngModel)]="selectedEtudiant"
+              (change)="onEtudiantSelect($event)">
+              <option *ngFor="let etudiant of etudiants" [value]="etudiant.id">{{ etudiant.nom }} {{ etudiant.prenom }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 d-flex ms-7 align-items-center">
+      <button type="button" class="btn bg-gradient-dark" [disabled]="isProceedDisabled()"
+        (click)="onAfficherEtudiant()">procéder</button>
+    </div>
+  </div>
+
+  <!-- Informations Générale de l'étudiant sélectionné -->
+  <div class="card mt-3">
+    <div class="card-body">
+      <h4 class="card-title font-weight-bolder opacity-9">Informations de l'étudiant</h4>
+      <div class="row">
+        <div class="col-md-4 espace">
+          <div class="row">
+            <div class="col-md-4">
+              <!-- <p class="text-secondary text-sm font-weight-bolder opacity-7">ID Etudiant</p> -->
+              <h4 class="">ID Etudiant</h4>
+            </div>
+            <div class="col-md-1 font-weight-bold">:</div>
+            <div class="col">
+              <h4 class="font-weight-normal">{{ etudiantDetails?.matricule }}</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <h4 class="">NOM</h4>
+            </div>
+            <div class="col-md-1 font-weight-bold">:</div>
+            <div class="col">
+              <h4 class="font-weight-normal">{{ etudiantDetails?.nom }}</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <h4 class="text-uppercase">prénom</h4>
+            </div>
+            <div class="col-md-1 font-weight-bold">:</div>
+            <div class="col">
+              <h4 class="font-weight-normal">{{ etudiantDetails?.prenom }}</h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 aumilieu">
+          <div class="row">
+            <div class="col-md-3">
+              <h4 class="">Né(e) le</h4>
+            </div>
+            <div class="col-md-1 font-weight-bold">:</div>
+            <div class="col">
+              <h4 class="font-weight-normal">{{ etudiantDetails?.dateNaiss | date }}</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <h4 class="text-uppercase">filière</h4>
+            </div>
+            <div class="col-md-1 font-weight-bold">:</div>
+            <div class="col">
+              <h4 class="font-weight-normal">{{ etudiantDetails?.filiere?.nomFiliere }}</h4>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="etudiantDetails" class="col d-flex align-items-center mb-3">
+          <p class="h4 font-weight-normal opacity-7">{{ getSemestres() }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="isLoading">
+    <mat-progress-bar class="mt-3" mode="indeterminate"></mat-progress-bar>
+  </div>
+
+
+  <!-- Afficher le message de succès ou d'erreur -->
+<div *ngIf="messageEnvoye" class="alert alert-success alert-dismissible text-white fade alert-transition show"
+  role="alert">
+  <span class="alert-icon me-3 align-middle">
+    <i class="i emojione-monotone:heavy-check-mark"></i>
+  </span>
+  <span class="alert-text">{{ messageEnvoye }}</span>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">X</span>
+  </button>
+</div>
+<div *ngIf="messageErreur" class="alert alert-danger alert-dismissible text-white fade alert-transition show"
+  role="alert">
+  <span class="alert-icon me-3 align-middle">
+    X
+  </span>
+  <span class="alert-text">{{ messageErreur }}</span>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">X</span>
+  </button>
+</div>
+  <!-- Les boutons -->
+  <div class="row m-4 justify-content-center">
+    <div class="col-auto margebouton">
+      <div class="row">
+        <div class="col">
+          <button type="button" class="btn btn-icon btn-3 pt-0 pb-0  btn-outline-danger" data-bs-toggle="tooltip"
+            data-bs-placement="top" title="Générer le relevé par PDF" (click)="telechargerBulletinPDF()">
+            <span class="btn-inner--icon"><i class="i pdficon teenyicons:pdf-outline"></i></span>
+          </button>
+        </div>
+        <div class="col">
+          <button type="button" class="btn btn-icon btn-3 pt-0 pb-0  btn-outline-success" data-bs-toggle="tooltip"
+            data-bs-placement="top" title="Exporte le relevé vers Excel" (click)="telechargerBulletinExcel()">
+            <span class="btn-inner--icon"><i class="i excelicon mdi:microsoft-excel"></i></span>
+          </button>
+        </div>
+        <div class="col">
+
+          <button class="btn bg-gradient-warning  pt-2 pb-2 mt-1 dropdown-toggle "  [matMenuTriggerFor]="menu" type="button">
+            Envoyer par
+          </button>
+          <mat-menu #menu="matMenu">
+            <a mat-menu-item (click)="envoyerBulletinParEmail()">
+              <img src="../../../assets/img/icons8-nouveau-message-48.png">
+              Email</a>
+          <a mat-menu-item>
+              <img src="../../../assets/img/icons8-whatsapp-48.png">
+              WhatsApp</a>
+            <!-- <button mat-menu-item>Item 1</button>
+            <button mat-menu-item>Item 2</button> -->
+          </mat-menu>
+          <!-- <div class="dropdown">
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li><a class="dropdown-item">
+                  <img src="../../../assets/img/icons8-nouveau-message-48.png">
+                  Email</a></li>
+              <li><a class="dropdown-item">
+                  <img src="../../../assets/img/icons8-whatsapp-48.png">
+                  WhatsApp</a></li>
+            </ul>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Tableau des notes -->
+<div class="container-fluid py-1">
+  <div class="row justify-content-center">
+    <div class="col-md-11">
+      <div class="mt-4 row">
+        <div class="col-md-12">
+          <div class="table-responsive">
+            <table id="bulletine" class="display" style="width:100%">
+              <thead>
+                <tr>
+                  <th class="font-weight-bold mb-0 text-center">
+                    <h2>Code UE</h2>
+                  </th>
+                  <th class="font-weight-bold mb-0 text-center">
+                    <h2>Unité d'Enseignement</h2>
+                  </th>
+                  <th class="font-weight-bold mb-0 text-center">
+                    <h2>Type UE</h2>
+                  </th>
+                  <th class="font-weight-normal mb-0 text-center">
+                    <h2 class="font-weight-normal">Crédit</h2>
+                  </th>
+                  <th class="mb-0 text-center">
+                    <h2 class="font-weight-normal">Note/20</h2>
+                  </th>
+                  <th class="mb-0 text-center">
+                    <h2 class="font-weight-normal">Validée</h2>
+                  </th>
+                  <th class="mb-0 text-center">
+                    <h2 class="font-weight-normal">Appréciation</h2>
+                  </th>
+                  <th class="mb-0 text-center">
+                    <h2 class="font-weight-normal">Semestre</h2>
+                  </th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let semestre of ueDetailsBySemestre | keyvalue" class="mt-4">
+                <tr class="bg-gradient-light mb-4 haut">
+                  <th colspan="8" class="text-center marge">
+                    <h2>{{ getSemestreName(semestre.key) }}</h2>
+                  </th>
+                </tr>
+                <hr class="horizontal bg-gradient-dangermt-0 mb-2">
+                <tr *ngFor="let ue of semestre.value.ueDetails">
+                  <td class="text-center font-weight-normal">
+                    <h4>{{ ue.codeUE }}</h4>
+                  </td>
+                  <td class="text-center font-weight-normal">
+                    <h4>{{ ue.libelle }}</h4>
+                  </td>
+                  <td class="text-center font-weight-normal">
+                    <h4>{{ ue.type }}</h4>
+                  </td>
+                  <td class="text-center font-weight-normal">
+                    <h4>{{ ue.credit }}</h4>
+                  </td>
+                  <td class="text-center font-weight-normal">
+                    <h4>{{ ue.note }}</h4>
+                  </td>
+                  <td class="text-center font-weight-normal">
+                    <h4>{{ ue.valide }}</h4>
+                  </td>
+                  <td class="text-center font-weight-normal">
+                    <h4>{{ ue.appreciation }}</h4>
+                  </td>
+                  <td class="text-center font-weight-normal">
+                    <h4>{{ getSemestreName(semestre.key) }}</h4>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td colspan="3" class="text-end bg-light"><strong>TOTAL CREDIT</strong></td>
+                  <td class="text-center"><strong class="opacity-8">{{ semestre.value.totalCredits }}</strong></td>
+                  <td colspan="3" class="text-end bg-light"><strong>TOTAL CREDIT VALIDE</strong></td>
+                  <td class="text-center"><strong class="opacity-8">{{ semestre.value.creditsValides }}</strong></td>
+                </tr>
+                <hr class="horizontal bg-gradient-dangermt-0 mb-2">
+
+              </tbody>
+              <hr class="horizontal bg-gradient-dangermt-0 mb-2">
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container-fluid py-1"></div>
+<div class="row justify-content-md-center">
+  <div class="col-8">
+    <div class="card my-1">
+      <div class="card-body bg-gradient-light px-3 pb-2">
+        <div class="row">
+          <div class="col-md espace">
+            <div *ngFor="let semestre of ueDetailsBySemestre | keyvalue" class="row">
+              <div class="col-md-7">
+                <h2>MOYENNE {{ getSemestreName(semestre.key) }}</h2>
+              </div>
+              <div class="col">
+                <h2 class="opacity-8"> {{ moyennesSemestres['moyenne' + semestre.key] | number:'1.2-2' }} </h2>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-7">
+                <h2>MOYENNE annuelle</h2>
+              </div>
+              <div class="col">
+                <h4 class="font-weight-normal">
+                  <h2 class="opacity-8">{{ moyenneNiveau | number:'1.2-2' }}</h2>
+                </h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <h4 class="text-uppercase"></h4>
+              </div>
+              <div class="col-md-1 font-weight-bold"></div>
+              <div class="col">
+                <h4 class="font-weight-normal"></h4>
+              </div>
+            </div>
+          </div>
+          <div class="col-md mb-0 aumilieu">
+            <div class="row mb-0">
+              <div class="col-md mb-0">
+                <h2 class="mb-0">MENTION</h2>
+              </div>
+              <div class="col-md-1 font-weight-bold"></div>
+              <div class="col">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md">
+                <h2 class="opacity-8"> {{ mention }} </h2>
+              </div>
+              <div class="col">
+                <h4 class="font-weight-normal"></h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Observations -->
+
+<div class="row mt-9"></div>
+<div class="row mt-9"></div>
+<div class="row mt-9"></div>

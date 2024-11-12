@@ -1,0 +1,28 @@
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+<div class="doc-content">
+    <p class="form-title">Ajouter nouvelle filière</p>
+    <form action="#">
+        <div class="fields">
+            <div class="field">
+                <input type="text" placeholder="Nom de la filière" required>
+            </div>
+            <div class="field">
+                <input type="text" placeholder="Description" required>
+            </div>
+            <div class="field">
+                <mat-form-field appearance="fill">
+                    <mat-label>Type de filière</mat-label>
+                    <mat-select [(value)]="selected">
+                        <mat-option value="licence">Licence</mat-option>
+                        <mat-option value="bts">BTS</mat-option>
+                        <mat-option value="licence-soir">Licence soir</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="button">
+            <button class="submit">Ajouter</button>
+        </div>
+    </form>
+    
+</div>

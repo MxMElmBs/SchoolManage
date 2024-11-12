@@ -1,0 +1,110 @@
+/* styles.css du datatable*/
+.table-container {
+    max-height: 250px;
+    margin-top: 50px;
+    margin-left: 30px;
+    overflow-y: auto; /* Permet un défilement horizontal si le tableau est trop large */
+}
+
+.table-container{
+    width: 100%;
+
+}
+.table-container table {
+    width: 100%;
+    border-collapse: collapse; /* Supprime l'espacement entre les bordures des cellules */
+}
+
+thead {
+    background-color: rgb(218, 215, 230); /* Couleur de fond pour l'en-tête du tableau */
+    color: rgba(20, 0, 100, 1); /* Couleur du texte pour l'en-tête du tableau */
+}
+
+tbody{
+    max-height: 500px;
+    border-collapse: collapse;
+    overflow-x: auto;
+}
+
+.table-container th, td {
+    padding: 8px; /* Espacement à l'intérieur des cellules */
+    text-align: left; /* Alignement du texte à gauche */
+    border-bottom: 1px solid black; /* Ligne de séparation entre les lignes */
+}
+
+.table-container tr:nth-child(odd) {
+    background-color: #f2f2f2; /* Couleur de fond pour les lignes impaires */
+}
+
+.table-container tr:nth-child(even) {
+    background-color: #ffffff; /* Couleur de fond pour les lignes paires */
+}
+
+.table-container tr:hover {
+    background-color: #ddd; /* Couleur de fond au survol d'une ligne */
+}
+/* Style des boutons */
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    margin-left: 50%; /* Centrer le bouton */
+    transform: translateX(-50%);
+    background-color: #5C5CD1;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre subtile pour le bouton */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    background-color: #4747a3;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Plus d'ombre au survol */
+}
+
+/* Style des indicateurs de chargement et messages d'erreur */
+.loading-indicator {
+    text-align: center;
+    font-size: 1.2em;
+    color: #5C5CD1;
+    margin-top: 20px;
+}
+
+.error-message {
+    text-align: center;
+    font-size: 1.2em;
+    color: #d9534f;
+    margin-top: 20px;
+}
+
+/* Sélecteur de cours : espacement et alignement */
+.course-selector {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.course-selector label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 10px;
+    color: #333;
+}
+
+.course-selector select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre subtile pour le champ */
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.course-selector select:hover {
+    border: 1px solid #5C5CD1;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,103 @@
+
+/* Conteneur des statistiques */
+.stat-container {
+  width: 1000px;
+  display: flex;
+  margin-left: 20px;
+  margin-top: 70px;
+  justify-content: space-between;
+ /* margin-bottom: 200px;*/
+  gap: -50px; /* Espace entre les cartes */
+  flex-wrap: wrap; /* Pour gérer les petits écrans */
+}
+
+/* Cartes de statistiques */
+.stat-card {
+  flex: 1;
+  min-width: 50px; /* Taille minimum pour chaque carte */
+  max-width: 30%; /* Limite la largeur des cartes */
+  text-align: center;
+  padding: 5px;
+  font-size: 0.2em;
+  background-color: rgb(158, 153, 229); /* Couleur de fond clair */
+  border-radius: 1px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre douce */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+/* Effet au survol pour les cartes */
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+h4{
+  margin-left: 20px;
+  margin-top: 20px;
+}
+/* Table générale */  
+table {  
+  width: 40%; /* Ajustez la largeur souhaitée */  
+  min-width: 100%;
+  max-width: 300px;  
+  border-collapse: collapse;  
+  margin-top: 20px; 
+  margin-left: 25px; 
+  font-family: Arial, sans-serif;  
+} 
+
+/* Style des en-têtes de colonnes */  
+th {  
+  background-color: #e0e0e0;  
+  color: #333;  
+  padding: 10px;  
+  text-align: left;  
+  font-weight: bold;  
+  border-bottom: 2px solid #ddd;  
+}  
+
+/* Style des cellules */  
+td {  
+  padding: 8px;  
+  border-bottom: 1px solid #ddd;  
+  color: #333;  
+  text-align: left;  
+}  
+
+/* Alternance des couleurs pour les lignes */  
+tr:nth-child(even) {  
+  background-color: #f9f9f9;  
+}  
+
+/* Effet de survol pour les lignes */  
+tr:hover {  
+  background-color: #f1f1f1;  
+}  
+
+/* Style spécifique à la table avec élévation de Angular Material */  
+.mat-elevation-z8 {  
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
+  border-radius: 8px;  
+  overflow: hidden;  
+}  
+
+/* Largeurs spécifiques aux colonnes */  
+.mat-column-date {   
+  width: 20%;   
+}  
+
+.mat-column-heureDebut {   
+  width: 15%;   
+}  
+
+.mat-column-heureFin {   
+  width: 15%;   
+}  
+
+.mat-column-duree {   
+  width: 20%;   
+}  
+
+.mat-column-contenu {   
+  width: 30%;   
+}

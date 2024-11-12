@@ -1,0 +1,242 @@
+<div class="container-fluid">
+    <div class="row align-items-center" style="background-color: #fff; height: 55px;">
+        <div class="col d-flex justify-content-between align-items-center">
+            <h1 class="mb-0"><strong>Ajouter Etudiant</strong></h1>
+            <div class="comp d-flex align-items-center">
+                <button class="print-button" aria-label="Imprimer">
+                    <span class="badge">{{ nombreRappels }}</span>
+                    <i class="fas fa-bell" [routerLink]="['/rappel']"></i>
+                  </button>
+                &nbsp; &nbsp; &nbsp;
+                <span class="mr-2">COMPTABLE : &nbsp; &nbsp;</span>
+                <a href="javascript:void(0);" [routerLink]="['/profil']">
+                    <i class="fas fa-user"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<header>
+    <h1>FORMULAIRE D'ENREGISTREMENT D'UN NOUVEL ÉTUDIANT</h1>
+</header>
+
+<section class="home-section">
+    <div class="home-content">
+        <div class="container">
+            <form (ngSubmit)="onSubmit()" #etudiantForm="ngForm">
+
+                <div class="container my-4">
+                    <div class="d-flex align-items-center divider">
+                        <div class="flex-grow-1 border-bottom border-dark"></div>
+                        <h3 class="mx-3 mb-0">INFORMATIONS DE L'ETUDIANT</h3>
+                        <div class="flex-grow-1 border-bottom border-dark"></div>
+                    </div>
+                </div>
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Nom</span>
+                        <input type="text" [(ngModel)]="etudiant.etudiantNom" name="etudiantNom" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Prénoms</span>
+                        <input type="text" [(ngModel)]="etudiant.etudiantPrenom" name="etudiantPrenom" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Adresse</span>
+                        <input type="text" [(ngModel)]="etudiant.etudiantAdresse" name="etudiantAdresse" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Telephone</span>
+                        <input type="email" [(ngModel)]="etudiant.etudiantTelephone" name="etudiantTelephone" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">E-mail</span>
+                        <input type="email" [(ngModel)]="etudiant.etudiantMail" name="etudiantMail" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Date de naissance</span>
+                        <input type="date" [(ngModel)]="etudiant.etudiantDateNaiss" name="etudiantDateNaiss" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Lieu de naissance</span>
+                        <input type="text" [(ngModel)]="etudiant.etudiantLieuNais" name="etudiantLieuNais" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Nationalité</span>
+                        <input type="text" [(ngModel)]="etudiant.etudiantNationnalite" name="etudiantNationnalite"
+                            required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Sexe</span>
+                        <select [(ngModel)]="etudiant.etudiantSexe" name="etudiantSexe" required>
+                            <option value="" disabled selected>Choisir...</option>
+                            <option value="M">Masculin</option>
+                            <option value="F">Féminin</option>
+                        </select>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Baccalauréat (Série)</span>
+                        <input type="text" [(ngModel)]="etudiant.etudiantSerieBac" name="etudiantSerieBac" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Mention au bac</span>
+                        <select [(ngModel)]="etudiant.mentionBac" name="etudiantmentionBac" required>
+                            <option value="" disabled selected>Choisir...</option>
+                            <option *ngFor="let mention of mentions" [value]="mention">{{ mention }}</option>
+                        </select>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="details">Autres diplômes</span>
+                        <input type="text" [(ngModel)]="etudiant.etudiantAutreDiplome" name="etudiantAutreDiplome">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Année d'obtention du bac</span>
+                        <input type="text" [(ngModel)]="etudiant.etudiantAnneeBac" name="etudiantAnneeBac" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Pays d'obtention du bac</span>
+                        <input type="text" [(ngModel)]="etudiant.etudiantPaysBac" name="etudiantPaysBac" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Établissement de provenance</span>
+                        <input type="text" [(ngModel)]="etudiant.etudiantEtatProvenance" name="etudiantEtatProvenance"
+                            required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Date d'Inscription</span>
+                        <input type="date" name="etudiantDateIns" [(ngModel)]="etudiant.etudiantDateIns" required>
+                    </div>
+                </div>
+
+                <div class="container my-4">
+                    <div class="d-flex align-items-center divider">
+                        <div class="flex-grow-1 border-bottom border-dark"></div>
+                        <h3 class="mx-3 mb-0">INFORMATIONS DU TUTEUR OU PARENT</h3>
+                        <div class="flex-grow-1 border-bottom border-dark"></div>
+                    </div>
+                </div>
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Nom du Tuteur</span>
+                        <input type="text" name="tuteurNom" [(ngModel)]="etudiant.tuteurNom" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Prénom du Tuteur</span>
+                        <input type="text" name="tuteurPrenom" [(ngModel)]="etudiant.tuteurPrenom" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Profession du Tuteur</span>
+                        <input type="text" name="tuteurProfession" [(ngModel)]="etudiant.tuteurProfession" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Organisme Employeur du Tuteur</span>
+                        <input type="text" name="tuteurOrganisme" [(ngModel)]="etudiant.tuteurOrganismeEmployeur"
+                            required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Adresse du Tuteur</span>
+                        <input type="text" name="tuteurAdresse" [(ngModel)]="etudiant.tuteurAdresse" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Email du Tuteur</span>
+                        <input type="email" name="tuteurEmail" [(ngModel)]="etudiant.tuteurEmail" >
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Téléphone Bureau</span>
+                        <input type="text" name="tuteurTelBureau" [(ngModel)]="etudiant.tuteurTelBureau" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Téléphone Domicile</span>
+                        <input type="text" name="tuteurTelDomicile" [(ngModel)]="etudiant.tuteurTelDom" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Téléphone Mobile</span>
+                        <input type="text" name="tuteurCel" [(ngModel)]="etudiant.tuteurCel" required>
+                    </div>
+                </div>
+
+                <div class="container my-4">
+                    <div class="d-flex align-items-center divider">
+                        <div class="flex-grow-1 border-bottom border-dark"></div>
+                        <h3 class="mx-3 mb-0">INFORMATIONS RELATIVES À LA FILIÈRE ET AU PARCOURS </h3>
+                        <div class="flex-grow-1 border-bottom border-dark"></div>
+                    </div>
+                </div>
+                <div class="user-details">
+
+                    <div class="input-box">
+                        <span class="details" for="parcoursSelect">Parcours</span>
+                        <select id="parcoursSelect" name="parcoursSelect" (change)="onParcoursChange($event)"
+                            [(ngModel)]="etudiant.parcoursId">
+                            <option value="" disabled selected>Choisir...</option>
+                            <option *ngFor="let parcours of parcoursList" [value]="parcours.parcoursId">
+                                {{ parcours.nomParcours }}
+                            </option>
+                        </select>
+                    </div>
+
+
+                    <div class="input-box">
+                        <span class="details" for="filiereSelect">Filière </span>
+                        <select id="filiereSelect" name="filiereSelect" [(ngModel)]="etudiant.nomFiliere">
+                            <option value="" disabled selected>Choisir...</option>
+                            <option *ngFor="let filiere of filiereList" [value]="filiere.nomFiliere">
+                                {{filiere.nomFiliere }}</option>
+                        </select>
+                    </div>
+
+
+                    <div class="input-box">
+                        <span class="details" for="niveauEtude">Niveau d'étude</span>
+                        <select id="niveauSelect" name="niveauSelect" [(ngModel)]="etudiant.niveauEtude" required>
+                            <option value="" disabled selected>Choisir...</option>
+                            <option *ngFor="let niveau of niveauxDisponibles" [value]="niveau">
+                                {{ niveau }}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="details" for="statutBoursier">Statut de bourse </span>
+                        <select [(ngModel)]="etudiant.boursier" id="statutSelect" name="statutSelect">
+                            <option value="" disabled selected>Choisir...</option>
+                            <option *ngFor="let statut of statutBoursier" [value]="statut">{{ statut }}</option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="input-box">
+                        <span class="details" for="typeModalite">Type de modalite </span>
+                        <select [(ngModel)]="etudiant.typeModalite" name="typeModalite" required>
+                            <option value="" disabled selected>Choisir...</option>
+                            <option *ngFor="let modalite of modalites" [value]="modalite">{{ modalite }}</option>
+                        </select>
+                    </div>
+
+                </div>
+
+
+                <div class="center-container">
+                    <div class="button-save">
+                        <button type="submit" class="bbtn-primary btn-lg">ENREGISTRER</button>
+                    </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <div class="reins">
+                        <button type="reset" class="btn btn-secondary">Réinitialiser</button>
+                    </div>
+
+                </div>
+            </form>
+
+            
+
+        </div>
+    </div>
+
+
+
+</section>

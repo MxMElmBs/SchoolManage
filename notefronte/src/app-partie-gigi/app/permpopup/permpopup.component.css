@@ -1,0 +1,32 @@
+.dialog-container {  
+    width: 400px; /* Largeur du popup */  
+    padding: 20px; /* Espacement interne */
+    border: none;  
+    border-radius: 0; /* Bordures carrées */  
+    background-color: #ebe3e3; /* Couleur de fond */  
+    text-align: center; /* Centrer le texte */  
+  }  
+  
+  .dialog-title {  
+    font-size: 20px; /* Taille du titre */  
+    margin-bottom: 20px; /* Espacement en bas du titre */  
+  }  
+  
+ 
+  textarea{
+    width: 70%;
+    height: 50px;
+  }
+  
+ 
+  
+  .button-cancel {  
+    background-color: #F44336; /* Rouge */  
+    color: black; /* Couleur du texte */  
+  }
+
+  .button-acc{
+    background-color: blue; /* Rouge */  
+    color: black;
+    margin-left: 20px;
+  }

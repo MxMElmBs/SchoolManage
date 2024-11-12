@@ -1,0 +1,31 @@
+<mat-sidenav-container class="dash">
+  <mat-sidenav class="sidebar" mode="side" [style.width]="'250px'" opened>
+    <div class="sidebar-header">
+      <img [src]="'https://th.bing.com/th/id/R.f01b39787a674a801a66104819b198a7?rik=UrVtA3iPONmZyA&riu=http%3a%2f%2fd9webfactory.com%2fdefitech.tg%2ffiles%2flogos%2f13102020-100421_72364111_971610626506670_2157636662924935168_o.jpg&ehk=rIjeZHAn2LpWWZKXmkAPSV%2fHnXXlu8fEGhRgvFJYa%2fA%3d&risl=&pid=ImgRaw&r=0'" height="100" width="100" priority />
+    </div>
+    <nav class="nav-menu">
+      <ul>
+
+        <li class="nav-item" [ngClass]="{'active': isActive('/app-gigi/studentdash/textBook')}">
+          <a routerLink="/app-gigi/studentdash/textBook">
+            <i class="ri-dashboard-line"></i><span>Cahier de texte</span>
+          </a>
+        </li>
+        <li class="nav-item" [ngClass]="{'active': isActive('/app-gigi/studentdash/permhistorique')}">
+          <a routerLink="/app-gigi/studentdash/permhistorique">
+            <i class="ri-dashboard-line"></i><span>Permission</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </mat-sidenav>
+  <mat-sidenav-content class="content">
+    <div class="dashboard">
+      <span *ngIf="studentData">{{ studentData.nom }} {{ studentData.prenom }}</span>
+      <div class="decc">
+        <i class="ri-arrow-left-circle-line" (click)="logout()"></i>
+      </div>    </div>
+
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

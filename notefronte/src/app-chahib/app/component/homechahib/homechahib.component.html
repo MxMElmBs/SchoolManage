@@ -1,0 +1,58 @@
+<link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+
+<div class="container">
+  <div class="sidebar">
+    <div class="logo">
+      <img src="https://defitech.tg/files/logos/13102020-100413_72364111_971610626506670_2157636662924935168_o.jpg" alt="Logo" class="logo" />
+    </div>
+    <div class="menu">
+      <span>DEFITECH</span>
+    </div>
+    <div class="logout-section">
+      <button class="logout-button" (click)="logout()"><i class="ri-logout-box-line"></i> Déconnexion</button>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <!-- Barre supérieure avec un avatar -->
+    <header class="top-bar">
+      <div class="user-info">
+        <i class="ri-account-circle-line"></i>
+        <span>{{student.nom}} {{student.prenom}}</span>
+      </div>
+    </header>
+
+    <!-- En-tête principale avec un champ de recherche -->
+    <div class="header">
+      <h2>Documents</h2>
+      <input type="text" class="search-input" placeholder="Rechercher un document" [(ngModel)]="searchQuery" (input)="searchDocuments()">
+    </div>
+
+    <!-- Bouton pour ajouter un document -->
+    <div class="add-document" >
+      <button class="add-button" (click)="addDocument()">+ Ajouter un document</button>
+    </div>
+
+    <!-- Liste des documents ou message "aucun document" -->
+    <div class="document-list">
+      <!-- Si aucun document n'est trouvé -->
+      <ng-container *ngIf="documents.length === 0; else documentsTemplate">
+        <div class="no-documents">
+          <p>Aucun document pour le moment</p>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPAQJWp-exFmkNw5Lm0XtiwMSkBSzTVroutQ&s" alt="No documents illustration">
+        </div>
+      </ng-container>
+
+      <!-- Affichage des documents si la liste n'est pas vide -->
+      <ng-template #documentsTemplate>
+        <div class="document-grid">
+          <div *ngFor="let document of documents" class="document-card" (click)="selectDocument(document)">
+            <h3 class="document-type">{{ document.typeDocument }}</h3>
+            <i class="ri-file-cloud-line"></i>
+            <p class="document-theme">{{ document.theme }}</p>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

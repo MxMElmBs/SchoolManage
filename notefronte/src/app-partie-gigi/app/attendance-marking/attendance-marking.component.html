@@ -1,0 +1,59 @@
+<a href="/app-gigi/professeur/salle">
+  <button class="retour">Retour</button>
+</a>
+<div class="seance-control">
+  <div *ngIf="seanceId">
+    <button (click)="goToPresence()">Prise de présence</button>
+  </div>
+  <div *ngIf="!seanceId">
+    <p>Veuillez ouvrir une séance pour pouvoir enregistrer des présences.</p>
+  </div>
+</div>
+
+<!-- Afficher le nom du cours pour la première séance -->
+<h4 *ngIf="filteredSeances.length > 0">Historique des présences pour le cours : {{ filteredSeances[0]?.nomCours }}</h4>
+
+<!-- Filtrer par date -->
+<div class="filter-container" *ngIf="hasSeancesInDb">
+  <label for="date">Filtrer par Date :</label>
+  <input type="date" id="date" [value]="selectedDate" (input)="onDateChange($event)" />
+</div>
+
+<!-- Liste des séances filtrées -->
+<div *ngIf="filteredSeances.length > 0 && hasSeancesInDb">
+  <div *ngFor="let seance of filteredSeances">
+    <!-- Afficher la date de la séance -->
+    <h5>Séance du {{ seance.seanceDate | date: 'dd/MM/yyyy' }}</h5>
+    <table>
+      <thead>
+        <tr>
+          <th>Matricule</th>
+          <th>Nom</th>
+          <th>Prénoms</th>
+          <th>État</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Boucle sur la liste des présences pour la séance -->
+        <tr *ngFor="let presence of seance.presences">
+          <td>{{ presence.matriculeEtudiant }}</td>
+          <td>{{ presence.nomEtudiant }}</td>
+          <td>{{ presence.prenomEtudiant }}</td>
+          <td [ngClass]="presence.enPermission ? 'permission-text' : (presence.present ? 'present-text' : 'absent-text')">
+            {{ presence.enPermission ? 'Permission' : (presence.present ? 'Présent' : 'Absent') }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Message si aucune séance n'est trouvée pour la date sélectionnée -->
+<div *ngIf="filteredSeances.length === 0 && hasSeancesInDb">
+  <p>Aucune séance trouvée pour la date sélectionnée.</p>
+</div>
+
+<!-- Message si aucune séance n'existe dans la base de données -->
+<div *ngIf="!hasSeancesInDb">
+  <p>Aucune séance disponible dans la base de données.</p>
+</div>

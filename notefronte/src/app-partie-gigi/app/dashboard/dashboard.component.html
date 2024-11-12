@@ -1,0 +1,78 @@
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+<mat-sidenav-container class="dash">
+    <mat-sidenav class="sidebar" mode="side" [style.width]="'250px'" opened>
+      <div class="sidebar-header">
+        <img [src]="'https://th.bing.com/th/id/R.f01b39787a674a801a66104819b198a7?rik=UrVtA3iPONmZyA&riu=http%3a%2f%2fd9webfactory.com%2fdefitech.tg%2ffiles%2flogos%2f13102020-100421_72364111_971610626506670_2157636662924935168_o.jpg&ehk=rIjeZHAn2LpWWZKXmkAPSV%2fHnXXlu8fEGhRgvFJYa%2fA%3d&risl=&pid=ImgRaw&r=0'" height="100" width="100" priority />
+      </div>
+
+      <h3>Menu</h3>
+      <nav class="nav-menu">
+        <ul>
+          <li class="nav-item" [ngClass]="{'active': isActive('/app-gigi/dashboard/etudiantdash')}">
+            <a routerLink="/app-gigi/dashboard/etudiantdash">
+              <i class="ri-dashboard-line"></i><span>Tableau de bord</span>
+            </a>
+          </li>
+          <li class="nav-item" [ngClass]="{'active': isActive('javascript:void(0)')}" (click)="toggleStudentsMenu()">
+            <a href="javascript:void(0)">
+              <i class="ri-team-fill"></i><span>Etudiants</span>
+            </a>
+            <ul *ngIf="studentsMenuOpen" class="submenu">
+              <li class="submenu-item" [ngClass]="{'active': isActive('/app-gigi/dashboard/etudiant')}">
+                <a routerLink="/app-gigi/dashboard/etudiant" (click)="onSubmenuItemClick()">Liste des Étudiants</a>
+              </li>
+              <li class="submenu-item" [ngClass]="{'active': isActive('/app-gigi/dashboard/permission')}">
+                <a routerLink="/app-gigi/dashboard/permission" (click)="onSubmenuItemClick()">Permissions</a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item" [ngClass]="{'active': isActive('/app-gigi/dashboard/volume-horaire')}">
+            <a routerLink="/app-gigi/dashboard/volume-horaire">
+              <i class="ri-artboard-fill"></i><span>Professeurs</span>
+            </a>
+          </li>
+
+          <li class="nav-item" [ngClass]="{'active': isActive('/app-gigi/dashboard/filiere')}">
+            <a routerLink="/app-gigi/dashboard/filiere">
+              <i class="ri-dashboard-line"></i><span>Parcours</span>
+            </a>
+          </li>
+          <li class="nav-item" [ngClass]="{'active': isActive('/app-gigi/dashboard/matiere')}">
+            <a routerLink="/app-gigi/dashboard/matiere">
+              <i class="ri-book-2-fill"></i><span>Matières</span>
+            </a>
+          </li>
+
+          <li class="nav-item" [ngClass]="{'active': isActive('/app-jeff/tableaubord')}">
+            <a routerLink="/app-jeff/tableaubord">
+              <i class="ri-artboard-fill"></i><span>Gestion des notes</span>
+            </a>
+          </li>
+
+          <li class="nav-item" [ngClass]="{'active': isActive('/app-chahib/de-doc')}">
+            <a routerLink="/app-chahib/de-doc">
+              <i class="ri-artboard-fill"></i><span>Gestion documents</span>
+            </a>
+          </li>
+
+          <li class="nav-item" [ngClass]="{'active': isActive('/app-gigi/dashboard/settings')}">
+            <a routerLink="/app-gigi/dashboard/settings">
+              <i class="ri-settings-3-line"></i><span>Paramètres</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </mat-sidenav>
+    <mat-sidenav-content class="content">
+      <div class="dashboard">
+        <span>Tableau de bord</span>
+
+        <!--<span>{{ directorData?.nomDirecteurEtude }} {{ directorData?.prenomDirecteurEtude }}</span> -- Displaying director's name -->
+        <div class="decc">
+          <i class="ri-logout-box-r-line" (click)="logout()"></i>
+        </div>
+      </div>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

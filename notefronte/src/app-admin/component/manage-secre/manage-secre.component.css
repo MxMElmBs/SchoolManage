@@ -1,0 +1,92 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  margin-left: 270px; /* Décalage pour éviter le chevauchement avec la sidebar */
+  margin-top: 70px; /* Espace en haut pour éviter le chevauchement avec le header */
+  margin-bottom: 60px; /* Espace en bas pour éviter le chevauchement avec le footer */
+}
+
+.card {
+  width: 300px;
+  height: 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  position: relative;
+  margin-bottom: 20px;
+  box-shadow: 0 15px 8px rgba(0, 0, 0, 0.2); /* Ombre portée pour un effet visuel */
+  overflow: hidden;
+}
+
+.card .icon {
+  position: absolute;
+  bottom: 20px; /* Ajustez en fonction de l'espace souhaité depuis le bas de la carte */
+  right: 20px; /* Ajustez en fonction de l'espace souhaité depuis le côté droit de la carte */
+  color: black;
+  width: 91px;  /* Largeur fixe de l'icône */
+  height: 106px; /* Hauteur fixe de l'icône */
+}
+
+.card .info {
+  position: absolute;
+  bottom: 5px;
+  left: 10px;
+  text-align: left;
+}
+
+.card .info .count {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.card .info .name {
+  font-size: 16px;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+
+}
+
+.buttons {
+  display: flex;
+  gap: 50px;
+}
+
+.table-wrapper {
+  max-height: 250px; /* Ajustez la hauteur selon vos besoins */
+  overflow-y: auto; /* Active le défilement vertical */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Ombre pour le tableau */
+
+}
+
+table {
+  width: 70%;
+}
+
+th.mat-header-cell {
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 2;
+}
+
+.mat-checkbox {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.mat-checkbox-layout {
+  align-items: center;
+  justify-content: center;
+}
+
+tr.mat-row.selected {
+  background-color: rgba(102, 132, 250, 0.196);
+}
+

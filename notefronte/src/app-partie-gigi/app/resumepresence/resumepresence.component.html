@@ -1,0 +1,52 @@
+<div>
+  <h4>historique des presences </h4>
+</div>
+<div class="stat-container">
+  <mat-card class="stat-card">
+    <h5>Nombre de séances effectuées : {{ absenceInfo.nombreSeances }}</h5>
+  </mat-card>
+  <mat-card class="stat-card clickable" (click)="goToDetails()">
+    <h5>Taux de présence global : {{ absenceInfo.tauxAbsence  }}%</h5>
+  </mat-card>
+  <mat-card class="stat-card">
+    <h5>Étudiant le plus absent : {{ absenceInfo.mostAbsentStudent?.nom }} {{ absenceInfo.mostAbsentStudent?.prenom }}</h5>
+    <h6>Taux de presence : {{ absenceInfo.mostAbsentStudent?.attendanceRate }}%</h6>
+  </mat-card>
+</div>
+
+<div *ngFor="let seance of seances">
+  <h4>Séance du {{ seance.seanceDate | date }}</h4>
+  <table mat-table [dataSource]="seance.presences" class="mat-elevation-z8">
+    <ng-container matColumnDef="matricule">
+      <th mat-header-cell *matHeaderCellDef>Matricule</th>
+      <td mat-cell *matCellDef="let presence">{{ presence.matriculeEtudiant }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="nom">
+      <th mat-header-cell *matHeaderCellDef>Nom</th>
+      <td mat-cell *matCellDef="let presence">{{ presence.nomEtudiant }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="prenom">
+      <th mat-header-cell *matHeaderCellDef>Prénom</th>
+      <td mat-cell *matCellDef="let presence">{{ presence.prenomEtudiant }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="etat">
+      <th mat-header-cell *matHeaderCellDef>État</th>
+      <td mat-cell *matCellDef="let presence">
+        <!-- Utilisation de classes CSS pour les couleurs -->
+        <span [ngClass]="{
+          'present': presence.present === true,
+          'absent': presence.present === false && !presence.enPermission,
+          'permission': presence.present === null && presence.enPermission
+        }">
+          {{ presence.present === true ? 'Présent' : presence.present === false && !presence.enPermission ? 'Absent' : 'Permission' }}
+        </span>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

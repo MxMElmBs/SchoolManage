@@ -1,0 +1,53 @@
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+<div class="urgences-content">
+    <div class="haut">
+            <select id="options" [(ngModel)]="selectedOption" (change)="onOptionChange($event)" class="annee">
+                <option *ngFor="let option of options" [value]="option.value">
+                  {{ option.label }}
+                </option>
+            </select>
+            <select id="options1" [(ngModel)]="selectedOption1" (change)="onOptionChange($event)" class="filiere">
+                <option *ngFor="let option of options1" [value]="option.value">
+                  {{ option.label }}
+                </option>
+            </select>
+            <mat-card *ngFor="let option of parcours" class="filiere-card">
+                <mat-card-title class="filiere-card-title">{{ option.label }}</mat-card-title>
+            </mat-card>        
+            <select id="niveau" [(ngModel)]="selectedniveau" (change)="onOptionChange($event)" class="filiere">
+                <option *ngFor="let option of niveau" [value]="option.value">
+                  {{ option.label }}
+                </option>
+            </select>
+ 
+        <div class="search-bar">
+            <input type="search" placeholder="Recherche (nom, prénoms)">
+            <i (click)="search()" class="ri-search-2-line"></i>
+        </div>
+    </div>
+    <!--
+        <div class="button">
+            <a href="/dashboard/ue-form"> <button class="submit">Ajouter nouvel etudiant</button></a>
+         </div>
+    -->
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Maticule</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of dataSource2; let i = index">
+                    <td>{{ data.matricule }}</td>
+                    <td>{{ data.nom }}</td>
+                    <td>{{ data.prenom }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</div>

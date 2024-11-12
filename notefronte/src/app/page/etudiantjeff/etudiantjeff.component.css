@@ -1,0 +1,49 @@
+.action-link {
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.action-link i {
+  margin-right: 5px;
+  transition: transform 0.3s ease;
+}
+
+.action-link:hover {
+  color: #007bff;
+  transform: translateY(-2px);
+}
+
+.action-link:hover i {
+  transform: scale(1.2);
+}
+
+input{
+  color: blue
+}
+
+.suppicon {
+  font-size: 1.3em;
+  color: #f44335;
+}
+
+.modicon {
+  font-size: 1.3em;
+  color: #343a40;
+}
+.supprimer {
+  color: #f44335;
+}
+
+.modifier {
+  color: #343a40;
+}
+
+.action-column {
+  width: 220px;
+}
+
+.widthsupprimer {
+  width: 550px
+}
+

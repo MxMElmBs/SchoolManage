@@ -1,0 +1,378 @@
+.home-content .sales-boxes .recent-sales {
+  width: 95%;
+  background: white;
+  padding: 30px 30px;
+  margin: 0 20px;
+  border-radius: 12px;
+  border: 5px solid #cccaca;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+.print-button {
+  border: none;
+  background: none;
+  font-size: 20px; /* Taille de l'icône */
+  cursor: pointer;
+}
+.print-button:hover {
+  color: #007bff; /* Couleur au survol */
+}
+.print-button:active {
+  color: #007bff; /* Couleur au survol */
+}
+.badge {
+  top: 1px; /* Ajustez la position verticalement */
+  background-color: red; /* Couleur de fond du badge */
+  color: white; /* Couleur du texte */
+  border-radius: 50%; /* Forme ronde */
+  padding: 0 0.5em; /* Espacement à l'intérieur */
+  font-size: 0.7em; /* Taille de police */
+  display: flex; /* Pour centrer le texte */
+  justify-content: center; /* Pour centrer le texte */
+  align-items: center; /* Pour centrer le texte */
+}
+.table td {
+  padding: 20px; /* Ajoute 10px de padding à l'intérieur de chaque cellule */
+}
+.print-button {
+  border: none;
+  background: none;
+  font-size: 20px; /* Taille de l'icône */
+  cursor: pointer;
+}
+.print-button:hover {
+  color: #007bff; /* Couleur au survol */
+}
+.superimposed-container {
+position: absolute;
+top: -30px;
+left: 50%;
+transform: translateX(-50%);
+width: 89%; /* Par exemple, 95% de la largeur du parent */
+max-width: none; /* Assurez-vous qu'il n'y a pas de largeur maximale */
+margin-left: 0px; /* Supprimez les marges négatives */
+margin-right: 0; /* Supprimez les marges négatives */
+}
+header {
+  justify-content: center;
+  width: 90%;
+  background-color: rgb(200, 204, 198);
+  padding: 7px;
+  margin-left: 55px;
+  text-align: center;
+  color: black;
+  height: 80px;
+}
+.fas.fa-filter {
+  font-size: 25px; /* Ajuste la taille de l'icône */
+  color: blue /* Ajuste la couleur de l'icône */
+}
+.col{
+  padding-top: 5px;
+}
+.print-button {
+  border: none;
+  background: none;
+  font-size: 20px; /* Taille de l'icône */
+  cursor: pointer;
+}
+.print-button:hover {
+  color: #007bff; /* Couleur au survol */
+}
+
+
+.home-section .home-content {
+  position: relative;
+  padding-top: 20px;
+}
+.home-content .overview-boxes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0 20px;
+  margin-bottom: 26px;
+}
+.overview-boxes .box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% / 4 - 35px);
+  height: 130px;
+  background: #0073e6;
+  padding: 10px 5px;
+  border-radius: 2px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.image {
+  text-align: center;
+}
+
+.image img {
+  max-width: 100%; 
+  height: auto; 
+}
+
+@media (max-width: 768px) {
+  .box {
+    max-width: 90%; 
+   }
+}
+
+.sale-boxes {
+  padding-top: 40px;
+}
+
+.sale-details {
+  padding-top: 60px;
+}
+
+
+.heade {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 250px;
+  width: 1115px;
+  background-color: #0073e6;
+  font-size: 25px;
+  padding: 25px;
+  margin-bottom: 50px;
+  border-radius: 10px;
+  color: #fff;
+}
+
+
+.sale-boxes .recents-sales {
+  background: #fffcfc;
+  width: 95%;
+  padding: 0px 30px;
+  margin: 0 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  border: 5px solid #cccaca;
+}
+
+
+table tr td{
+  vertical-align: middle;
+}
+
+td button{
+  margin: 5px;
+}
+
+td button i{
+  font-size: 20px;
+}
+
+
+.modal-header{
+  background: #0073e6;
+  color: #fff;
+}
+
+.modal-body form {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0;
+}
+
+.modal-body form .imgholder{
+  width: 200px;
+  height: 200px;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.imgholder .upload{
+  position: absolute;
+  bottom: 0;
+  left: 10;
+  width: 100%;
+  height: 100px;
+  background: rgba(0,0,0,0.3);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.upload i{
+  color: #fff;
+  font-size: 35px;
+}
+
+.imgholder:hover .upload{
+  display: flex;
+}
+
+.imgholder .upload input{
+  display: none;
+}
+
+.modal-body form .inputField{
+  flex-basis: 68%;
+  border-left: 5px groove rgb(1, 1, 77);
+  padding-left: 20px;
+}
+
+form .inputField > div{
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+form .inputField > div label{
+  font-size: 20px;
+  font-weight: 500;
+}
+
+#userForm form .inputField > div label::after{
+  content: "*";
+  color: red;
+}
+
+form .inputField > div input{
+  width: 75%;
+  padding: 10px;
+  border: none;
+  outline: none;
+  background: transparent;
+  border-bottom: 2px solid blue;
+}
+
+.modal-footer .submit{
+  font-size: 18px;
+}
+.imgholder{
+
+padding-top: 90px;
+}
+
+#readData form .inputField > div input{
+  color: #000;
+  font-size: 18px;
+}
+
+h1, h5{
+  text-align: center;
+  margin: 15px;
+}
+
+
+
+
+/* Dans votre fichier CSS, ajoutez : */
+@media print {
+  .modal-content {
+    width: 100%;
+    margin: 880px;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+  }
+
+  .modal-header,
+  .modal-footer {
+    display: none; /* Masquer les entêtes et pieds du modal pour l'impression */
+  }
+
+  .printable-section {
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #000;
+    margin: 0;
+    font-size: 12pt;
+  }
+  .modal 
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: left;
+  }
+
+  tr {
+    cursor: pointer; 
+  }
+  tr {
+    border-bottom: 5px solid black; /* Trait noir entre chaque étudiant */
+  }
+  
+  tr:last-child {
+    border-bottom: none; /* Pas de bordure pour la dernière ligne */
+  }
+
+
+
+
+
+
+  .modal-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .modal-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .btn-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+  }
+  
+  .modal-body {
+    padding: 20px;
+  }
+  
+  .modal-body p {
+    margin: 10px 0;
+  }
+  
+  .echeances-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .echeance-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .montant {
+    font-weight: bold;
+  }
+  
+  .statut-payé {
+    color: green;
+  }
+  
+  .statut-non-payé {
+    color: red;
+  }
+  
+  .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  
+
+}

@@ -1,0 +1,36 @@
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+<mat-sidenav-container class="dash">
+  <!-- Sidebar -->
+  <mat-sidenav mode="side" opened class="sidebar">
+    <a mat-button routerLink="/app-gigi/professeur/dashboard-prof" routerLinkActive="active-link">
+      <mat-icon class="nav-icon">home</mat-icon> Accueil
+    </a>
+    <a mat-button routerLink="/app-chahib/doc-prof" routerLinkActive="active-link">
+      <mat-icon class="nav-icon">description</mat-icon> Gestion de document
+    </a>
+    <button mat-icon-button class="logout-button" (click)="logout()">
+      <i class="ri-logout-box-r-line"> Deconnexion</i>
+    </button>
+  </mat-sidenav>
+
+  <!-- Main Content -->
+  <mat-sidenav-content class="content">
+    <!-- Header -->
+    <mat-toolbar color="primary" class="header">
+      <span class="header-title">Dashboard Professeur</span>
+      <span class="spacer"></span>
+
+    </mat-toolbar>
+
+    <!-- Main Section -->
+    <div class="main-content">
+      <img src="./public/assets/planning.png" alt="image" class="dashboard-image">
+      <div class="nomprof">
+        <div *ngIf="content">{{ content }}</div>
+      </div>
+    </div>
+
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

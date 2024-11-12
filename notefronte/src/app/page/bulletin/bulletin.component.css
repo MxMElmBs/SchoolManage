@@ -1,0 +1,49 @@
+.move-up {
+  margin-top: -10px; /* Ajustez la valeur selon vos besoins */
+}
+
+.aumilieu {
+  margin-top: 20px;
+}
+
+.espace {
+  margin-right: 20px;
+}
+
+.margebouton {
+  margin-left: -60px;
+}
+
+i {
+  font-size: 2.1em;
+  font-weight: lighter;
+}
+
+.pdficon {
+  color: red;
+}
+.excelicon {
+  color: green;
+}
+
+.marge {
+  padding-bottom: 0px !important;
+}
+
+strong {
+  font-size: larger;
+  margin-bottom: 12px;
+}
+
+
+.largeur {
+  width: 120%;
+}
+
+li {
+  text-decoration: none;
+}
+
+.dropdown-menu {
+  margin: 0; /* Supprimez les marges */
+}

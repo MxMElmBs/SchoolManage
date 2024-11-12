@@ -1,0 +1,108 @@
+
+.dep-content p{
+    margin: 50px 0 0 40px;
+    font-size: 31px;
+    color: rgba(0, 16, 57, 1);
+    
+}
+
+.menup{
+    display: flex;
+    padding: 20px;
+}
+
+.box{
+    align-items: center;
+    padding: 10px;
+}
+
+.box .text{
+    cursor: pointer;
+    width: 230px;
+    align-items: center;
+    display: flex;
+    font-size: 25px;
+    padding: 30px;
+    background: rgb(11, 2, 61);
+    transition: all 0.3s ease;
+   
+}
+.box .text div{
+    color: rgb(192, 204, 233);
+}
+
+.box .text:hover{
+    background-color: rgb(158, 6, 6);
+}
+
+img {
+    height: 70px;
+    width: 70px;
+    padding-right: 15px;
+}
+.table-container {
+    max-height: 200px;
+    margin-left: 40px;
+    overflow-y: auto; /* Permet un défilement horizontal si le tableau est trop large */
+}
+h6{
+    margin-left: 40px;
+}
+.table-container{
+    width: 90%;
+
+}
+.table-container table {
+    width: 100%;
+    border-collapse: collapse; /* Supprime l'espacement entre les bordures des cellules */
+}
+
+thead {
+    background-color: #ffffff; /* Couleur de fond pour l'en-tête du tableau */
+    color: rgba(20, 0, 100, 1); /* Couleur du texte pour l'en-tête du tableau */
+}
+
+tbody{
+    max-height: 200px;
+    border-collapse: collapse;
+    overflow-x: auto;
+
+}
+
+.table-container th, td {
+    padding: 8px; /* Espacement à l'intérieur des cellules */
+    text-align: left; /* Alignement du texte à gauche */
+    border-bottom: 1px solid #ddd; /* Ligne de séparation entre les lignes */
+}
+
+.table-container tr:nth-child(odd) {
+    background-color: #f2f2f2; /* Couleur de fond pour les lignes impaires */
+}
+
+.table-container tr:nth-child(even) {
+    background-color: #ffffff; /* Couleur de fond pour les lignes paires */
+}
+
+.table-container tr:hover {
+    background-color: #ddd; /* Couleur de fond au survol d'une ligne */
+}
+
+input[type="checkbox"] {
+    margin-left: 10px; /* Espacement pour la case à cocher */
+}
+
+/* Ajout de styles supplémentaires pour les boutons et les inputs si nécessaire */
+input[type="text"], input[type="number"], select {
+    padding: 5px;
+    margin: 2px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.boutton{
+    width: 80px;
+    margin-left: 20px;
+    margin-top: 300px;
+    background-color: greenyellow;
+}
+

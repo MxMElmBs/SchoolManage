@@ -1,0 +1,40 @@
+<div class="doc-content">  
+    <h5>Nouvelle demande de permission</h5>  
+    <form (ngSubmit)="ajouterPermission()" #permissionForm="ngForm">  
+      <div class="fields">  
+        <div class="field name">  
+          <label for="dateDebutAbsence"><strong>Date de début d'absence:</strong></label>  
+          <input type="date" id="dateDebutAbsence" [(ngModel)]="dateDebutAbsence" name="dateDebutAbsence" required>  
+        </div>  
+  
+        <div class="field name">  
+          <label for="dateFinAbsence"><strong>Date de fin d'absence:</strong></label>  
+          <input type="date" id="dateFinAbsence" [(ngModel)]="dateFinAbsence" name="dateFinAbsence" required>  
+        </div>  
+  
+        <div class="field name">  
+          <label for="raison"><strong>Raison de la permission:</strong></label>  
+          <input type="text" id="raison" [(ngModel)]="raison" name="raison" required>  
+        </div>  
+  
+        <div class="field name">  
+          <label for="description"><strong>Description de la raison:</strong></label>  
+          <textarea id="description" [(ngModel)]="description" name="description" required></textarea>  
+        </div>  
+  
+        <div class="field name">  
+          <label for="fichier"><strong>Fichier:</strong></label>  
+          <input type="file" id="fichier" (change)="onFileChange($event)">  
+        </div>  
+  
+        <div class="bou">  
+          <div class="button">  
+            <button type="submit" [disabled]="!permissionForm.form.valid">Ajouter</button>  
+          </div>  
+          <div class="button-red">  
+            <button type="button" (click)="resetForm()">Annuler</button>  
+          </div>  
+        </div>  
+      </div>  
+    </form>  
+</div>

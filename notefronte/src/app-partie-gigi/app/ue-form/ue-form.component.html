@@ -1,0 +1,76 @@
+<!-- ue-form.component.html -->
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+<div class="doc-content">
+  <p>Ajouter une nouvelle UE</p>
+  <form [formGroup]="ueForm" (ngSubmit)="soumettre()">
+    <!-- Nom de l'UE -->
+    <div class="form-group">
+      <label for="libelle">Nom du cours</label>
+      <input id="libelle" formControlName="libelle" class="form-control" required />
+    </div>
+
+    <!-- Code de l'UE -->
+    <div class="form-group">
+      <label for="code">Code de l'UE</label>
+      <input id="code" formControlName="code" class="form-control" required />
+    </div>
+
+    <!-- Crédit de l'UE -->
+    <div class="form-group">
+      <label for="credit">Crédit</label>
+      <input id="credit" formControlName="credit" type="number" class="form-control" required />
+    </div>
+
+    <!-- Quota par semaine -->
+    <div class="form-group">
+      <label for="quotaSemaine">Quota par Semaine</label>
+      <input id="quotaSemaine" formControlName="quotaSemaine" type="number" class="form-control" required />
+    </div>
+
+    <!-- Description de l'UE -->
+    <div class="form-group">
+      <label for="descriptUe">Description du cours</label>
+      <input id="descriptUe" formControlName="descriptUe" class="form-control" required />
+    </div>
+
+    <!-- Sélection du Professeur -->
+    <div class="form-group">
+      <label for="professeur">Chargé du cours</label>
+      <select id="professeur" formControlName="professeur" class="form-control" required>
+        <option value="" disabled selected>-- Sélectionnez un professeur --</option>
+        <option *ngFor="let prof of professors" [value]="prof.professeurId">
+          {{ prof.nom }} {{ prof.prenom }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Sélection des Filières -->
+    <div class="form-group">
+      <label>Filières</label>
+      <div *ngFor="let filiere of filieres" class="checkbox">
+        <input type="checkbox" [value]="filiere.id" (change)="onFiliereChange($event)" /> {{ filiere.nomFiliere }}
+      </div>
+    </div>
+
+    <!-- Sélection du Niveau d'Étude -->
+    <div class="form-group">
+      <label for="niveauEtude">Niveau d'étude</label>
+      <select id="niveauEtude" formControlName="niveauEtude" class="form-control" required>
+        <option value="" disabled selected>-- Sélectionnez un niveau --</option>
+        <option *ngFor="let niveau of niveauxEtude" [value]="niveau">{{ niveau }}</option>
+      </select>
+    </div>
+
+    <!-- Sélection du Type de Semestre -->
+    <div class="form-group">
+      <label for="typeSemestre">Type Semestre</label>
+      <select id="typeSemestre" formControlName="typeSemestre" class="form-control" required>
+        <option value="" disabled selected>-- Sélectionnez un type de semestre --</option>
+        <option *ngFor="let semestre of typesSemestre" [value]="semestre">{{ semestre }}</option>
+      </select>
+    </div>
+
+    <!-- Bouton de soumission -->
+    <button type="submit" class="btn btn-primary" [disabled]="ueForm.invalid">Ajouter</button>
+  </form>
+</div>

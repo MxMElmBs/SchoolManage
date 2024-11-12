@@ -1,0 +1,25 @@
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+<div class="cours-container" *ngIf="cours">
+  <p><strong>Nom du cours :</strong> {{ cours.libelle }}</p>
+  <p><strong>Code :</strong> {{ cours.code }}</p>
+  <p><strong>Crédit :</strong> {{ cours.credit }}</p>
+  <p><strong>Description :</strong> {{ cours.descriptUe }}</p>
+  <p><strong>Type de cours :</strong> {{ cours.typeUe }}</p>
+  <p><strong>Niveau d'étude :</strong> {{ cours.niveauEtude }}</p>
+  <p><strong>Semestre :</strong> {{ cours.typeSemestre }}</p>
+  <p><strong>Chargé du cours :</strong> {{ cours.professeurNom }}</p>
+
+  <!-- Vérification si parcoursNom existe -->
+  <p *ngIf="cours.parcoursNom"><strong>Parcours :</strong> {{ cours.parcoursNom }}</p>
+
+  <!-- Vérification si filiereNom est défini et non vide -->
+  <p *ngIf="cours?.filiereNom && cours.filiereNom.length > 0">
+    <strong>Filière(s) :</strong> {{ cours.filiereNom.join(', ') }}
+  </p>
+
+  <div class="buttons">
+    <button class="btn-red"(click)="goToHistoriqueCahierDeCharges()">Historique des cahiers de charges</button>
+    <button class="btn-blue" (click)="goToHistoriquePresence()">Historique des présences</button>
+  </div>
+</div>
+

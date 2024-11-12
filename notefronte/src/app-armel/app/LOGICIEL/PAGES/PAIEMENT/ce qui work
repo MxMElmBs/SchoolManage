@@ -1,0 +1,605 @@
+import { Component, Inject, OnInit, PLATFORM_ID, TemplateRef, ViewChild } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { EtudiantService } from '../../../SERVICES/etudiant.service';
+import { HttpClient } from '@angular/common/http';
+import { Paiement } from '../../../MODELS/paiement';
+import { Etudiant } from '../../../MODELS/etudiant';
+import { PaiementService } from '../../../SERVICES/paiement.service';
+import { NgForm } from '@angular/forms'; // Import NgForm
+import { ElementRef } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-scolarite',
+  standalone: true,
+  imports: [RouterLink, ReactiveFormsModule, CommonModule, FormsModule],
+  templateUrl: './scolarite.component.html',
+  styleUrl: './scolarite.component.css'
+})
+export class ScolariteComponent implements OnInit {
+
+  @ViewChild('closeModalButton') closeModalButton!: ElementRef;
+  paiements: any[] = [];
+  filieres: any[] = []; // Liste des filières
+  niveaux: string[] = []; // Liste des niveaux
+  selectedFiliere: string = '';
+  selectedNiveau: string = '';
+  selectedPrenom: string = '';
+  selectedNom: string = '';
+  nomsEtudiants: any[] = [];
+  prenomsEtudiants: any[] = [];
+  etudiants: Etudiant[] = [];
+  isModalActive = false;
+  isRenvoiButtonDisabled: boolean = true;
+
+  private filieresUrl = 'http://localhost:8060/api/comptable/filiere'; // URL pour récupérer les filières
+  private niveauxUrl = 'http://localhost:8060/api/comptable/niveau'; // URL pour récupérer les niveaux
+
+  paiement = {
+    etudiantNom: '',
+    etudiantPrenom: '',
+    montantActuel: null,
+    datePaiement: '',
+    resteEcolage: 0
+  };
+
+
+  showEditModal: boolean = false;
+  selectedPaiement: Paiement | null = null;
+
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private paiementService: PaiementService,
+    private etudiantService: EtudiantService,
+    private http: HttpClient,
+    private modalService: NgbModal,
+    private fb: FormBuilder,
+    private router: Router
+  ) { }
+
+
+  ngOnInit(): void {
+    this.loadFilieres();
+    this.loadNiveaux();
+
+  }
+
+
+  loadFilieres(): void {
+    this.http.get<any[]>(this.filieresUrl).subscribe(
+      data => {
+        this.filieres = data;
+      },
+      error => {
+        console.error('Erreur lors du chargement des filières:', error);
+      }
+    );
+  }
+
+  loadNiveaux(): void {
+    this.http.get<string[]>(this.niveauxUrl).subscribe(
+      data => {
+        this.niveaux = data;
+      },
+      error => {
+        console.error('Erreur lors du chargement des niveaux:', error);
+      }
+    );
+  }
+
+
+
+
+  onSearch(): void {
+    if (!this.selectedFiliere || !this.selectedNiveau) {
+      alert('Veuillez sélectionner une filière et un niveau.');
+      return;
+    }
+    const url = `http://localhost:8060/api/comptable/by-filiere-and-niveau?nomFiliere=${this.selectedFiliere}&niveauEtude=${this.selectedNiveau}`;
+    this.http.get<Paiement[]>(url).subscribe(
+      data => {
+        this.paiements = data;
+      },
+      error => {
+        console.error('Erreur lors du chargement des paiements:', error);
+      }
+    );
+    this.isRenvoiButtonDisabled = false;
+
+  }
+
+  // Méthode pour ouvrir le modal avec les détails d'un étudiant
+  openDetails(content: TemplateRef<any>, paiement: any): void {
+    this.selectedPaiement = paiement;
+    this.modalService.open(content);
+  }
+
+
+  onFiliereChange() {
+    this.filterEtudiantsByFiliere();
+  }
+
+  filterEtudiantsByFiliere() {
+    if (this.selectedFiliere) {
+      const filteredEtudiants = this.etudiants.filter(etudiant => etudiant.nomFiliere === this.selectedFiliere);
+
+      this.nomsEtudiants = Array.from(new Set(filteredEtudiants.map(etudiant => etudiant.etudiantNom)));
+      this.prenomsEtudiants = Array.from(new Set(filteredEtudiants.map(etudiant => etudiant.etudiantPrenom)));
+    } else {
+      this.nomsEtudiants = [];
+      this.prenomsEtudiants = [];
+    }
+  }
+
+  onSubmit(form: NgForm): void {
+    const confirmation = window.confirm('Êtes-vous sûr de vouloir soumettre ce paiement ?');
+
+    if (
+      confirmation && form.valid) {
+      this.http.post('http://localhost:8060/api/comptable/ajout_paiement', this.paiement)
+        .subscribe({
+          next: (response) => {
+            console.log('Paiement ajouté avec succès', response);
+            form.reset();
+            this.paiement = {
+              etudiantNom: '',
+              etudiantPrenom: '',
+              montantActuel: null,
+              datePaiement: '',
+              resteEcolage: 0
+
+            };
+            this.onSearch();
+            alert(' Paiement ajouté avec succès.');
+            this.closeModal();             
+
+          },
+          error: (error) => {
+            console.error('Erreur lors de l\'ajout du paiement:', error);
+            alert(error.error);
+          }
+        });
+    }
+  }
+
+
+  closeModal() {
+    if (isPlatformBrowser(this.platformId) && this.closeModalButton) {
+      this.closeModalButton.nativeElement.click();
+    }
+  }
+
+
+
+  closeEditModal() {
+    this.showEditModal = false;
+    this.selectedPaiement = null; // Réinitialiser après la fermeture si nécessaire
+  }
+
+
+
+
+
+  openModal(paiement: any) {
+    this.selectedPaiement = paiement;  // Enregistre les infos de l'étudiant sélectionné
+    this.isModalActive = true;  // Active la modal
+  }
+
+  closModal() {
+    this.isModalActive = false;  // Désactive la modal
+  }
+  selectEtudiant(paiement: any) {
+    this.paiement.etudiantNom = paiement.etudiantNom;
+    this.paiement.etudiantPrenom = paiement.etudiantPrenom;
+    // Optionnel : réinitialiser d'autres champs si nécessaire
+    this.paiement.montantActuel = null;
+
+  }
+
+  onEditSubmit(form: NgForm) {
+    const { etudiantNom, etudiantPrenom, montantActuel, datePaiement } = form.value;
+
+    this.paiementService.updatePaiement(etudiantNom, etudiantPrenom, montantActuel, datePaiement)
+      .subscribe(
+        response => {
+          console.log('Paiement mis à jour avec succès', response);
+          window.alert('Paiement modifié avec succès !'); // Afficher un message de confirmation
+          form.reset(); // Réinitialiser le formulaire
+        },
+        error => {
+          console.error('Erreur lors de la mise à jour du paiement', error);
+          window.alert('Erreur lors de la mise à jour du paiement. Veuillez réessayer.'); // Afficher un message d'erreur
+        }
+      );
+  }
+
+  openEditModal(paiement: Paiement) {
+    this.selectedPaiement = paiement;
+    this.showEditModal = true;
+
+  }
+
+  // Méthode pour rediriger
+  redirectToFicheRenvoi() {
+    this.router.navigate(['/fiche-de-renvoi']);
+  }
+}
+
+
+
+
+
+
+
+
+----------------------
+-------------------------
+----------------------------------------------------
+-------------------------
+----------------------------------------------------
+-------------------------
+----------------------------------------------------
+-------------------------
+---------------
+
+
+
+
+
+
+
+
+
+<div class="container-fluid">
+  <div class="row align-items-center" style="background-color: #fff; ">
+    <div class="col d-flex justify-content-between align-items-center">
+      <h1 class="mb-0"><strong>Scolarite</strong></h1>
+      <div class="comp d-flex align-items-center">
+        <button class="print-button" aria-label="Imprimer">
+          <i class="fas fa-bell" [routerLink]="['/rappel']"></i>
+        </button>
+        &nbsp; &nbsp;&nbsp; &nbsp;
+        <span class="mr-2">COMPTABLE : &nbsp; &nbsp;</span>
+        <a href="javascript:void(0);" [routerLink]="['/profil']">
+          <i class="fas fa-user"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<pre></pre>
+<pre></pre>
+<pre></pre>
+<pre></pre>
+<pre></pre>
+
+<header>
+  <div class="container">
+    <div class="row align-items-center d-flex">
+      <div class="col-auto">
+        <i class="fas fa-filter"></i>
+      </div>
+      <div class="col-auto" style="color: blue;">
+        <span>Filtre par :</span>
+      </div>
+      <form (ngSubmit)="onSearch()" #searchForm="ngForm" class="col d-flex align-items-center">
+        <div class="row w-100">
+          <div class="col">
+            <div class="d-flex align-items-center search-field">
+              <label for="filiere" class="me-2">Filière:</label>
+              <select id="filiere" name="filiere" [(ngModel)]="selectedFiliere" required>
+                <option value="" disabled selected>Choisir une filière...</option>
+                <option *ngFor="let filiere of filieres" [value]="filiere.nomFiliere">{{ filiere.nomFiliere }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col">
+            <div class="d-flex align-items-center search-field">
+              <label for="niveau" class="me-2">Niveau :</label>
+              <select id="niveau" name="niveau" [(ngModel)]="selectedNiveau" required>
+                <option value="" disabled selected>Choisir...</option>
+                <option value="PREMIERE_ANNEE">Première Année</option>
+                <option value="DEUXIEME_ANNEE">Deuxième Année</option>
+                <option value="TROISIEME_ANNEE">Troisième Année</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-auto">
+            <button type="submit" class="btn btn-primary">CHERCHER</button>
+          </div>
+        </div>
+      </form>
+      
+    </div>
+
+  </div>
+</header>
+<pre></pre>
+<pre></pre>
+<pre></pre>
+
+
+
+<section class="home-section">
+  <div class="home-content">
+    <div class="sales-boxes position-relative">
+
+      <div class="recent-sales box">
+        <pre></pre>
+        <div class="sales-details">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Nom</th>
+                <th>Prenoms</th>
+                <th>Ecolage</th>
+                <th>Reste</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let paiement of paiements">
+                <td>{{ paiement.etudiantNom }}</td>
+                <td>{{ paiement.etudiantPrenom }}</td>
+                <!-- Utilisation du pipe number avec la locale 'fr' pour avoir des espaces comme séparateur -->
+                <td>{{ paiement.reductionMontantFinal }} FCFA</td>
+                <!-- Couleur rouge si resteEcolage est supérieur à 0, et formatage avec espace -->
+                <td [ngClass]="{'text-danger': paiement.resteEcolage > 0 }">
+                  {{ paiement.resteEcolage }} FCFA
+                </td>
+                <td>
+                  <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#userForm" style="color: black; border: black; background-color: rgb(255, 255, 255)" (click)="selectEtudiant(paiement)">
+                    <i class="fas fa-plus"></i>
+                  </button>
+                  <button style="color: black; border: black; background-color: rgb(255, 255, 255)" (click)="openDetails(paiementModal, paiement)"  type="button" class="btn btn-right" >
+                    <i class="fas fa-list-alt"></i>
+                  </button>
+                  <!----
+                  <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editForm" style="color: black; border: black; background-color: rgb(255, 255, 255)"  (click)="selectEtudiant(paiement)">
+                    <i class="fas fa-pencil-alt"></i>
+                  </button>
+                  --->
+                 
+
+                </td>
+              </tr>
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+
+
+
+      <div class="container bg-primary text-white p-3 rounded position-absolute superimposed-container">
+        <div class="row justify-content-between align-items-center">
+          <div class="col-12 col-md-auto">
+            <span class="h4">LISTES DES PAIEMENTS</span>
+          </div>
+
+          <div class="col-12 col-md-auto mt-3 mt-md-0">
+            <button class="btn btn-primary" (click)="redirectToFicheRenvoi()" [disabled]="isRenvoiButtonDisabled"style="color: black;">
+              <i class="fas fa-print"> &nbsp;LISTE DES RENVOIS</i>
+            </button>
+          </div>
+          
+
+          <div class="col-12 col-md-auto mt-3 mt-md-0">
+            <button class="btn btn-primary newUser" data-bs-toggle="modal" data-bs-target="#userForm"
+              style="color: black;">
+              <i class="fas fa-plus"> &nbsp; Ajouter Scolarite</i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="userForm">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h1 class="modal-title">
+                Formulaire de paiement de Scolarité
+              </h1>
+           
+              <button type="button" id="closeModalButton" #closeModalButton class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+
+              <form #paiementForm="ngForm" (ngSubmit)="onSubmit(paiementForm)">
+                <div class="imgholder">
+                  <img src="assets/logo.png" height="100px" width="200px" alt="Logo">
+                </div>
+
+                <div class="inputField">
+                  <div class="form-group">
+                    <label for="studentName">Nom :</label>
+                    <input type="text" id="studentName" class="form-control" [(ngModel)]="paiement.etudiantNom"
+                      name="etudiantNom" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="studentFirstName">Prénom :</label>
+                    <input type="text" id="studentFirstName" class="form-control" [(ngModel)]="paiement.etudiantPrenom"
+                      name="etudiantPrenom" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="montantActuel">Montant:</label>
+                    <input type="number" id="montantActuel" [(ngModel)]="paiement.montantActuel" name="montantActuel"
+                      class="form-control" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="datePaiement">Date de paiement</label>
+                    <input type="date" id="datePaiement" [(ngModel)]="paiement.datePaiement" name="datePaiement"
+                      class="form-control" required>
+                  </div>
+
+                  <div class="modal-footer">
+                    <button type="button" id="closeModalButton" class="btn btn-secondary"
+                      data-bs-dismiss="modal">Close</button>
+                    <button type="submit" [disabled]="!paiementForm.form.valid"
+                      class="btn btn-primary submit">Submit</button>
+                  </div>
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Modal -->
+<ng-template #paiementModal let-modal
+  <div class="modal-header">
+    <h5 class="modal-title">Détails du paiement</h5>
+    <button type="button" class="btn-close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <p><strong>Matricule :</strong> {{ selectedPaiement?.etudiantMatricule }}</p>
+    <p><strong>Nom :</strong> {{ selectedPaiement?.etudiantNom }}</p>
+    <p><strong>Prénoms :</strong> {{ selectedPaiement?.etudiantPrenom }}</p>
+    <p><strong>Parcours :</strong> {{ selectedPaiement?.parcoursNom }}</p>
+    <p><strong>Montant Final :</strong> {{ selectedPaiement?.reductionMontantFinal }} FCFA</p>
+    <p><strong>Reste à Payer :</strong> {{ selectedPaiement?.resteEcolage }} FCFA</p>
+    <p><strong>Modalité :</strong> {{ selectedPaiement?.typeModalite }}</p>
+    <p><strong>Date de Paiement :</strong> {{ selectedPaiement?.datePaiement }}</p>
+    <p><strong>Montant Déjà Payé :</strong> {{ selectedPaiement?.montantDejaPaye }} FCFA</p>
+    
+    <h6>Échéances :</h6>
+    <ul>
+      <li *ngFor="let echeance of selectedPaiement?.echeances">
+        Montant : {{ echeance.montantParEcheance }} FCFA -
+        Date : {{ echeance.dateEcheance }} -
+        Statut : {{ echeance.statut }}
+      </li>
+    </ul>
+    <h6>Statut de scolarite :</h6>
+    <p><strong>StatutScoalrite :</strong> {{ selectedPaiement?.StatutScolarite }} </p>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" (click)="modal.dismiss('Close click')" class="btn btn-secondary"
+      data-dismiss="modal">Fermer</button>
+  </div>
+</ng-template>
+
+
+<div class="modal fade" id="editUserForm" tabindex="-1" aria-labelledby="editUserFormLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="editUserFormLabel">Modifier Scolarité</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #editForm="ngForm" (ngSubmit)="onEditSubmit(editForm)">
+          <div class="inputField">
+            <div class="form-group">
+              <label for="editStudentName">Nom :</label>
+              <input type="text" id="editStudentName" class="form-control" 
+                name="etudiantNom" required>
+            </div>
+
+            <div class="form-group">
+              <label for="editStudentFirstName">Prénom :</label>
+              <input type="text" id="editStudentFirstName" class="form-control" 
+                name="etudiantPrenom" required>
+            </div>
+
+            <div class="form-group">
+              <label for="editMontantActuel">Montant:</label>
+              <input type="number" id="editMontantActuel"  name="montantActuel"
+                class="form-control" required>
+            </div>
+
+            <div class="form-group">
+              <label for="editDatePaiement">Date de paiement</label>
+              <input type="date" id="editDatePaiement"  name="datePaiement"
+                class="form-control" required>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+            <button type="submit" [disabled]="!editForm.form.valid" class="btn btn-primary">Modifier</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="modal fade" id="editForm">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h1 class="modal-title">
+          Formulaire de modification des paiement de Scolarité
+        </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+
+        <form #paiementForm="ngForm" (ngSubmit)="onSubmit(paiementForm)">
+          <div class="imgholder">
+            <img src="assets/logo.png" height="100px" width="200px" alt="Logo">
+          </div>
+
+          <div class="inputField">
+            <div class="form-group">
+              <label for="studentName">Nom :</label>
+              <input type="text" id="studentName" class="form-control" [(ngModel)]="paiement.etudiantNom"
+                name="etudiantNom" required>
+            </div>
+
+            <div class="form-group">
+              <label for="studentFirstName">Prénom :</label>
+              <input type="text" id="studentFirstName" class="form-control" [(ngModel)]="paiement.etudiantPrenom"
+                name="etudiantPrenom" required>
+            </div>
+
+            <div class="form-group">
+              <label for="montantActuel">Montant:</label>
+              <input type="number" id="montantActuel" [(ngModel)]="paiement.montantActuel" name="montantActuel"
+                class="form-control" required>
+            </div>
+
+            <div class="form-group">
+              <label for="datePaiement">Date de paiement</label>
+              <input type="date" id="datePaiement" [(ngModel)]="paiement.datePaiement" name="datePaiement"
+                class="form-control" required>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" id="closeModalButton" class="btn btn-secondary"
+                data-bs-dismiss="modal">Close</button>
+              <button type="editSubmit" [disabled]="!paiementForm.form.valid"
+                class="btn btn-primary submit">Mofifier</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

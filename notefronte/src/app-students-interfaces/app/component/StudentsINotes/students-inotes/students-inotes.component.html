@@ -1,0 +1,44 @@
+<app-students-iheader></app-students-iheader>
+<app-students-idash-b></app-students-idash-b>
+<div class="main-container">
+  <div class="semester-dropdown">
+    <mat-form-field appearance="fill">
+      <mat-label>Sélectionnez un semestre</mat-label>
+      <mat-select [(value)]="selectedSemester">
+        <mat-option *ngFor="let semester of semesters" [value]="semester">
+          {{ semester }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div *ngFor="let course of courses" [hidden]="selectedSemester && course.semester !== selectedSemester">
+    <h3>{{ course.title }} ({{ course.typeUe }}) - {{ course.code }}</h3> <!-- Displaying the typeUe -->
+    <mat-table [dataSource]="course.grades" class="mat-elevation-z8">
+
+      <!-- Label de la note -->
+      <ng-container matColumnDef="label">
+        <mat-header-cell *matHeaderCellDef> Type de Note </mat-header-cell>
+        <mat-cell *matCellDef="let grade"> {{ grade.label }} </mat-cell>
+      </ng-container>
+
+      <!-- Valeur de la note -->
+      <ng-container matColumnDef="grade">
+        <mat-header-cell *matHeaderCellDef> Note </mat-header-cell>
+        <mat-cell *matCellDef="let grade"> {{ grade.grade }} </mat-cell>
+      </ng-container>
+
+      <!-- Header du tableau -->
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <!-- Lignes du tableau -->
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <!-- Moyenne Générale -->
+    <div class="average-row">
+      <p><strong>Moyenne générale :</strong> {{ course.average }}</p>
+    </div>
+  </div>
+
+  <p *ngIf="courses.length === 0">Aucune note disponible pour cet utilisateur.</p>
+</div>

@@ -1,0 +1,33 @@
+export interface Etudiant {
+  etudiantMatricule: string;
+  etudiantNom: string;
+  etudiantPrenom: string;
+  etudiantAdresse: string;
+  etudiantTelephone: string;
+  etudiantMail: string;
+  etudiantDateNaiss: string;
+  etudiantLieuNais: string;
+  etudiantNationnalite: string;
+  etudiantSexe: string;
+  etudiantSerieBac: string;
+  etudiantAnneeBac: string;
+  etudiantPaysBac: string;
+  etudiantEtatProvenance: string;
+  etudiantAutreDiplome: string;
+  etudiantDateIns: string,
+  mentionBac: string;
+  boursier: string;
+  parcoursId: number;
+  nomFiliere: string;
+  niveauEtude: string;
+  typeModalite: string;
+  tuteurNom: string;
+  tuteurPrenom: string;
+  tuteurProfession: string;
+  tuteurOrganismeEmployeur: string;
+  tuteurAdresse: string;
+  tuteurTelBureau: string;
+  tuteurTelDom: string;
+  tuteurCel: string;
+  tuteurEmail: string;
+}

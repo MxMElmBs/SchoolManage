@@ -1,0 +1,142 @@
+<p class="h3">Etudiant</p>
+
+
+
+<!-- La sélection d'un étudiant-->
+<div class="container-fluid ">
+  <div class="row mt-6 justify-content-center">
+    <div class="col-auto">
+      <p class="h5 opacity-8"> <small>Sélectionner un étudiant</small></p>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-auto">
+      <mat-form-field class="example-full-width" style="width: 400px;">
+        <mat-label>Etudiant</mat-label>
+        <input #input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" (input)="filter()"
+          (focus)="filter()">
+        <mat-autocomplete requireSelection #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions" [value]="option.nom + ' ' + option.prenom">
+            {{ option.nom }} {{ option.prenom }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  </div>
+
+
+  <div class="row mt-3 justify-content-center">
+    <div class="col-auto">
+      <button type="button" class="btn btn-twitter btn-lg w-100" (click)="onTrouverEtudiant()">TROUVER</button>
+    </div>
+  </div>
+
+  <!-- Tableau des notes de l'étudiant sélectionné -->
+  <div class="row mt-3 justify-content-center" *ngIf="selectedEtudiantId && notes.length > 0">
+    <div class="col-md-11">
+      <div class="card my-1">
+        <div class="card-body  px-3 pb-2">
+          <div class="row justify-content-center">
+            <div class="col-auto ">
+              <p class="h5 opacity-7"> <small>Notes de l'étudiant : {{ notes[0].etudiantNom }} {{ notes[0].etudiantPrenom }}
+                </small></p>
+            </div>
+            <div class="mt-2 row">
+              <div class="col-md-12">
+                <div class="table-responsive">
+                  <table id="etudiant" class="display table" style="width:100%">
+                    <thead>
+                      <tr>
+                        <th class="font-weight- mb-0 text-center text-md">CODE</th>
+                        <th class="font-weight-semibold mb-0 text-center text-md">UE</th>
+                        <th class="font-weight-semibold mb-0 text-center text-md">SEMESTRE</th>
+                        <th class="font-weight-semibold mb-0 text-center text-md">TYPE EVALUATION</th>
+                        <th class="font-weight-semibold mb-0 text-center text-md">CREDIT</th>
+                        <th class="font-weight-semibold mb-0 text-center text-md">NOTES</th>
+                        <th class="font-weight-semibold mb-0 text-center text-uppercase text-md">appréciation</th>
+                        <th class="action-column text-md font-weight-bold mb-0"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let note of notes">
+                        <td class="text-center text-md">{{ note.ueCode }}</td>
+                        <td class="text-center text-md">{{ note.ueLibelle }}</td>
+                        <td class="text-center text-md">{{ note.semestre }}</td>
+                        <td class="text-center text-md">{{ note.typeNote }}</td>
+                        <td class="text-center text-md">{{ note.ueCredit }}</td>
+                        <td class="text-center text-md">{{ note.valeur }}</td>
+                        <td class="text-center text-md">{{ getAppreciation(note.valeur) }}</td>
+                        <td class="action-column text-md">
+                          <a href="#" class="text-secondary font-weight-normal action-link text-xs"
+                            data-bs-toggle="modal" data-bs-target="#editNote" (click)="openEditModal(note.id)">
+                            <i class="i material-symbols:edit-rounded modicon"></i> <span
+                              class="text-center modifier"><strong>MODIFIER</strong></span>
+                          </a>
+                          <p href="" class="text-secondary sup font-weight-normal action-link text-xs ms-3"
+                          (click)="confirmDeleteNote(note.id)">
+                            <i class="i material-symbols-light:delete-rounded suppicon"></i> <span
+                              class="text-center supprimer"><strong>SUPPRIMER</strong></span>
+                          </p>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal pour la modification des notes -->
+<div class="modal fade" id="editNote" tabindex="-1" role="dialog" aria-labelledby="editNoteModal" aria-hidden="true"
+  data-bs-backdrop="false">
+  <div class="modal-dialog modal-dialog-centered modal-md modal-custom-width" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title font-weight-bolder opacity-8 d-flex align-items-center " id="editNoteModal"><i
+            class="i me-2 material-symbols:edit-rounded modicon"></i>Modifier une note</h3>
+        <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">X</span>
+        </button>
+      </div>
+      <div class="modal-body  pb-0">
+        <div class="row">
+          <div class="col-3 text-center">
+            <h4 class="font-weight-normal">Code</h4>
+          </div>
+          <div class="col text-center ">
+            <h4 class="font-weight-normal">UE</h4>
+          </div>
+          <div class="col-3 text-center p-0" style="width: 80px;">
+            <h4 class="font-weight-normal">Note</h4>
+          </div>
+        </div>
+        <div class="row d-flex">
+          <div class="col-3 text-center">
+            <h4 class="font-weight-normal">{{noteToEdit?.ueCode}}</h4>
+          </div>
+          <div class="col  p-0 text-center">
+            <h4 class="font-weight-normal">{{noteToEdit?.ueLibelle}}</h4>
+          </div>
+          <div *ngIf="noteToEdit" class="col-3 me-1 p-0" style="width: 50px; margin-top: -12px;">
+            <div class="input-group  input-group-static">
+              <input type="number" class="form-control small-input" placeholder="Note" min="0" max="20"
+                [(ngModel)]="noteToEdit.valeur" onfocus="focused(this)" onfocusout="defocused(this)">
+            </div>
+          </div>
+        </div>
+        <div class="text-end mt-3">
+          <button type="button" class="btn bg-gradient-secondary btn-sm me-3" data-bs-dismiss="modal">Annuler</button>
+          <button type="submit" (click)="onUpdateNote()"
+            class="btn bg-gradient-warning btn-sm" data-bs-dismiss="modal">Modifier</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,83 @@
+<link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+
+<div *ngIf="isLoading" class="loading-container">
+  <div class="spinner"></div>
+  <p>Chargement en cours...</p>
+</div>
+
+<div class="container">
+  <div class="sidebar">
+    <div class="logo">
+      <img src="https://defitech.tg/files/logos/13102020-100413_72364111_971610626506670_2157636662924935168_o.jpg" alt="Logo" class="logo" />    
+    </div>
+    <div class="menu">
+      <span>DEFITECH</span>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <header class="top-bar">
+      <i class="ri-account-circle-line"></i>
+      <div class="user-info">
+        <span></span>
+      </div>
+    </header>
+    
+    <!-- Header with Document title and Reset Button --> 
+    <div class="header">
+      <h2>Document</h2>
+      <button class="reset-button" (click)="handleReset()">
+        Reinitialiser la page <i class="ri-refresh-line"></i>
+      </button>
+    </div>
+
+    <div class="form-section">
+      <div class="form-group">
+        <div class="step-number">1</div>
+        <div class="form-content">
+          <label>Choisissez le type de document <span class="required">*</span></label>
+          <div class="radio-group">
+            <label>
+              <input type="radio" name="documentType" [(ngModel)]="documentType" value="Tutore">
+              Tutoré
+            </label>
+            <label>
+              <input type="radio" name="documentType" [(ngModel)]="documentType" value="Memoire">
+              Mémoire
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="step-number">2</div>
+        <div class="form-content">
+          <label>Saisissez votre thème</label>
+          <div class="input-group">
+            <input type="text" [(ngModel)]="theme" placeholder="(*Champ obligatoire)" class="input-field" [class.invalid]="!isThemeValid">
+          </div>
+          <p *ngIf="!isThemeValid" class="error-text">Thème rejeté. Veuillez choisir un autre thème.</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="step-number">3</div>
+        <div class="form-content">
+          <label>Choisissez votre professeur (directeur)</label>
+          <div class="input-group">
+            <select [(ngModel)]="selectedProfesseur" class="input-field" [ngModelOptions]="{standalone: true}">
+              <option *ngFor="let professeur of professeurs" [ngValue]="professeur">
+                {{ professeur.nom }} {{ professeur.prenom }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>      
+
+      <div class="form-actions">
+        <button class="submit-button" (click)="handleSubmit()">Valider</button>
+        <p *ngIf="showMessage" class="success-text">Document créé avec succès !</p>
+      </div>
+    </div>
+  </div>
+</div>

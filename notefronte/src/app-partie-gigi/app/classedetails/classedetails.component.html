@@ -1,0 +1,43 @@
+<div *ngIf="isLoading" class="loading-container">
+  <div class="spinner"></div>
+  <p>Chargement en cours...</p>
+</div>
+<div>
+  <h4>Statistique pour le cours : {{ libelleUe }} ({{ codeUe }})</h4>
+</div>
+
+<mat-card class="stat-card">
+  <h3>Nombre total d'élèves : {{ etudiants.length }}</h3>
+</mat-card>
+
+<table mat-table [dataSource]="etudiants" class="mat-elevation-z8">
+  <ng-container matColumnDef="matricule">
+    <th mat-header-cell *matHeaderCellDef>Matricule</th>
+    <td mat-cell *matCellDef="let etudiant">{{ etudiant.matricule }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="nom">
+    <th mat-header-cell *matHeaderCellDef>Nom</th>
+    <td mat-cell *matCellDef="let etudiant">{{ etudiant.nom }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="prenom">
+    <th mat-header-cell *matHeaderCellDef>Prénom</th>
+    <td mat-cell *matCellDef="let etudiant">{{ etudiant.prenom }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="tauxPresence">
+    <th mat-header-cell *matHeaderCellDef>Taux de presence</th>
+    <td mat-cell *matCellDef="let etudiant">{{ etudiant.tauxPresence}}%</td>
+  </ng-container>
+
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef>Action</th>
+    <td mat-cell *matCellDef="let etudiant">
+      <button mat-raised-button color="warn" (click)="signalerAbsence(etudiant)">Signaler</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

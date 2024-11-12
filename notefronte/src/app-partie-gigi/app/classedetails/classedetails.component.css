@@ -1,0 +1,114 @@
+
+/* Conteneur des statistiques */
+  /* Cartes de statistiques */
+  .stat-card {
+    flex: 1;
+    min-width: 50px; /* Taille minimum pour chaque carte */
+    max-width: 30%; /* Limite la largeur des cartes */
+    text-align: center;
+    padding: 5px;
+    font-size: 0.2em;
+    background-color: rgb(130, 128, 250); /* Couleur de fond clair */
+    border-radius: 1px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre douce */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-left: 250px;
+    margin-top: 50px;
+  }
+  
+  /* Effet au survol pour les cartes */
+  .stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  h4{
+    margin-left: 10px;
+    margin-top: 20px;
+  }
+  /* Table générale */  
+  table {  
+    width: 40%; /* Ajustez la largeur souhaitée */  
+    min-width: 100%;
+    max-width: 300px;  
+    border-collapse: collapse;  
+    margin-top: 20px; 
+    margin-left: 25px; 
+    font-family: Arial, sans-serif;  
+  }   
+  
+  /* Style des en-têtes de colonnes */  
+  th {  
+    background-color: #e0e0e0;  
+    color: #333;  
+    padding: 10px;  
+    text-align: left;  
+    font-weight: bold;  
+    border-bottom: 2px solid #ddd;  
+  }  
+  
+  /* Style des cellules */  
+  td {  
+    padding: 8px;  
+    border-bottom: 1px solid #ddd;  
+    color: #333;  
+    text-align: left;  
+  }  
+  
+  /* Alternance des couleurs pour les lignes */  
+  tr:nth-child(even) {  
+    background-color: #f9f9f9;  
+  }  
+  
+  /* Effet de survol pour les lignes */  
+  tr:hover {  
+    background-color: #f1f1f1;  
+  }  
+  
+  /* Style spécifique à la table avec élévation de Angular Material */  
+  .mat-elevation-z8 {  
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
+    border-radius: 8px;  
+    overflow: hidden;  
+  }  
+  
+  /* Largeurs spécifiques aux colonnes */  
+  .mat-column-date {   
+    width: 20%;   
+  }  
+
+  .loading-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* Align spinner and text vertically */
+    align-items: center; /* Horizontally center the content */
+  }
+  
+  .loading-container .spinner {
+    border: 8px solid rgba(0, 0, 0, 0.1);
+    border-top: 8px solid #002366; /* Dark blue spinner */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px; /* Add space between the spinner and the text */
+  }
+  .loading-container p {
+    font-size: 16px;
+    color: #002366; /* Dark blue color for the text */
+    margin: 0; /* Remove default margin */
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  button{
+    background-color: rgb(218, 75, 75);
+    color: #e0e0e0;
+  }

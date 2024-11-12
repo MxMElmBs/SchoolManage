@@ -1,0 +1,83 @@
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Adjusted spacing between cards */
+  padding: 20px;
+  margin-left: 270px; /* Prevent overlap with the sidebar */
+  margin-top: 90px; /* Top margin for avoiding header overlap */
+  margin-bottom: 60px; /* Bottom margin to avoid footer overlap */
+  justify-content: flex-start; /* Align items to the left */
+}
+
+/* Style for each card */
+.card {
+  width: 320px;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align content to the left */
+  justify-content: center;
+  color: white;
+  position: relative;
+  background-color: #2a3e4c; /* Use a modern, dark color */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  border-radius: 10px; /* Soft border radius for modern feel */
+  padding: 20px; /* Padding inside the card */
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+}
+
+/* Style for the icon */
+.card .icon {
+  position: absolute;
+  top: 20px; /* Position at the top */
+  right: 20px; /* Align icon to the right */
+  font-size: 60px; /* Size of the icon */
+  color: rgba(255, 255, 255, 0.5); /* Use semi-transparent white */
+}
+
+/* Style for the card content */
+.card .info {
+  text-align: left;
+  margin-top: 50px; /* Space between icon and text */
+}
+
+.card .info .count {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.card .info .name {
+  font-size: 18px;
+  font-weight: 300;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .card-container {
+    margin-left: 0;
+    justify-content: center; /* Center cards on smaller screens */
+  }
+
+  .card {
+    width: 100%; /* Full width for mobile */
+    margin-bottom: 20px; /* Add space between cards on mobile */
+  }
+
+  .card .icon {
+    font-size: 50px;
+  }
+
+  .card .info .count {
+    font-size: 22px;
+  }
+
+  .card .info .name {
+    font-size: 16px;
+  }
+}

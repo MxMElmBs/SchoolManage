@@ -1,0 +1,63 @@
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+<div class="dep-content">
+    <div class="menup">
+        <div class="box">
+            <div class="card">
+                <div class="box">
+                    <div class="text">
+                        <a href="app-gigi/dashboard/volume-horaire"> <img [src]="'https://plus.unsplash.com/premium_vector-1721077382091-f4f98604c096?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'" height="60" width="80" priority />
+                        </a><div class="dash">Professeurs</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="box">
+            <div class="card">
+                <div class="box">
+                    <div class="text">
+                        <a href="app-gigi/dashboard/etudiant"><img [src]="'https://plus.unsplash.com/premium_vector-1721077382108-795710927a02?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'" height="60" width="80" priority />
+                        </a>
+                        <div class="Doc">Etudiants</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <div class="card">
+                <div class="box">
+                    <div class="text">
+                        <a href="app-gigi/dashboard/cahier"><img [src]="'https://www.enfant-different.org/wp-content/uploads/2023/12/alphabet-1219546_960_720-800x456.jpg'" height="60" width="80" priority></a>
+                        <div class="Dep">Ajout des UEs</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+</div>
+<h6>Dernières Notifications</h6>
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Heure</th>
+                <th>Types Notifications</th>
+                <th>
+                    
+                </th> <!-- Colonne pour les checkboxes -->
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of dataSource2 ; let i = index" >
+                <td>{{ data.date }}</td>
+                <td>{{ data.heure }}</td>
+                <td>{{ data.notif }}</td>
+                <td><a href="app-gigi/dashboard/textbookhisto"><button class="btn-blue" (click)="view()">Voir</button>  
+                </a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

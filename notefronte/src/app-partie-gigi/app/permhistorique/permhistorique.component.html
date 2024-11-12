@@ -1,0 +1,67 @@
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<button class="grand"><a href="/app-gigi/studentdash/permissionform">Faire une demande</a></button>
+<h6>Historique des permissions</h6>
+
+<!-- Tableau des permissions -->
+<div class="table-container" *ngIf="dataSource && dataSource.length > 0">
+  <table>
+    <thead>
+      <tr>
+        <!-- Ajout du tri pour la date de demande -->
+        <th (click)="sortData('dateDemande')" style="cursor: pointer;">
+          Date de demande 
+          <i *ngIf="sortAscending" class="ri-arrow-up-s-line"></i>
+          <i *ngIf="!sortAscending" class="ri-arrow-down-s-line"></i>
+        </th>
+        <!-- Ajout du tri pour la date de début -->
+        <th>
+          Date de Debut
+        </th>
+        <!-- Ajout du tri pour la date de fin -->
+        <th>
+          Date de Fin
+        </th>
+        <th>Raison</th>
+        <th>Durée</th>
+        <th>Statut</th>
+        <th>Voir détails</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let permission of dataSource">
+        <td>{{ permission.dateDemande }}</td>
+        <td>{{ permission.dateDebutAbsence }}</td>
+        <td>{{ permission.dateFinAbsence }}</td>
+        <td>{{ permission.raison }}</td>
+        <td>{{ permission.duree }}</td>
+        <td>{{ permission.status }}</td>
+        <td>  
+          <button (click)="showDetails(permission)">Voir</button> <!-- Lien pour voir les détails -->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="!dataSource || dataSource.length === 0">Aucune permission disponible.</div>
+
+<!-- Section pour afficher les détails d'une permission sélectionnée -->
+<div *ngIf="selectedPermission" class="permission-details">
+  <h6>Détails de la permission</h6>
+  <p><strong>Date de demande : </strong>{{ selectedPermission.dateDemande }}</p>
+  <p><strong>Date de début : </strong>{{ selectedPermission.dateDebutAbsence }}</p>
+  <p><strong>Date de fin : </strong>{{ selectedPermission.dateFinAbsence }}</p>
+  <p><strong>Raison : </strong>{{ selectedPermission.raison }}</p>
+  <p><strong>Durée : </strong>{{ selectedPermission.duree }} jours</p>
+  <p><strong>Statut : </strong>{{ selectedPermission.status }}</p>
+  <p *ngIf="selectedPermission.status === 'REJETER'"><strong>Raison du refus : </strong>{{ selectedPermission.raisonR }}</p>
+  <p *ngIf="selectedPermission.status === 'ACCEPTER'"><strong>Remarque: </strong>{{ selectedPermission.remarque }}</p>
+  <p><strong>Description : </strong>{{ selectedPermission.description }}</p>
+
+  <button *ngIf="selectedPermission.fileUrl; else noFile" (click)="downloadFile(selectedPermission.permissionId)">
+    Télécharger le fichier
+  </button>
+  <ng-template #noFile>
+    <button disabled>Fichier non disponible</button>
+  </ng-template>
+</div>

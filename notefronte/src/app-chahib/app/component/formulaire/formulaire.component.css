@@ -1,0 +1,144 @@
+/* General page container */
+.page-container {
+  position: relative;
+}
+
+/* Container styling */
+.form-container {
+  background-color: #f9f9f9;
+  padding: 30px;
+  max-width: 700px;
+  margin: 50px auto;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  border: 2px solid #002366;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Apply blur effect when loading or error popup is active */
+.blur {
+  filter: blur(8px);
+  pointer-events: none; /* Disable interactions */
+}
+
+/* Form title styling */
+.form-title {
+  text-align: center;
+  color: #002366;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+/* Form group styling */
+.form-group {
+  margin-bottom: 25px;
+}
+
+/* Label styling */
+.form-group label {
+  display: block;
+  font-weight: bold;
+  color: #002366;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+/* Input and textarea styling */
+.form-input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+  background-color: #fff;
+}
+
+textarea.form-input {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Input focus styling */
+.form-input:focus {
+  border-color: #002366;
+  outline: none;
+}
+
+/* File input styling */
+.file-input {
+  display: block;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+/* Submit button styling */
+.verify-button {
+  background-color: #27ae60;
+  color: #ffffff;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  display: block;
+  margin: 30px auto;
+  transition: background-color 0.3s ease;
+}
+
+.verify-button:hover {
+  background-color: #218c54;
+}
+
+/* Loading spinner styling */
+.loading-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loading-container .spinner {
+  border: 8px solid rgba(0, 0, 0, 0.1);
+  border-top: 8px solid #002366;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+.loading-container p {
+  font-size: 18px;
+  color: #002366;
+  margin: 0;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error message styling */
+.alert-danger {
+  background-color: #ffdddd;
+  color: #d9534f;
+  padding: 15px;
+  border-radius: 6px;
+  border: 1px solid #d43f3a;
+  margin-bottom: 20px;
+  text-align: center;
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
