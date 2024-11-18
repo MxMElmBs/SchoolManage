@@ -32,7 +32,7 @@ export class ResumecahierComponent implements OnInit {
   constructor(private http: HttpClient, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.ueId = this.route.snapshot.paramMap.get('ueId');
+    this.ueId = this.route.snapshot.paramMap.get('id');
     if (this.ueId) {
       this.getCahierByUeId(this.ueId);
     }

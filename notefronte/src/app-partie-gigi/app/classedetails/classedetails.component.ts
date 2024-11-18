@@ -36,7 +36,7 @@ export class ClassedetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.ueId = this.route.snapshot.paramMap.get('ueId');
+    this.ueId = this.route.snapshot.paramMap.get('id');
     if (this.ueId) {
       this.getUeDetails(this.ueId);
       this.getEtudiants();

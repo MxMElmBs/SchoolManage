@@ -67,6 +67,10 @@ import { Bts1Component } from '../app-armel/app/LOGICIEL/PAGES/ELEVES/PARCOURS/B
 import { Bts2Component } from '../app-armel/app/LOGICIEL/PAGES/ELEVES/PARCOURS/BTS/BTS2/bts2.component';
 import { LicenceSoirComponent } from '../app-armel/app/LOGICIEL/PAGES/ELEVES/PARCOURS/LicenceSOIR/licence-soir/licence-soir.component';
 import { RappelComponent } from '../app-armel/app/LOGICIEL/PAGES/rappel/rappel.component';
+import { ResumepresenceComponent } from '../app-partie-gigi/app/resumepresence/resumepresence.component';
+import { ClassedetailsComponent } from '../app-partie-gigi/app/classedetails/classedetails.component';
+import { ResumecahierComponent } from '../app-partie-gigi/app/resumecahier/resumecahier.component';
+import { EmploidutempsComponent } from '../app-partie-gigi/app/emploidutemps/emploidutemps.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -97,10 +101,13 @@ export const routes: Routes = [
           { path: 'textBook', component: TextBookComponent },
           { path: 'cahier', component: CahierComponent },
           { path: 'volume-horaire', component: VolumeHoraireComponent },
-          { path: 'detail', component: DetailComponent },
+          { path: 'detail/:id', component: DetailComponent },
           { path: 'matiere', component: MatiereComponent },
           { path: 'permission', component: PermissionComponent },
-          { path: 'detailperm', component: DetailpermComponent },
+          { path: 'detailperm/:id', component: DetailpermComponent },
+          { path: 'resumepresence/:id', component: ResumepresenceComponent },
+          { path: 'classedetails/:id', component: ClassedetailsComponent },
+          { path: 'resume/:id', component: ResumecahierComponent },
           { path: 'permhistorique', component: PermhistoriqueComponent },
           { path: 'textbookhisto', component: TexbookhistoComponent },
           { path: 'filiere', component: AjoutfiliereComponent },
@@ -119,6 +126,7 @@ export const routes: Routes = [
           { path: 'poppresence', component: PoppresenceComponent },
           { path: 'salle', component: SalleComponent },
           { path: 'participants', component: ParticipantsComponent },
+          { path: 'emploidutemps', component: EmploidutempsComponent },
         ],
       },
       { path: 'popup', component: PopupComponent },

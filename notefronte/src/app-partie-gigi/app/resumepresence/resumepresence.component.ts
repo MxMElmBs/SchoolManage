@@ -27,7 +27,7 @@ export class ResumepresenceComponent implements OnInit {
   constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router ) {}
 
   ngOnInit() {
-    this.ueId = this.route.snapshot.paramMap.get('ueId') as string;
+    this.ueId = this.route.snapshot.paramMap.get('id') as string;
 
     this.http.get(`http://localhost:8060/api/auth/de/ue/${this.ueId}/absence-info`).subscribe((data: any) => {
       this.absenceInfo = data;
