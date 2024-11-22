@@ -61,7 +61,7 @@ public class Etudiant {
     private TypeModalite typeModalite;
 
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parcours_id", nullable = false)
     private Parcours parcours;
 
@@ -81,7 +81,7 @@ public class Etudiant {
     @JoinColumn(name = "tuteur_id")
     private Tuteur tuteur;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "etudiant_ue",
             joinColumns = @JoinColumn(name = "etudiant_id"),
@@ -89,7 +89,7 @@ public class Etudiant {
     )
     private List<UE> ue;
 
-    @OneToMany(mappedBy = "etudiant", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "etudiant", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Note> notes;
 
     @OneToOne

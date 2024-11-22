@@ -5,11 +5,11 @@
             <div class="comp d-flex align-items-center">
                 <button class="print-button" aria-label="Imprimer">
                     <span class="badge">{{ nombreRappels }}</span>
-                    <i class="fas fa-bell" [routerLink]="['/rappel']"></i>
+                    <i class="fas fa-bell" [routerLink]="['/app-armel/rappel']"></i>
                   </button>
                 &nbsp; &nbsp; &nbsp;
                 <span class="mr-2">COMPTABLE : &nbsp; &nbsp;</span>
-                <a href="javascript:void(0);" [routerLink]="['/profil']">
+                <a href="javascript:void(0);" [routerLink]="['/app-armel/profil']">
                     <i class="fas fa-user"></i>
                 </a>
             </div>
@@ -86,7 +86,7 @@
                             <option *ngFor="let mention of mentions" [value]="mention">{{ mention }}</option>
                         </select>
                     </div>
-                   
+
                     <div class="input-box">
                         <span class="details">Autres diplômes</span>
                         <input type="text" [(ngModel)]="etudiant.etudiantAutreDiplome" name="etudiantAutreDiplome">
@@ -174,7 +174,7 @@
                             </option>
                         </select>
                     </div>
-            
+
                     <div class="input-box">
                         <span class="details" for="filiereSelect">Filières</span>
                         <select id="filiereSelect" name="filiereSelect" [(ngModel)]="etudiant.nomFiliere" required>
@@ -184,7 +184,7 @@
                             </option>
                         </select>
                     </div>
-            
+
                     <div class="input-box">
                         <span class="details" for="niveauEtude">Niveau d'étude:</span>
                         <select id="niveauSelect" name="niveauSelect" [(ngModel)]="etudiant.niveauEtude" required>
@@ -194,7 +194,7 @@
                             </option>
                         </select>
                     </div>
-            
+
                     <div class="input-box">
                         <span class="details" for="statutSelect">Statut de bourse</span>
                         <select [(ngModel)]="etudiant.boursier" id="statutSelect" name="statutSelect" required>
@@ -202,7 +202,7 @@
                             <option *ngFor="let statut of statutBoursier" [value]="statut">{{ statut }}</option>
                         </select>
                     </div>
-            
+
                     <div class="input-box">
                         <span class="details" for="typeModalite">Type de modalité</span>
                         <select [(ngModel)]="etudiant.typeModalite" id="typeModalite" name="typeModalite" required>

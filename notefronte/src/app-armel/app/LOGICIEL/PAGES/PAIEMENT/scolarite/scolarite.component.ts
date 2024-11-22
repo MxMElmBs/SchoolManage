@@ -28,7 +28,7 @@ export class ScolariteComponent implements OnInit {
   error: string | null = null;
   nombreRappels: number = 0; // Variable pour stocker le nombre de paiements
 
- 
+
   @ViewChild('closeModalButton') closeModalButton!: ElementRef;
   paiements: any[] = [];
   filieres: any[] = []; // Liste des filières
@@ -43,8 +43,8 @@ export class ScolariteComponent implements OnInit {
   isModalActive = false;
   isRenvoiButtonDisabled: boolean = true;
 
-  private filieresUrl = 'http://localhost:8060/api/comptable/filiere'; // URL pour récupérer les filières
-  private niveauxUrl = 'http://localhost:8060/api/comptable/niveau'; // URL pour récupérer les niveaux
+  private filieresUrl = 'http://localhost:8060/api/auth/comptable/filiere'; // URL pour récupérer les filières
+  private niveauxUrl = 'http://localhost:8060/api/auth/comptable/niveau'; // URL pour récupérer les niveaux
 
   paiement = {
     etudiantNom: '',
@@ -84,7 +84,7 @@ export class ScolariteComponent implements OnInit {
         this.loading = false;
       }
     );
-  
+
 
   this.echeanceService.getNombreRappelsAVenir().subscribe(
     (nombre: number) => {
@@ -131,7 +131,7 @@ export class ScolariteComponent implements OnInit {
   localStorage.setItem('selectedFiliere', this.selectedFiliere);
   localStorage.setItem('selectedNiveau', this.selectedNiveau);
 
-    const url = `http://localhost:8060/api/comptable/by-filiere-and-niveau?nomFiliere=${this.selectedFiliere}&niveauEtude=${this.selectedNiveau}`;
+    const url = `http://localhost:8060/api/auth/comptable/by-filiere-and-niveau?nomFiliere=${this.selectedFiliere}&niveauEtude=${this.selectedNiveau}`;
     this.http.get<Paiement[]>(url).subscribe(
       data => {
         this.paiements = data;
@@ -173,13 +173,13 @@ export class ScolariteComponent implements OnInit {
       this.prenomsEtudiants = [];
     }
   }
-  
+
   onSubmit(form: NgForm): void {
       const confirmation = window.confirm('Êtes-vous sûr de vouloir soumettre ce paiement ?');
-  
+
       if (
         confirmation && form.valid) {
-        this.http.post('http://localhost:8060/api/comptable/ajout_paiement', this.paiement)
+        this.http.post('http://localhost:8060/api/auth/comptable/ajout_paiement', this.paiement)
           .subscribe({
             next: (response) => {
               console.log('Paiement ajouté avec succès', response);
@@ -194,7 +194,7 @@ export class ScolariteComponent implements OnInit {
               };
               this.closeModal();
               alert(' Paiement ajouté avec succès.');
-  
+
             },
             error: (error) => {
               console.error('Erreur lors de l\'ajout du paiement:', error);
@@ -202,7 +202,7 @@ export class ScolariteComponent implements OnInit {
           });
       }
     }
- 
+
 
   closeModal() {
     if (isPlatformBrowser(this.platformId) && this.closeModalButton) {
@@ -262,7 +262,7 @@ export class ScolariteComponent implements OnInit {
 
   // Méthode pour rediriger
   redirectToFicheRenvoi() {
-    this.router.navigate(['/fiche-de-renvoi']);
+    this.router.navigate(['/app-armel/fiche-de-renvoi']);
 
   }
 

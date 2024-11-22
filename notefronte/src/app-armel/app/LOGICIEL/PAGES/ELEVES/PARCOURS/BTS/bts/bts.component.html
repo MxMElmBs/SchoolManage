@@ -5,11 +5,11 @@
       <div class="comp d-flex align-items-center">
         <button class="print-button" aria-label="Imprimer">
           <span class="badge">{{ nombreRappels }}</span>
-          <i class="fas fa-bell" [routerLink]="['/rappel']"></i>
+          <i class="fas fa-bell" [routerLink]="['/app-armel/rappel']"></i>
         </button>
         &nbsp; &nbsp;&nbsp; &nbsp;
         <span class="mr-2">COMPTABLE : &nbsp; &nbsp;</span>
-        <a href="javascript:void(0);" [routerLink]="['/profil']">
+        <a href="javascript:void(0);" [routerLink]="['/app-armel/profil']">
           <i class="fas fa-user"></i>
         </a>
       </div>
@@ -23,19 +23,19 @@
       <div class="overview-boxes">
         <div class="box">
           <div class="image" width="10px">
-            <img [routerLink]="['/bts1']" src="assets/bts/bts1.png" alt="bts 1" class="clickable-image">
+            <img [routerLink]="['/app-armel/bts1']" src="assets/bts/bts1.png" alt="bts 1" class="clickable-image">
           </div>
         </div>
         <div class="box">
           <div class="image">
-            <img [routerLink]="['/bts2']" src="assets/bts/bts2.png"alt="bts 2" class="clickable-image">
+            <img [routerLink]="['/app-armel/bts2']" src="assets/bts/bts2.png"alt="bts 2" class="clickable-image">
           </div>
         </div>
       </div>
     </div>
   </section>
-  
-  
+
+
 
 
   <pre></pre>
@@ -57,7 +57,7 @@
                       <th>Filles</th>
                 </tr>
               </thead>
-              
+
               <tbody>
                 <tr *ngFor="let stat of statistiques">
                   <td>{{ stat.nom }}</td>
@@ -67,13 +67,13 @@
                 <td>{{ stat.totalFilles }}</td>
                 </tr>
               </tbody>
-              
+
             </table>
           </div>
         </div>
-      
-  
-      
+
+
+
         <!-- Superimposed container -->
         <div class="container bg-primary text-white p-3 rounded position-absolute superimposed-container">
           <div class="row justify-content-between align-items-center">
@@ -81,16 +81,15 @@
               <span class="h4">STATISTIQUES DES ETUDIANTS DE BTS</span>
             </div>
             <div class="col-12 col-md-auto mt-3 mt-md-0">
-              <button class="btn btn-light newUser" [routerLink]="['/parcours']" style="color: black;">
+              <button class="btn btn-light newUser" [routerLink]="['/app-armel/parcours']" style="color: black;">
                 <i class="fas fa-arrow-left"></i>&nbsp; retour
               </button>
             </div>
           </div>
         </div>
-      
-        
-        
+
+
+
       </div>
     </div>
   </section>
-  

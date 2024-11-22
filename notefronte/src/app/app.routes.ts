@@ -217,7 +217,6 @@ export const routes: Routes = [
           /*{ path: 'profil', component: ParametreComponent },*/
           { path: 'rappel', component: RappelComponent },
           { path: 'scolarite', component: PaieComponent },
-
         ]
 
       },

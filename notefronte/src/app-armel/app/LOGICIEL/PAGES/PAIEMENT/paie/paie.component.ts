@@ -44,8 +44,8 @@ export class PaieComponent {
   isModalActive = false;
   isRenvoiButtonDisabled: boolean = true;
 
-  private filieresUrl = 'http://localhost:8060/api/comptable/filiere';
-  private niveauxUrl = 'http://localhost:8060/api/comptable/niveau';
+  private filieresUrl = 'http://localhost:8060/api/auth/comptable/filiere';
+  private niveauxUrl = 'http://localhost:8060/api/auth/comptable/niveau';
 
   paiement = {
     etudiantNom: '',
@@ -133,7 +133,7 @@ export class PaieComponent {
       return;
     }
 
-    const url = `http://localhost:8060/api/comptable/by-filiere-and-niveau?nomFiliere=${this.selectedFiliere}&niveauEtude=${this.selectedNiveau}`;
+    const url = `http://localhost:8060/api/auth/comptable/by-filiere-and-niveau?nomFiliere=${this.selectedFiliere}&niveauEtude=${this.selectedNiveau}`;
 
     console.log('Filière sélectionnée:', this.selectedFiliere); // Vérifie ici
     console.log('Niveau sélectionné:', this.selectedNiveau); // Vérifie ici
@@ -173,7 +173,7 @@ export class PaieComponent {
 
     if (
       confirmation && form.valid) {
-      this.http.post('http://localhost:8060/api/comptable/ajout_paiement', this.paiement)
+      this.http.post('http://localhost:8060/api/auth/comptable/ajout_paiement', this.paiement)
         .subscribe({
           next: (response) => {
             console.log('Paiement ajouté avec succès', response);
@@ -258,7 +258,7 @@ export class PaieComponent {
   // Méthode pour rediriger avec les paramètres filière, niveau et paiements
   redirectToFicheRenvoi(): void {
     if (this.selectedFiliere && this.selectedNiveau) {
-      this.router.navigate(['/fiche-de-renvoi'], {
+      this.router.navigate(['/app-armel/fiche-de-renvoi'], {
         queryParams: {
           filiere: this.selectedFiliere,
           niveau: this.selectedNiveau

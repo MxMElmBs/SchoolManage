@@ -5,11 +5,11 @@
       <div class="comp d-flex align-items-center">
         <button class="print-button" aria-label="Imprimer">
           <span class="badge">{{ nombreRappels }}</span>
-          <i class="fas fa-bell" [routerLink]="['/rappel']"></i>
+          <i class="fas fa-bell" [routerLink]="['/app-armel/rappel']"></i>
         </button>
         &nbsp; &nbsp;&nbsp; &nbsp;
         <span class="mr-2">COMPTABLE : &nbsp; &nbsp;</span>
-        <a href="javascript:void(0);" [routerLink]="['/profil']">
+        <a href="javascript:void(0);" [routerLink]="['/app-armel/profil']">
           <i class="fas fa-user"></i>
         </a>
       </div>
@@ -54,22 +54,22 @@
             <select (change)="loadEtudiants()" [(ngModel)]="selectedFiliere">
               <option value="" disabled selected>Choisir...</option>
               <option *ngFor="let filiere of filiereList" [value]="filiere.nomFiliere">
-                {{ filiere.nomFiliere }}           
+                {{ filiere.nomFiliere }}
                </select>
           </div>
         </div>
-       
+
         <div class="col-auto ms-2">
           <button class="print-button" aria-label="Imprimer" (click)="redirectToDefitech()">
             <i class="fas fa-print"></i>
           </button>
         </div>
       </div>
-      
+
     </div>
   </div>
 </header>
- 
+
 <pre></pre>
 <pre></pre>
 <pre></pre>
@@ -109,7 +109,7 @@
                 <!-- Bouton pour éditer -->
                 <button  (click)="editEtudiant(etudiant.etudiantMatricule)" type="button" class="btn btn-right">
                   <i class="fas fa-pencil-alt"></i>
-                </button>  
+                </button>
                 <!-- Bouton pour supprimer --
                 <button (click)="deleteEtudiant(etudiant.etudiantMatricule)" type="button" class="btn btn-danger">
                   <i class="fas fa-trash-alt"></i>
@@ -120,24 +120,24 @@
         </table>
       </div>
     </div>
-  
 
-  
+
+
     <div class="container bg-primary text-white p-3 rounded position-absolute superimposed-container">
       <div class="row justify-content-between align-items-center">
         <div class="col-12 col-md-auto">
           <span class="h4">LISTES DES ETUDIANTS DE LICENCE DU JOUR 3 </span>
         </div>
         <div class="col-12 col-md-auto mt-3 mt-md-0">
-          <button class="btn btn-light newUser" [routerLink]="['/licence-du-jour']" style="color: black;">
+          <button class="btn btn-light newUser" [routerLink]="['/app-armel/licence-du-jour']" style="color: black;">
             <i class="fas fa-arrow-left"></i>&nbsp; retour
           </button>
         </div>
       </div>
     </div>
-  
-    
-    
+
+
+
   </div>
 </div>
 </section>

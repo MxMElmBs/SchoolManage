@@ -27,7 +27,7 @@ const routes: Routes = [
 export class Bts1Component implements OnInit{
 
   etudiants: any[] = [];
-  
+
   selectedEtudiant: any = null;
   nom: string = '';
   prenom: string = '';
@@ -68,7 +68,7 @@ export class Bts1Component implements OnInit{
         this.loading = false;
       }
     );
-  
+
 
   this.echeanceService.getNombreRappelsAVenir().subscribe(
     (nombre: number) => {
@@ -94,7 +94,7 @@ export class Bts1Component implements OnInit{
         }
       );
   }
-   
+
   // Méthode pour supprimer un étudiant
   deleteEtudiant(matricule: string): void {
     if (confirm('Êtes-vous sûr de vouloir supprimer cet étudiant ?')) {
@@ -137,7 +137,7 @@ export class Bts1Component implements OnInit{
 
   // Méthode pour rediriger vers la page d'edition avec les données de l'étudiant
   editEtudiant(matricule: string) {
-    this.router.navigate(['/modifier-étudiant', matricule]);
+    this.router.navigate(['/app-armel/modifier-étudiant', matricule]);
   }
 
   loadFiliereList(): void {
@@ -152,7 +152,7 @@ export class Bts1Component implements OnInit{
     this.filiersService.getEtudiantsByFiliereAndNiveau(this.selectedFiliere, this.niveauEtude)
       .subscribe((etudiants) => {
         this.etudiants = etudiants;
-        this.dataSharingServiceService.updateEtudiants(this.etudiants); 
+        this.dataSharingServiceService.updateEtudiants(this.etudiants);
       });
   }
 }
@@ -161,7 +161,7 @@ export class Bts1Component implements OnInit{
   // Impression
   redirectToDefitech(): void {
     if (this.selectedFiliere && this.niveauEtude) {
-      this.router.navigate(['/defitech'], {
+      this.router.navigate(['/app-armel/defitech'], {
         queryParams: {
           filiere: this.selectedFiliere,
           niveau: this.niveauEtude
@@ -175,7 +175,7 @@ export class Bts1Component implements OnInit{
       alert('Veuillez sélectionner une filière.');
     }
   }
-  
+
 
 }
 

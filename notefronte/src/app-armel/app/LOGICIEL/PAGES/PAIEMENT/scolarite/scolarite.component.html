@@ -5,12 +5,12 @@
       <div class="comp d-flex align-items-center">
         <button class="print-button" aria-label="Imprimer">
           <span class="badge">{{ nombreRappels }}</span>
-          <i class="fas fa-bell" [routerLink]="['/rappel']"></i>
+          <i class="fas fa-bell" [routerLink]="['/app-armel/rappel']"></i>
         </button>
-        
+
         &nbsp; &nbsp;&nbsp; &nbsp;
         <span class="mr-2">COMPTABLE : &nbsp; &nbsp;</span>
-        <a href="javascript:void(0);" [routerLink]="['/profil']">
+        <a href="javascript:void(0);" [routerLink]="['/app-armel/profil']">
           <i class="fas fa-user"></i>
         </a>
       </div>
@@ -109,11 +109,11 @@
                     (click)="openDetails(paiementModal, paiement)" type="button" class="btn btn-right">
                     <i class="fas fa-list-alt"></i>
                   </button>
-                  
+
                   <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editForm" style="color: black; border: black; background-color: rgb(255, 255, 255)"  (click)="selectEtudiant(paiement)">
                     <i class="fas fa-pencil-alt"></i>
                   </button>
-                  
+
 
 
                 </td>
@@ -158,7 +158,7 @@
                 Formulaire de paiement de Scolarité
               </h1>
 
-              
+
             </div>
 
             <div class="modal-body">
@@ -233,7 +233,7 @@
     <p><strong>Date de Paiement :</strong> {{ selectedPaiement?.datePaiement }}</p>
     <p><strong>Montant Déjà Payé :</strong> {{ selectedPaiement?.montantDejaPaye }} FCFA</p>
 
-    
+
     <h6>Échéances :</h6>
     <ul class="echeances-list" style="list-style-type: none; padding: 0;">
       <li *ngFor="let echeance of selectedPaiement?.echeances" class="echeance-item"

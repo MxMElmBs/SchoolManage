@@ -20,7 +20,7 @@ import com.defitech.GestUni.repository.FiliereRepository;
 import com.defitech.GestUni.repository.ParcoursRepository;
 import com.defitech.GestUni.service.FiliereServices;
 import com.defitech.GestUni.service.ParcoursServices;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -464,15 +464,17 @@ public class StudentServices {
         dto.setEtudiantAutreDiplome(etudiant.getAutreDiplome());
 
         // Tuteur
-        dto.setTuteurNom(etudiant.getTuteur().getNom());
-        dto.setTuteurPrenom(etudiant.getTuteur().getPrenom());
-        dto.setTuteurProfession(etudiant.getTuteur().getProfession());
-        dto.setTuteurOrganismeEmployeur(etudiant.getTuteur().getOrganismeEmployeur());
-        dto.setTuteurAdresse(etudiant.getTuteur().getAdresse());
-        dto.setTuteurTelBureau(etudiant.getTuteur().getTelBureau());
-        dto.setTuteurTelDom(etudiant.getTuteur().getTelDom());
-        dto.setTuteurCel(etudiant.getTuteur().getCel());
-        dto.setTuteurEmail(etudiant.getTuteur().getEmail());
+        if (etudiant.getTuteur() != null) {
+            dto.setTuteurNom(etudiant.getTuteur().getNom());
+            dto.setTuteurPrenom(etudiant.getTuteur().getPrenom());
+            dto.setTuteurProfession(etudiant.getTuteur().getProfession());
+            dto.setTuteurOrganismeEmployeur(etudiant.getTuteur().getOrganismeEmployeur());
+            dto.setTuteurAdresse(etudiant.getTuteur().getAdresse());
+            dto.setTuteurTelBureau(etudiant.getTuteur().getTelBureau());
+            dto.setTuteurTelDom(etudiant.getTuteur().getTelDom());
+            dto.setTuteurCel(etudiant.getTuteur().getCel());
+            dto.setTuteurEmail(etudiant.getTuteur().getEmail());
+        }
 
         // Autres informations
         dto.setMentionBac(etudiant.getMentionBac());
@@ -488,22 +490,19 @@ public class StudentServices {
         return dto;
     }
 
+    @Transactional(readOnly = true) // Pour garantir une transaction en lecture seule
     public List<StudentDto> getEtudiantsByParcoursAndNiveau(String nomParcours, NiveauEtude niveau) {
         if (nomParcours == null || niveau == null) {
             throw new IllegalArgumentException("Le nom du parcours et le niveau ne peuvent pas être nuls.");
         }
 
-        try {
-            List<Etudiant> etudiants = etudiantRepository.findByParcoursNomParcoursAndNiveauEtude(nomParcours, niveau);
+        // Récupérer les étudiants via le repository
+        List<Etudiant> etudiants = etudiantRepository.findByParcoursNomParcoursAndNiveauEtude(nomParcours, niveau);
 
-            // Convertir les entités Etudiant en StudentDto
-            return etudiants.stream()
-                    .map(this::convertToDto)
-                    .collect(Collectors.toList());
-        } catch (Exception e) {
-            throw new RuntimeException("Erreur lors de la récupération des étudiants", e);
-        }
-
+        // Convertir les entités Etudiant en StudentDto
+        return etudiants.stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
     }
 
     // Méthode pour rechercher les étudiants par nom et prénom

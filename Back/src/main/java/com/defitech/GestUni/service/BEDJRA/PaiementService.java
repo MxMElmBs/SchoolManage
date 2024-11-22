@@ -18,12 +18,12 @@ import com.defitech.GestUni.repository.BEDJRA.StudentRepository;
 import com.defitech.GestUni.repository.EtudiantRepository;
 import com.defitech.GestUni.repository.FiliereRepository;
 import com.defitech.GestUni.repository.ParcoursRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.time.LocalDate;
@@ -572,18 +572,13 @@ public class PaiementService {
         return dtoFiliere;
     }
 
-
     public List<PaiementDto> getDernierPaiementByFiliereAndNiveau(String nomFiliere, String niveauEtude) {
         // Rechercher la filière par nom
-        Filiere filiere = filiereRepository.findByNomFiliere(nomFiliere).orElseThrow(() -> new RuntimeException("Filière non trouvée"));
+        Filiere filiere = filiereRepository.findByNomFiliere(nomFiliere)
+                .orElseThrow(() -> new RuntimeException("Filière non trouvée"));
 
-        // Valider le niveau d'étude
-        NiveauEtude niveau;
-        try {
-            niveau = NiveauEtude.valueOf(niveauEtude.toUpperCase());
-        } catch (IllegalArgumentException e) {
-            throw new RuntimeException("Niveau d'étude invalide");
-        }
+        // Valider le niveau d'étude sans try-catch
+        NiveauEtude niveau = validateNiveauEtude(niveauEtude);
 
         // Récupérer les étudiants par filière et niveau d'étude
         List<Etudiant> etudiants = etudiantRepository.findByFiliereAndNiveauEtude(filiere, niveau);
@@ -597,7 +592,8 @@ public class PaiementService {
         for (Paiement paiement : paiements) {
             Etudiant etudiant = paiement.getEtudiant();
             // Si l'étudiant n'est pas encore dans la map ou si le paiement est plus récent
-            dernierPaiementMap.merge(etudiant, paiement, (ancien, nouveau) -> ancien.getDatePaiement().isAfter(nouveau.getDatePaiement()) ? ancien : nouveau);
+            dernierPaiementMap.merge(etudiant, paiement, (ancien, nouveau) ->
+                    ancien.getDatePaiement().isAfter(nouveau.getDatePaiement()) ? ancien : nouveau);
         }
 
         // Convertir la map en liste de DTO
@@ -631,6 +627,19 @@ public class PaiementService {
         // Trier les DTOs par ID d'étudiant en ordre croissant
         return paiementDtos.stream().sorted(Comparator.comparing(PaiementDto::getEtudiantId)).collect(Collectors.toList());
     }
+
+    // Méthode de validation pour le niveau d'étude
+    private NiveauEtude validateNiveauEtude(String niveauEtude) {
+        // Vérifier si le niveau d'étude existe dans l'enum
+        for (NiveauEtude niveau : NiveauEtude.values()) {
+            if (niveau.name().equalsIgnoreCase(niveauEtude)) {
+                return niveau;
+            }
+        }
+        // Si le niveau n'est pas valide, lancer une exception
+        throw new RuntimeException("Niveau d'étude invalide");
+    }
+
 
 
     private List<EcheanceDto> calculerEcheancesPourPaiement(Etudiant etudiant, Paiement paiement) {

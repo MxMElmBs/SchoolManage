@@ -5,12 +5,12 @@
       <div class="comp d-flex align-items-center">
         <button class="print-button" aria-label="Imprimer">
           <span class="badge">{{ nombreRappels }}</span>
-          <i class="fas fa-bell" [routerLink]="['/rappel']"></i>
+          <i class="fas fa-bell" [routerLink]="['/app-armel/rappel']"></i>
         </button>
-        
+
         &nbsp; &nbsp;&nbsp; &nbsp;
         <span class="mr-2">COMPTABLE : &nbsp; &nbsp;</span>
-        <a href="javascript:void(0);" [routerLink]="['/profil']">
+        <a href="javascript:void(0);" [routerLink]="['/app-armel/profil']">
           <i class="fas fa-user"></i>
         </a>
       </div>
@@ -41,47 +41,47 @@
                 <th>TuteurEmail</th>
               </tr>
             </thead>
-           
+
             <tbody>
               <tr *ngFor="let paiement of rappels">
                 <td>{{ paiement.etudiantNom }} </td>
 
-                <td>  {{ paiement.etudiantPrenom }}</td> 
+                <td>  {{ paiement.etudiantPrenom }}</td>
 
                 <td *ngFor="let echeance of paiement.echeances">
-                  {{ echeance.resteSurEcheance }} 
+                  {{ echeance.resteSurEcheance }}
                 </td>
 
                 <td *ngFor="let echeance of paiement.echeances">
-                  {{ echeance.dateEnvoi | date: 'dd/MM/yyyy' }} 
+                  {{ echeance.dateEnvoi | date: 'dd/MM/yyyy' }}
                 </td>
 
                 <td *ngFor="let echeance of paiement.echeances">
-                  {{ echeance.dateEcheance | date: 'dd/MM/yyyy' }} 
+                  {{ echeance.dateEcheance | date: 'dd/MM/yyyy' }}
                 </td>
-                
-                <td>{{ paiement.tuteurMail  }}</td> 
+
+                <td>{{ paiement.tuteurMail  }}</td>
               </tr>
             </tbody>
-            
+
           </table>
         </div>
       </div>
-    
 
-    
+
+
       <!-- Superimposed container -->
       <div class="container bg-primary text-white p-3 rounded position-absolute superimposed-container">
         <div class="row justify-content-between align-items-center">
           <div class="col-12 col-md-auto">
             <span class="h4">LISTES DES RAPPELS A VENIR </span>
           </div>
-      
+
         </div>
       </div>
-    
-      
-      
+
+
+
     </div>
   </div>
 </section>

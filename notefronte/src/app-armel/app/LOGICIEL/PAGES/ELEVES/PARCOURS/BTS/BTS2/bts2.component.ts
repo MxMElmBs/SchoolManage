@@ -75,7 +75,7 @@ export class Bts2Component implements OnInit {etudiants: any[] = [];
         }
       );
   }
-   
+
   // Méthode pour supprimer un étudiant
   deleteEtudiant(matricule: string): void {
     if (confirm('Êtes-vous sûr de vouloir supprimer cet étudiant ?')) {
@@ -118,7 +118,7 @@ export class Bts2Component implements OnInit {etudiants: any[] = [];
 
   // Méthode pour rediriger vers la page d'edition avec les données de l'étudiant
   editEtudiant(matricule: string) {
-    this.router.navigate(['/modifier-étudiant', matricule]);
+    this.router.navigate(['/app-armel/modifier-étudiant', matricule]);
   }
 
   loadFiliereList(): void {
@@ -133,7 +133,7 @@ export class Bts2Component implements OnInit {etudiants: any[] = [];
     this.filiersService.getEtudiantsByFiliereAndNiveau(this.selectedFiliere, this.niveauEtude)
       .subscribe((etudiants) => {
         this.etudiants = etudiants;
-        this.dataSharingServiceService.updateEtudiants(this.etudiants); 
+        this.dataSharingServiceService.updateEtudiants(this.etudiants);
       });
   }
 }
@@ -142,7 +142,7 @@ export class Bts2Component implements OnInit {etudiants: any[] = [];
   // Impression
   redirectToDefitech(): void {
     if (this.selectedFiliere && this.niveauEtude) {
-      this.router.navigate(['/defitech'], {
+      this.router.navigate(['/app-armel/defitech'], {
         queryParams: {
           filiere: this.selectedFiliere,
           niveau: this.niveauEtude
@@ -156,7 +156,7 @@ export class Bts2Component implements OnInit {etudiants: any[] = [];
       alert('Veuillez sélectionner une filière.');
     }
   }
-  
+
 
 }
 

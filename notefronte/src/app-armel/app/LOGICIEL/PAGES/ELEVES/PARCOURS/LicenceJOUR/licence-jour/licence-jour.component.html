@@ -5,12 +5,12 @@
       <div class="comp d-flex align-items-center">
         <button class="print-button" aria-label="Imprimer">
           <span class="badge">{{ nombreRappels }}</span>
-          <i class="fas fa-bell" [routerLink]="['/rappel']"></i>
+          <i class="fas fa-bell" [routerLink]="['/app-armel/rappel']"></i>
         </button>
-        
+
         &nbsp; &nbsp;&nbsp; &nbsp;
         <span class="mr-2">COMPTABLE : &nbsp; &nbsp;</span>
-        <a href="javascript:void(0);" [routerLink]="['/profil']">
+        <a href="javascript:void(0);" [routerLink]="['/app-armel/profil']">
           <i class="fas fa-user"></i>
         </a>
       </div>
@@ -22,17 +22,17 @@
     <div class="overview-boxes">
       <div class="box">
         <div class="image" width="10px">
-          <img [routerLink]="['/licence1']" src="assets/licence/l1.png" alt="Licence 1" class="clickable-image">
+          <img [routerLink]="['/app-armel/licence1']" src="assets/licence/l1.png" alt="Licence 1" class="clickable-image">
         </div>
       </div>
       <div class="box">
         <div class="image">
-          <img [routerLink]="['/licence2']" src="assets/licence/l2.png" alt="Licence 2" class="clickable-image">
+          <img [routerLink]="['/app-armel/licence2']" src="assets/licence/l2.png" alt="Licence 2" class="clickable-image">
         </div>
       </div>
       <div class="box">
         <div class="image">
-          <img [routerLink]="['/licence3']" src="assets/licence/l3.png" alt="Licence3" class="clickable-image">
+          <img [routerLink]="['/app-armel/licence3']" src="assets/licence/l3.png" alt="Licence3" class="clickable-image">
         </div>
       </div>
     </div>
@@ -85,7 +85,7 @@
             <span class="h4">STATISTIQUES DES ETUDIANTS DE LICENCE DU JOUR</span>
           </div>
           <div class="col-12 col-md-auto mt-3 mt-md-0">
-            <button class="btn btn-light newUser" [routerLink]="['/parcours']" style="color: black;">
+            <button class="btn btn-light newUser" [routerLink]="['/app-armel/parcours']" style="color: black;">
               <i class="fas fa-arrow-left"></i>&nbsp; retour
             </button>
           </div>
