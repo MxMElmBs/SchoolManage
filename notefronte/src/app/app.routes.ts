@@ -71,11 +71,14 @@ import { ResumepresenceComponent } from '../app-partie-gigi/app/resumepresence/r
 import { ClassedetailsComponent } from '../app-partie-gigi/app/classedetails/classedetails.component';
 import { ResumecahierComponent } from '../app-partie-gigi/app/resumecahier/resumecahier.component';
 import { EmploidutempsComponent } from '../app-partie-gigi/app/emploidutemps/emploidutemps.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
   {
+    canActivate: [authGuard],
+    data: { role: ['ADMIN'] },
     path: 'admin-dashboard',
     children:[
       { path: 'home', component: AcceuilComponent },
@@ -86,12 +89,18 @@ export const routes: Routes = [
     ]
   },
   {
+    canActivate: [authGuard],
+    data: { role: ['DE', 'PROFESSEUR', 'ETUDIANT'] },
+
     path: 'app-gigi',
     children: [
       {
+        canActivate: [authGuard],
+        data: { role: ['DE'] },
         path: 'dashboard',
         component: DashboardComponent,
         children: [
+
           { path: 'etudiantdash', component: EtudiantdashComponent },
           { path: '', redirectTo: 'etudiantdash', pathMatch: 'full' },
           { path: 'etudiant', component: EtudiantComponent },
@@ -113,11 +122,19 @@ export const routes: Routes = [
           { path: 'filiere', component: AjoutfiliereComponent },
         ],
       },
-      { path: 'user-form', component: UserFormComponent },
-      { path: 'attendance', component: AttendanceMarkingComponent },
-      { path: 'absence', component: AbsenceReportComponent },
+      { canActivate: [authGuard],
+        data: { role: ['DE'] },
+        path: 'user-form', component: UserFormComponent },
+      { canActivate: [authGuard],
+        data: { role: ['DE'] },
+        path: 'attendance', component: AttendanceMarkingComponent },
+      { canActivate: [authGuard],
+        data: { role: ['DE'] },
+        path: 'absence', component: AbsenceReportComponent },
 
       {
+        canActivate: [authGuard],
+        data: { role: ['PROFESSEUR'] },
         path: 'professeur',
         component: ProfesseurComponent,
         children: [
@@ -127,10 +144,14 @@ export const routes: Routes = [
           { path: 'salle', component: SalleComponent },
           { path: 'participants', component: ParticipantsComponent },
           { path: 'emploidutemps', component: EmploidutempsComponent },
+          { path: 'attendance', component: AttendanceMarkingComponent },
+          { path: 'presence', component: PresenceComponent },
         ],
       },
       { path: 'popup', component: PopupComponent },
       {
+        canActivate: [authGuard],
+        data: { role: ['ETUDIANT'] },
         path: 'studentdash',
         component: StudentdashComponent,
         children: [
@@ -145,6 +166,8 @@ export const routes: Routes = [
 
 
   {
+        canActivate: [authGuard],
+        data: { role: ['DE'] },
         path: 'app-jeff',
         children: [
           { path: '', component: DashboardjeffComponent, children: [
@@ -156,26 +179,47 @@ export const routes: Routes = [
           { path: 'profile', component: ProfileComponent }]}
         ]
 
-
     },
 
     {
+      canActivate: [authGuard],
+      data: { role: ['ETUDIANT', 'PROFESSEUR'] },
       path: 'app-chahib',
       children: [
-        { path: '', redirectTo: '/home', pathMatch: 'full' },
-        { path: 'control', component: ControlComponent },
-        { path: 'home', component:  HomechahibComponent },
-        { path: 'doc-prof', component: DocProfComponent},
-        { path: 'de-doc', component: DeDocComponent},
-        { path: 'controlemore/:id', component: ControlmoreComponent },
-        { path: 'update-control/:id', component: UpdateControlComponent },
-        { path: 'formulaire/:id', component: FormulaireComponent },
+        { canActivate: [authGuard],
+          data: { role: ['ETUDIANT'] },
+          path: '', redirectTo: '/home', pathMatch: 'full' },
+        { canActivate: [authGuard],
+          data: { role: ['ETUDIANT'] },
+          path: 'control', component: ControlComponent },
+        { canActivate: [authGuard],
+          data: { role: ['ETUDIANT'] },
+          path: 'home', component:  HomechahibComponent },
+
+        { canActivate: [authGuard],
+          data: { role: ['PROFESSEUR'] },
+          path: 'doc-prof', component: DocProfComponent},
+
+        { canActivate: [authGuard],
+          data: { role: ['DE'] },
+          path: 'de-doc', component: DeDocComponent},
 
 
+        { canActivate: [authGuard],
+          data: { role: ['ETUDIANT'] },
+          path: 'controlemore/:id', component: ControlmoreComponent },
+        { canActivate: [authGuard],
+          data: { role: ['ETUDIANT'] },
+          path: 'update-control/:id', component: UpdateControlComponent },
+        { canActivate: [authGuard],
+          data: { role: ['ETUDIANT'] },
+          path: 'formulaire/:id', component: FormulaireComponent },
       ]
   },
 
   {
+    canActivate: [authGuard],
+    data: { role: ['ETUDIANT'] },
     path: 'app-etudiant-interface',
     children:[
       { path: '', redirectTo: 'studentsidash', pathMatch: 'full' },
@@ -189,6 +233,8 @@ export const routes: Routes = [
   },
 
   {
+    canActivate: [authGuard],
+    data: { role: ['COMPTABLE'] },
     path: 'app-armel',
     children: [
       { path: 'defitech', component: DefitechComponent },

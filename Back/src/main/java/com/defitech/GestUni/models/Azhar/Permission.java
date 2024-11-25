@@ -18,7 +18,7 @@ public class Permission {
     private Long permissionId;
 
     @JsonIgnore
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "etudiant_id", referencedColumnName = "etudiantId")
     private Etudiant etudiant;
 

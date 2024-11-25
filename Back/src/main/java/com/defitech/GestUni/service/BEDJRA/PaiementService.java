@@ -573,60 +573,51 @@ public class PaiementService {
     }
 
     public List<PaiementDto> getDernierPaiementByFiliereAndNiveau(String nomFiliere, String niveauEtude) {
-        // Rechercher la filière par nom
+        // 1. Rechercher la filière par nom
         Filiere filiere = filiereRepository.findByNomFiliere(nomFiliere)
                 .orElseThrow(() -> new RuntimeException("Filière non trouvée"));
 
-        // Valider le niveau d'étude sans try-catch
+        // 2. Valider le niveau d'étude
         NiveauEtude niveau = validateNiveauEtude(niveauEtude);
 
-        // Récupérer les étudiants par filière et niveau d'étude
-        List<Etudiant> etudiants = etudiantRepository.findByFiliereAndNiveauEtude(filiere, niveau);
+        // 3. Récupérer les étudiants par filière et niveau d'étude
+        List<Etudiant> etudiants = etudiantRepository.findEtudiantsByFiliereAndNiveau(filiere.getNomFiliere(), niveau);
 
-        // Récupérer tous les paiements pour les étudiants
-        List<Paiement> paiements = paiementRepository.findByEtudiantIn(etudiants);
-
-        // Map pour stocker le dernier paiement de chaque étudiant
-        Map<Etudiant, Paiement> dernierPaiementMap = new HashMap<>();
-
-        for (Paiement paiement : paiements) {
-            Etudiant etudiant = paiement.getEtudiant();
-            // Si l'étudiant n'est pas encore dans la map ou si le paiement est plus récent
-            dernierPaiementMap.merge(etudiant, paiement, (ancien, nouveau) ->
-                    ancien.getDatePaiement().isAfter(nouveau.getDatePaiement()) ? ancien : nouveau);
+        if (etudiants.isEmpty()) {
+            throw new RuntimeException("Aucun étudiant trouvé pour cette filière et ce niveau.");
         }
 
-        // Convertir la map en liste de DTO
-        List<PaiementDto> paiementDtos = new ArrayList<>();
-        for (Map.Entry<Etudiant, Paiement> entry : dernierPaiementMap.entrySet()) {
-            Etudiant etudiant = entry.getKey();
-            Paiement dernierPaiement = entry.getValue();
+        // 4. Utiliser la méthode optimisée pour récupérer les derniers paiements triés par date
+        List<Paiement> paiements = paiementRepository.findLatestPaiementsForStudents(etudiants);
 
-            PaiementDto dto = new PaiementDto();
-            dto.setEtudiantId(etudiant.getEtudiantId());
-            dto.setEtudiantNom(etudiant.getNom());
-            dto.setEtudiantPrenom(etudiant.getPrenom());
-            dto.setEtudiantMatricule(etudiant.getMatricule());
-            dto.setFiliereNom(etudiant.getFiliere().getNomFiliere());
-            dto.setParcoursNom(etudiant.getParcours().getNomParcours());
-            dto.setReductionMontantFinal(etudiant.getReduction().getMontantFinal());
-            dto.setNiveauEtude(etudiant.getNiveauEtude());
-            dto.setMontantDejaPaye(dernierPaiement.getMontantDejaPaye());
-            dto.setTypeModalite(etudiant.getTypeModalite());
-            dto.setDatePaiement(dernierPaiement.getDatePaiement());
-            dto.setMontantActuel(dernierPaiement.getMontantActuel());
-            dto.setResteEcolage(dernierPaiement.getResteEcolage());
+        // 5. Transformer chaque paiement en DTO
+        return paiements.stream().map(paiement -> {
+                    Etudiant etudiant = paiement.getEtudiant();
+                    PaiementDto dto = new PaiementDto();
+                    dto.setEtudiantId(etudiant.getEtudiantId());
+                    dto.setEtudiantNom(etudiant.getNom());
+                    dto.setEtudiantPrenom(etudiant.getPrenom());
+                    dto.setEtudiantMatricule(etudiant.getMatricule());
+                    dto.setFiliereNom(etudiant.getFiliere().getNomFiliere());
+                    dto.setParcoursNom(etudiant.getParcours().getNomParcours());
+                    dto.setReductionMontantFinal(etudiant.getReduction() != null ? etudiant.getReduction().getMontantFinal() : 0);
+                    dto.setNiveauEtude(etudiant.getNiveauEtude());
+                    dto.setMontantDejaPaye(paiement.getMontantDejaPaye());
+                    dto.setTypeModalite(etudiant.getTypeModalite());
+                    dto.setDatePaiement(paiement.getDatePaiement());
+                    dto.setMontantActuel(paiement.getMontantActuel());
+                    dto.setResteEcolage(paiement.getResteEcolage());
 
-            // Ajouter le calcul des échéances basé sur la modalité
-            List<EcheanceDto> echeances = calculerEcheancesPourPaiement(etudiant, dernierPaiement);
-            dto.setEcheances(echeances);
+                    // Ajouter le calcul des échéances basé sur la modalité
+                    List<EcheanceDto> echeances = calculerEcheancesPourPaiement(etudiant, paiement);
+                    dto.setEcheances(echeances);
 
-            paiementDtos.add(dto);
-        }
-
-        // Trier les DTOs par ID d'étudiant en ordre croissant
-        return paiementDtos.stream().sorted(Comparator.comparing(PaiementDto::getEtudiantId)).collect(Collectors.toList());
+                    return dto;
+                }).sorted(Comparator.comparing(PaiementDto::getEtudiantId)) // 6. Trier par ID d'étudiant
+                .collect(Collectors.toList());
     }
+
+
 
     // Méthode de validation pour le niveau d'étude
     private NiveauEtude validateNiveauEtude(String niveauEtude) {

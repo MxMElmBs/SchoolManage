@@ -35,6 +35,7 @@ export class StudentsIHeaderComponent {
 
 
   logout(): void {
+    this.userco.logout();
     this.router.navigate(['/login']);
     // Implémentez la logique de déconnexion ici
     console.log('Déconnexion');

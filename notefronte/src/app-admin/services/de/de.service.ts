@@ -8,12 +8,12 @@ import { Utilisateur } from '../../model/Utilisateur';
 })
 export class DeService {
 
-  private apiUrl = 'http://localhost:8060/api/user'; // Remplacez par votre URL d'API
-  private apiUrl2 = 'http://localhost:8060/api/de'; // Remplacez par votre URL d'API
+  private apiUrl = 'http://192.168.1.79:8060/api/user'; // Remplacez par votre URL d'API
+  private apiUrl2 = 'http://192.168.1.79:8060/api/de'; // Remplacez par votre URL d'API
 
   constructor(private http: HttpClient) {}
 
-  
+
 
   creerComptesUserDE(): Observable<void> {
     return this.http.post<void>(`${this.apiUrl}/create/directeur`, {});

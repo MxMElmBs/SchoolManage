@@ -4,6 +4,9 @@ import com.defitech.GestUni.enums.BEDJRA.StatutEcheance;
 import com.defitech.GestUni.enums.BEDJRA.StatutScolarite;
 import com.defitech.GestUni.enums.BEDJRA.TypeModalite;
 import com.defitech.GestUni.models.Bases.Etudiant;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -19,14 +22,20 @@ public class Paiement {
     private Long id;
 
     private LocalDate datePaiement;
+
     private long resteEcolage;
+
     private long montantDejaPaye;
+
     private long montantActuel;
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "etudiant_id")
+    @JsonBackReference // Empêcher la boucle dans Paiement
     private Etudiant etudiant;
 
-    @OneToMany(mappedBy = "paiement")
+    @OneToMany(mappedBy = "paiement", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Echeance> echeances;
 
 

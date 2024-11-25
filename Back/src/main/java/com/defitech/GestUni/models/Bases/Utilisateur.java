@@ -1,6 +1,7 @@
 package com.defitech.GestUni.models.Bases;
 
 import com.defitech.GestUni.enums.UserRole;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,20 +33,24 @@ public class Utilisateur implements UserDetails {
   @Enumerated(EnumType.STRING)
   private UserRole role;
 
-  @OneToOne
+  @OneToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "directeurEtude_Id")
+  @JsonIgnore
   private DirecteurEtude directeurEtude;
 
-  @OneToOne
+  @OneToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "professeur_Id")
+  @JsonIgnore
   private Professeur professeur;
 
-  @OneToOne
+  @OneToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "etudiant_Id")
+  @JsonIgnore
   private Etudiant etudiant;
 
-  @OneToOne
+  @OneToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "otheruser_Id")
+  @JsonIgnore
   private OtherUser otherUser;
 
 

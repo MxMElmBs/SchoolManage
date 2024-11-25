@@ -7,7 +7,7 @@ import { Utilisateur } from '../../model/Utilisateur';
   providedIn: 'root'
 })
 export class StudentService {
-  private apiUrl = 'http://localhost:8060/api/user'; // Remplacez par votre URL d'API
+  private apiUrl = 'http://192.168.1.79:8060/api/user'; // Remplacez par votre URL d'API
 
   constructor(private http: HttpClient) {}
 

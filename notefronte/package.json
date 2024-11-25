@@ -25,11 +25,15 @@
     "angular-datatables": "^18.0.0",
     "bootstrap": "^5.3.3",
     "chart.js": "^4.4.4",
+    "cssnano": "^7.0.6",
     "datatables.net": "^2.1.8",
     "datatables.net-dt": "^2.1.8",
     "file-saver": "^2.0.5",
+    "file-saver-es": "^2.0.5",
     "jquery": "^3.7.1",
     "material-dashboard": "^3.0.9",
+    "postcss": "^8.4.49",
+    "postcss-cli": "^11.0.0",
     "rxjs": "~7.8.0",
     "sweetalert2": "^11.14.1",
     "tslib": "^2.3.0",
@@ -51,6 +55,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "^5.1.0",
     "karma-jasmine-html-reporter": "^2.1.0",
-    "typescript": "~5.4.2"
+    "typescript": "~5.4.2",
+    "webpack-bundle-analyzer": "^4.10.2"
   }
 }

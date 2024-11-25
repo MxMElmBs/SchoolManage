@@ -20,7 +20,7 @@ public class Professeur {
 
     private String prenom;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "utilisateur_Id")
     @JsonIgnore
     private Utilisateur utilisateur;

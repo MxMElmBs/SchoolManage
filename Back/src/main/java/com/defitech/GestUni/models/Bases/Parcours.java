@@ -15,7 +15,7 @@ public class Parcours {
     @Column(nullable = false, unique = true)
     private String nomParcours;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "de_Id")
     private DirecteurEtude directeurEtude;
 }

@@ -2,6 +2,7 @@ package com.defitech.GestUni.models.Azhar;
 
 import com.defitech.GestUni.models.Bases.UE;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -29,9 +30,11 @@ public class Seance {
     private Integer nombreHeureEffectuee;
 
     @OneToMany(mappedBy = "seance")
+    @JsonIgnore
     private List<Presence> presences;
 
     @OneToOne(mappedBy = "seance")
+    @JsonIgnore
     private CahierTexte cahierTexte;
 
 //

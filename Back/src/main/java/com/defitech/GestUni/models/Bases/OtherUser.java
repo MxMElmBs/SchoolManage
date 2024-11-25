@@ -17,7 +17,7 @@ public class OtherUser {
     private String email;
 
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "utilisateur_Id")
     private Utilisateur utilisateur;
 

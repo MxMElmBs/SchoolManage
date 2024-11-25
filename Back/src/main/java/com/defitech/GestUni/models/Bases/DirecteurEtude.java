@@ -16,12 +16,12 @@ public class DirecteurEtude {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parcours_Id")
     private Parcours parcours;
 
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "utilisateur_Id")
     private Utilisateur utilisateur;
 }

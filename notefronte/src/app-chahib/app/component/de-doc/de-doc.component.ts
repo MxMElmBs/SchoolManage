@@ -29,14 +29,12 @@ export class DeDocComponent {
   userCo : UtilisateurConnect = new UtilisateurConnect;
 
   constructor(private documentService: DocumentService, private docsselect: DocumentselectService,
-              private router: Router, private authService: LoginService
-  ) {}
+              private router: Router, private authService: LoginService) {}
 
   ngOnInit() {
     this.idUser = this.authService.getUserId();
     this.getUserCo();
-
-    this.getAllDocuments();  // Charger tous les documents au départ
+    this.getAllDocuments();
   }
 
   getUserCo(){

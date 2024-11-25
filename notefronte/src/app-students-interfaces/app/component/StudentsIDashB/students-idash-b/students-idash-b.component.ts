@@ -59,7 +59,7 @@ export class StudentsIDashBComponent {
       this.router.navigate(['/app-etudiant-interface/studentsiprog']);
     }
     if (name === 'Gestion cahier de texte') {
-      this.router.navigate(['/app-gigi/studentdash/textBook']);
+      this.router.navigate(['/app-gigi/studentdash']);
     }
     if (name === "Dépôts de document \n (Tuteuré et Mémoire)") {
       if (

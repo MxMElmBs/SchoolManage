@@ -5,6 +5,7 @@ import com.defitech.GestUni.models.Bases.AnneeScolaire;
 import com.defitech.GestUni.models.Bases.Etudiant;
 import com.defitech.GestUni.enums.TypeNote;
 import com.defitech.GestUni.models.Bases.UE;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -23,14 +24,17 @@ public class Note {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "etudiant_id", nullable = false)
+    @JsonIgnore
     private Etudiant etudiant;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ue_id", nullable = false)
+    @JsonIgnore
     private UE ue;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "annee_id")
+    @JsonIgnore
     private AnneeScolaire anneescolaire;
 
 

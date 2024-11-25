@@ -1,6 +1,7 @@
 package com.defitech.GestUni.models.Azhar;
 
 import com.defitech.GestUni.models.Bases.Etudiant;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -15,10 +16,12 @@ public class Presence {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "seance_id")
+    @JsonIgnore
     private Seance seance;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "etudiant_id")
+    @JsonIgnore
     private Etudiant etudiant;
 
     private Boolean present;

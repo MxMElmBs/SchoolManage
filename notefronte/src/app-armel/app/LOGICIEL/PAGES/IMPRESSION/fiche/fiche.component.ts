@@ -18,9 +18,9 @@ export class FicheComponent implements OnInit {
   selectedFiliere: string | undefined;
   selectedNiveau: string | undefined;
   currentYear: number = 0;
-  constructor(private http: HttpClient, 
+  constructor(private http: HttpClient,
     private route: ActivatedRoute) {
-    
+
     this.dateDuJour = new Date().toLocaleDateString('fr-FR'); // Date du jour au format français
   }
 
@@ -32,7 +32,7 @@ export class FicheComponent implements OnInit {
    // Récupérer les paramètres de l'URL
    this.route.queryParams.subscribe(params => {
     this.selectedFiliere = params['filiere'];
-    this.selectedNiveau = params['niveau'];    
+    this.selectedNiveau = params['niveau'];
 
     // Vous pouvez maintenant utiliser selectedFiliere et selectedNiveau dans ce composant
     console.log("Filière :", this.selectedFiliere);
@@ -51,7 +51,7 @@ paiement(): void {
     return;
   }
 
-  const url = `http://localhost:8060/api/comptable/by-filiere-and-niveau?nomFiliere=${this.selectedFiliere}&niveauEtude=${this.selectedNiveau}`;
+  const url = `http://localhost:8060/api/auth/comptable/by-filiere-and-niveau?nomFiliere=${this.selectedFiliere}&niveauEtude=${this.selectedNiveau}`;
 
   this.http.get<Paiement[]>(url).subscribe(
     allPaiements => {

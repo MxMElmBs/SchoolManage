@@ -1,5 +1,6 @@
 package com.defitech.GestUni.models.Bases;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -19,15 +20,16 @@ public class Filiere {
     private String nomFiliere;
     private String description;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parcours_id", nullable = false)
     private Parcours parcours;
 
-    @ManyToMany(mappedBy = "filieres")
+    @ManyToMany(mappedBy = "filieres", fetch = FetchType.LAZY)
     private List<UE> ue;
 
-    @ManyToMany(mappedBy = "filieres")
-    private Set<Etudiant> etudiants = new HashSet<>();
+    @OneToMany(mappedBy = "filiere", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonManagedReference // Permet la sérialisation dans Etudiant
+    private List<Etudiant> etudiants;
 
 
 }

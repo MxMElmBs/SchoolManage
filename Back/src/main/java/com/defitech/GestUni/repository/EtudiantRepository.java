@@ -39,6 +39,9 @@ public interface EtudiantRepository extends JpaRepository<Etudiant, Long> {
 
     List<Etudiant> findByFiliereAndNiveauEtude(Filiere filiere, NiveauEtude niveauEtude);
 
+    @Query("SELECT e FROM Etudiant e JOIN FETCH e.filiere f WHERE f.nomFiliere = :nomFiliere AND e.niveauEtude = :niveauEtude")
+    List<Etudiant> findEtudiantsByFiliereAndNiveau(@Param("nomFiliere") String nomFiliere, @Param("niveauEtude") NiveauEtude niveauEtude);
+
     List<Etudiant> findByNomContainingIgnoreCaseOrPrenomContainingIgnoreCase(String nom, String prenom);
 
     Optional<Etudiant> findByMatricule(String matricule);

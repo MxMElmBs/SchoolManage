@@ -25,6 +25,11 @@ public interface PaiementRepository extends JpaRepository<Paiement, Long> {
 
     List<Paiement> findByEtudiantIn(List<Etudiant> etudiants);
 
+    @Query("SELECT p FROM Paiement p " +
+            "WHERE p.etudiant IN :etudiants " +
+            "AND p.datePaiement = (SELECT MAX(p1.datePaiement) FROM Paiement p1 WHERE p1.etudiant = p.etudiant) " +
+            "ORDER BY p.datePaiement DESC")
+    List<Paiement> findLatestPaiementsForStudents(@Param("etudiants") List<Etudiant> etudiants);
 
 
     Paiement findTopByEtudiantOrderByDatePaiementDesc(Etudiant etudiant);

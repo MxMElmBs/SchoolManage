@@ -1,82 +1,92 @@
 /* Layout */
 .mat-sidenav-container {
   display: flex;
-  font-family: Geomanist, 'Times New Roman', Times, serif;
+  font-family: 'Inter', sans-serif;
   height: 100vh;
-  background-color: #F5F5F5;
+  background-color: #f9f9f9;
 }
 
 /* Sidebar Styles */
 .sidebar {
-  width: 250px;
-  background-color: #333;
-  color: #FFF;
+  width: 240px;
+  background-color: #1c1c1c;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
   padding-top: 20px;
 }
 
 .sidebar-header {
   display: flex;
   align-items: center;
-  padding: 0 16px;
-  margin-bottom: 20px;
+  justify-content: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #333;
 }
 
 .sidebar-logo {
-  font-size: 36px;
-  color: #FFF;
+  font-size: 30px;
+  color: #ffd700;
+  margin-right: 10px;
 }
 
 .sidebar-title {
-  font-size: 22px;
-  margin-left: 10px;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 a[mat-button] {
   display: flex;
   align-items: center;
-  padding: 10px 16px;
-  font-size: 18px;
-  color: #FFF;
+  padding: 15px 20px;
+  font-size: 16px;
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
 a[mat-button]:hover {
-  background-color: #444;
-  transition: background-color 0.3s ease;
+  background-color: #333;
 }
 
 .nav-icon {
-  margin-right: 8px;
-  font-size: 24px;
+  margin-right: 10px;
+  font-size: 20px;
 }
 
 .active-link {
-  background-color: #FFD700;
-  color: #333;
+  background-color: #ffd700;
+  color: #1c1c1c;
   font-weight: bold;
+  border-radius: 4px;
 }
 
 /* Header Styles */
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 0 20px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .header-title {
-  font-weight: bold;
   font-size: 22px;
-  color: #FFFFFF;
+  font-weight: 600;
+  color: #ffffff;
 }
 
 .spacer {
   flex: 1;
 }
 
+/* Logout Button */
 .logout-button {
-  color: #FF4D4D;
-  font-size: 24px;
-  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  color: #ff4d4d;
+  transition: all 0.3s ease;
 }
 
 .logout-button:hover {
@@ -92,7 +102,7 @@ a[mat-button]:hover {
   padding: 20px;
 }
 
-img.dashboard-image {
+.dashboard-image {
   width: 80%;
   height: auto;
   border-radius: 10px;
@@ -102,6 +112,6 @@ img.dashboard-image {
 .nomprof {
   margin-top: 20px;
   font-size: 20px;
-  text-align: center;
   color: #333;
+  text-align: center;
 }

@@ -16,7 +16,7 @@ public class CahierTexte {
     private Long id;
 
     @JsonIgnore
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "seance_id", unique = true)
     private Seance seance;
 

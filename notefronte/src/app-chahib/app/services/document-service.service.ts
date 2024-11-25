@@ -86,7 +86,7 @@ export class DocumentService {
 
   // Méthode pour obtenir tous les professeurs
   getAllProfesseurs(): Observable<Professeur[]> {
-    return this.http.get<Professeur[]>(`http://localhost:8060/api/auth/professeur`);
+    return this.http.get<Professeur[]>(`http://localhost:8060/api/auth/de/all-prof`);
   }
 
   // Méthode pour obtenir les documents d'un étudiant spécifique

@@ -52,6 +52,8 @@ public class ProfesseurController {
         return ResponseEntity.ok(seance);
     }
 
+
+
     @GetMapping("/seanceofue/{ueId}")
     public List<Seance> getSeancesByUeId(@PathVariable Long ueId) {
         return seanceService.getSeancesByUeId(ueId);

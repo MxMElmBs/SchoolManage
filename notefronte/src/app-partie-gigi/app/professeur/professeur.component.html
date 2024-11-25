@@ -3,14 +3,19 @@
 <mat-sidenav-container class="dash">
   <!-- Sidebar -->
   <mat-sidenav mode="side" opened class="sidebar">
+    <div class="sidebar-header">
+      <i class="ri-dashboard-line sidebar-logo"></i>
+      <span class="sidebar-title">Prof Dashboard</span>
+    </div>
+
     <a mat-button routerLink="/app-gigi/professeur/dashboard-prof" routerLinkActive="active-link">
-      <mat-icon class="nav-icon">home</mat-icon> Accueil
+      <i class="ri-home-4-line nav-icon"></i> Accueil
     </a>
     <a mat-button routerLink="/app-chahib/doc-prof" routerLinkActive="active-link">
-      <mat-icon class="nav-icon">description</mat-icon> Gestion de document
+      <i class="ri-file-list-line nav-icon"></i> Documents
     </a>
     <button mat-icon-button class="logout-button" (click)="logout()">
-      <i class="ri-logout-box-r-line"> Deconnexion</i>
+      <i class="ri-logout-box-line"></i> Déconnexion
     </button>
   </mat-sidenav>
 
@@ -20,12 +25,11 @@
     <mat-toolbar color="primary" class="header">
       <span class="header-title">Dashboard Professeur</span>
       <span class="spacer"></span>
-
     </mat-toolbar>
 
     <!-- Main Section -->
     <div class="main-content">
-      <img src="./public/assets/planning.png" alt="image" class="dashboard-image">
+      <img src="./public/assets/planning.png" alt="Planning" class="dashboard-image">
       <div class="nomprof">
         <div *ngIf="content">{{ content }}</div>
       </div>

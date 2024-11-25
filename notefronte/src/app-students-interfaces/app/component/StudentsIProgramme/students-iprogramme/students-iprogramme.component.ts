@@ -134,7 +134,7 @@ export class StudentsIProgrammeComponent implements OnInit {
       case 'Transversale':
         return '#32CD32'; // LimeGreen
       case 'Complémentaire':
-        return '#FFD700'; // Gold
+        return '#FF8C00'; // BlackOrange
       case 'Libre':
         return '#800080'; // Purple
       default:

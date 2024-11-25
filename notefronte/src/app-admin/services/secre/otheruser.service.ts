@@ -9,8 +9,8 @@ import { OtherUser } from '../../model/OtherUser'; // Assurez-vous que le chemin
 })
 export class OtherUserService {
 
-  private apiUrl = 'http://localhost:8060/api/user'; // Remplacez par votre URL d'API
-  private apiUrl2 = 'http://localhost:8060/api/ouser'; // URL de votre API Spring Boot
+  private apiUrl = 'http://192.168.1.79:8060/api/user'; // Remplacez par votre URL d'API
+  private apiUrl2 = 'http://192.168.1.79:8060/api/ouser'; // URL de votre API Spring Boot
 
 
   constructor(private http: HttpClient) {}

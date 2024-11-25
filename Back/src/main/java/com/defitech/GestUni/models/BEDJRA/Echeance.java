@@ -3,6 +3,8 @@ package com.defitech.GestUni.models.BEDJRA;
 import com.defitech.GestUni.enums.BEDJRA.StatutEcheance;
 import com.defitech.GestUni.enums.BEDJRA.TypeModalite;
 import com.defitech.GestUni.models.Bases.Etudiant;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -17,14 +19,20 @@ public class Echeance {
     private Long echeanceId;
 
     private long resteSurEcheance;
+
     @Enumerated(EnumType.STRING)
     private TypeModalite typeModalite;
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "paiement_id")
+    @JsonBackReference
     private Paiement paiement;
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "etudiant_id", nullable = false)
+    @JsonIgnore
     private Etudiant etudiant;
+
     private LocalDate dateEnvoi;
 
     private long nombreEcheances;

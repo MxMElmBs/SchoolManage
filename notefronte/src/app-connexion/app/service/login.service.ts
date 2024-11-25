@@ -60,6 +60,11 @@ export class LoginService {
     return user ? user.username : null;
   }
 
+  getUserRole() {
+    const user = this.getUserInfo();
+    return user ? user.role : null;
+  }
+
   isAuthenticated(): boolean {
     const token = this.getToken();
     return !!token;  // Vérifier si un token existe

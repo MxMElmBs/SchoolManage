@@ -9,7 +9,7 @@ import { LoginService } from '../../../../../app-connexion/app/service/login.ser
 @Component({
   selector: 'app-students-iacceuil',
   standalone: true,
-  imports: [    StudentsIDashBComponent,
+  imports: [  StudentsIDashBComponent,
     StudentsIHeaderComponent],
   templateUrl: './students-iacceuil.component.html',
   styleUrl: './students-iacceuil.component.css'

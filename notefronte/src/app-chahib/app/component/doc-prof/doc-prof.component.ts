@@ -30,7 +30,7 @@ export class DocProfComponent implements OnInit {
   etudiantFullName: { [documentId: number]: string } = {};  // Stocker les noms des étudiants par documentId
   selectedDocument: Document  | undefined;  // Document sélectionné
   userConect : UtilisateurConnect = new UtilisateurConnect;
-  idUser: number = 1;
+  idUser: number = 0;
 
 
 
@@ -44,13 +44,8 @@ export class DocProfComponent implements OnInit {
 
   ngOnInit() {
     this.idUser = this.userCo.getUserId();
-    this.getUserCo();
     console.log("Prof id connect : ", this.idUser) // Essayer de récupérer professeurId depuis localStorage
-    if (!this.idUser) {
-      this.getProfesseurByUserId();
-      this.getDocumentsByProfesseur();  // Si on a déjà le professeurId, récupérer les documents
-    }
-    console.log(this.selectedProfesseur)
+    this.getUserCo();
   }
 
 
@@ -58,6 +53,7 @@ export class DocProfComponent implements OnInit {
     this.documentService.getConnectedUser(this.idUser).subscribe(
       (data: UtilisateurConnect) => {
         this.userConect = data;// Logging the response for testing
+        this.getDocumentsByProfesseur();
         console.log("Prof connect: ", this.userConect)
       },
       (error) => {
@@ -76,6 +72,7 @@ export class DocProfComponent implements OnInit {
           next: (professeurDto) => {
             this.selectedProfesseur = professeurDto;
             this.professeurId = professeurDto.professeurId;
+            console.log("ID du professeur récupéré :", this.professeurId);
           },
           error: (error) => {
             console.error('Erreur lors de la récupération des données du professeur', error);
@@ -91,8 +88,8 @@ export class DocProfComponent implements OnInit {
 
   // Charger tous les documents d'un professeur
   getDocumentsByProfesseur() {
-    if (this.professeurId !== null) {
-      this.documentService.getDocumentsByProfesseurId(this.professeurId).subscribe(
+    if (this.userConect.id !== null) {
+      this.documentService.getDocumentsByProfesseurId(this.userConect.id).subscribe(
         (documents: Document[]) => {
           this.documentsByYear = this.groupDocumentsByYear(documents);  // Grouper les documents par année
 
