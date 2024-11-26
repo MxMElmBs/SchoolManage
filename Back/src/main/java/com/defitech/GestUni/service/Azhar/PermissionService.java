@@ -20,6 +20,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
@@ -40,7 +43,7 @@ public class PermissionService {
     @Autowired
     private DirecteurEtudeRepository directeurEtudeRepository;
     @Autowired
-    private GoogleCloudStorageService googleCloudStorageService;
+    private LocalStorageService googleCloudStorageService;
 
     @Scheduled(cron = "0 0 0 * * ?", zone = "GMT")
     public void scheduledUpdatePermissionsStatus() {
@@ -310,25 +313,33 @@ public class PermissionService {
         return permissions.stream().map(this::toPermissionDTO).collect(Collectors.toList());
     }
 
-    public Optional<Blob> getFileByPermissionId(Long permissionId) {
+    public Optional<byte[]> getFileByPermissionId(Long permissionId) {
         Optional<Permission> permission = permissionRepository.findById(permissionId);
 
         if (permission.isPresent()) {
             String fileUrl = permission.get().getFileUrl();
+
             if (fileUrl != null && !fileUrl.isEmpty()) {
-                Blob blob = googleCloudStorageService.getFile(fileUrl);
-                if (blob != null) {
-                    return Optional.of(blob);
-                } else {
-                    System.out.println("Fichier non trouvé dans Google Cloud Storage pour fileUrl: " + fileUrl);
+                try {
+                    Path filePath = Paths.get(fileUrl);
+                    if (Files.exists(filePath)) {
+                        byte[] fileData = Files.readAllBytes(filePath);
+                        return Optional.of(fileData);
+                    } else {
+                        System.out.println("Fichier non trouvé localement pour le chemin : " + fileUrl);
+                    }
+                } catch (IOException e) {
+                    System.out.println("Erreur lors de la lecture du fichier : " + e.getMessage());
+                    e.printStackTrace();
                 }
             } else {
-                System.out.println("Le champ fileUrl est vide ou nul pour la permission avec ID: " + permissionId);
+                System.out.println("Le champ fileUrl est vide ou nul pour la permission avec ID : " + permissionId);
             }
         } else {
             System.out.println("Permission avec ID " + permissionId + " non trouvée.");
         }
         return Optional.empty();
     }
+
 
 }
