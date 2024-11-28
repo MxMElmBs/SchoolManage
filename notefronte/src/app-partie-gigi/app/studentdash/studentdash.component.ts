@@ -16,24 +16,21 @@ import { LoginService } from '../../../app-connexion/app/service/login.service';
   styleUrls: ['./studentdash.component.css'] // Fixed typo from styleUrl to styleUrls
 })
 export class StudentdashComponent implements OnInit {
-  studentData: EtudiantConnect | null = null;
+  studentData: any | null = null;
 
-  constructor(private router: Router, private http: HttpClient, private authCo : LoginService) {}
+  constructor(private router: Router, private http: HttpClient) {}
 
   ngOnInit() {
-    const userId = this.authCo.getUserId(); // Make sure 'userId' is the correct key
+    const userId = localStorage.getItem('userId'); // Make sure 'userId' is the correct key
 
     if (userId) {
       // Make the HTTP request using the userId from local storage
-      this.http.get<EtudiantConnect>(`http://localhost:8060/api/auth/etudiant/connect/${userId}`)
+      this.http.get<any>(`http://your-api-url/api/etudiants/etudiantInfo/${userId}`)
         .subscribe({
           next: (etudiantDto) => {
             this.studentData = etudiantDto;
-            localStorage.setItem('idetudiant', this.studentData.id.toString());
-            console.log("etudiant : "  + this.studentData);
-            console.log("etudiant id : "  + localStorage.getItem('idetudiant'));
+            localStorage.setItem('idetudiant', etudiantDto.etudiantId.toString());
           },
-
           error: (error) => {
             console.error('Error fetching etudiant data', error);
           }

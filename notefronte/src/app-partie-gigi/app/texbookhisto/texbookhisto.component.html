@@ -32,7 +32,7 @@
   <select id="courses" (change)="onSelectCourse($event)">
     <option *ngFor="let course of courses" [value]="course">{{ course }}</option>
   </select>
-</div>  
+</div>
 
 <!-- Afficher le tableau de cahiers de texte pour le cours sélectionné -->
 <div *ngIf="selectedCourse">

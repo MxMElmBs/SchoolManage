@@ -16,6 +16,16 @@ public interface EtudiantjeffRepository extends JpaRepository<Etudiant, Long> {
 
 //    @Query("SELECT e FROM Etudiant e JOIN e.ue ue WHERE ue.typeSemestre = :typeSemestre")
 //    List<Etudiant> findEtudiantsByTypeSemestre(@Param("typeSemestre") TypeSemestre typeSemestre);
+
+      @Query("SELECT e FROM Etudiant e " +
+              "LEFT JOIN FETCH e.parcours " +
+              "LEFT JOIN FETCH e.filieres " +
+              "LEFT JOIN FETCH e.ue " +
+              "LEFT JOIN FETCH e.notes " +
+              "LEFT JOIN FETCH e.paiements " +
+              "WHERE e.etudiantId = :id")
+      Etudiant findEtudiantWithRelations(@Param("id") Long id);
+
       List<Etudiant> findEtudiantsByTypeSemestre(TypeSemestre typeSemestre);
       @Query("SELECT DISTINCT n.etudiant FROM Note n")
       List<Etudiant> findEtudiantsWithNotes();

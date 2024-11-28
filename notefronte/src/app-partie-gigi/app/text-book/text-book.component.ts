@@ -30,8 +30,8 @@ export class TextBookComponent implements OnInit {
   apiUrlUpdate = 'http://localhost:8060/api/auth/professeur/updateOrConfirmercahiertexte/';
 
   constructor(
-    private http: HttpClient, 
-    private router: Router, 
+    private http: HttpClient,
+    private router: Router,
     private route: ActivatedRoute,
     private snackBar: MatSnackBar
   ) {}
@@ -114,4 +114,5 @@ export class TextBookComponent implements OnInit {
       );
     }
   }
+  
 }

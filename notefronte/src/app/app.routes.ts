@@ -155,10 +155,11 @@ export const routes: Routes = [
         path: 'studentdash',
         component: StudentdashComponent,
         children: [
-          { path: 'textBook', component: TextBookComponent },
+          { path: 'textBook/:seanceId', component: TextBookComponent },
           { path: 'studenttab', component: StudenttabComponent },
           { path: 'permissionform', component: PermissionformComponent },
           { path: 'permhistorique', component: PermhistoriqueComponent },
+          { path: 'textbookhisto', component: TexbookhistoComponent },
         ],
       },
     ],
@@ -183,7 +184,7 @@ export const routes: Routes = [
 
     {
       canActivate: [authGuard],
-      data: { role: ['ETUDIANT', 'PROFESSEUR'] },
+      data: { role: ['ETUDIANT', 'PROFESSEUR', 'DE'] },
       path: 'app-chahib',
       children: [
         { canActivate: [authGuard],

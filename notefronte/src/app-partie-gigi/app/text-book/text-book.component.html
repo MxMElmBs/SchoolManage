@@ -1,8 +1,8 @@
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
 <div class="doc-content">
-  <h2 *ngIf="isProfesseur"><i class="ri-edit-box-line"></i> Modifier le cahier de texte</h2>
-  <h2 *ngIf="!isProfesseur"><i class="ri-add-circle-line"></i> Nouveau cahier de texte</h2>
+  <h2 *ngIf="isProfesseur">Modifier le cahier de texte</h2>
+  <h2 *ngIf="!isProfesseur">Nouveau cahier de texte</h2>
 
   <!-- Formulaire pour l'étudiant ou pour modification par le professeur -->
   <form (ngSubmit)="onSubmit()" #textForm="ngForm" class="cahier-form">
@@ -19,14 +19,11 @@
 
     <div class="fields">
       <label for="contenu">Contenu de la séance</label>
-      <textarea id="contenu" [(ngModel)]="contenu" name="contenu" rows="10" cols="1000" required placeholder="Décrivez ici le contenu de la séance..."></textarea>
+      <textarea id="contenu" [(ngModel)]="contenu" name="contenu" rows="5" required></textarea>
     </div>
 
     <div class="button-container">
-      <button type="submit" [disabled]="!textForm.form.valid" class="btn-submit">
-        <i class="{{ isProfesseur ? 'ri-save-line' : 'ri-add-circle-line' }}"></i>
-        {{ isProfesseur ? 'Enregistrer' : 'Ajouter' }}
-      </button>
+      <button type="submit" [disabled]="!textForm.form.valid" class="btn-submit">{{ isProfesseur ? 'Enregistrer' : 'Ajouter' }}</button>
     </div>
   </form>
 </div>

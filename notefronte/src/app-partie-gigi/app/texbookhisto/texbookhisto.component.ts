@@ -79,14 +79,14 @@ export class TexbookhistoComponent implements OnInit {
       acc[nomCours].push(cahier);
       return acc;
     }, {});
-  
+
     // Ajouter l'option initiale au début
     return {
       [optionInitiale]: null, // Option initiale
       ...groupedData
     };
   }
-  
+
 
   // Fonction pour changer le cours sélectionné
   onSelectCourse(event: Event) {

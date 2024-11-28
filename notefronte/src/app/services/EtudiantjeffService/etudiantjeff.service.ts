@@ -45,7 +45,7 @@ export class EtudiantjeffService {
   }
 
   getTop5Etudiants(): Observable<EtudiantMoyenneDto[]> {
-    return this.http.get<EtudiantMoyenneDto[]>('http://localhost:203/api/de/etudiants/top5');
+    return this.http.get<EtudiantMoyenneDto[]>('http://localhost:8060/api/auth/de/etudiants/top5');
   }
 
 

@@ -11,13 +11,12 @@ import com.defitech.GestUni.models.Bases.Etudiant;
 import com.defitech.GestUni.models.Bases.UE;
 import com.defitech.GestUni.repository.NoteRepository;
 import com.defitech.GestUni.service.NoteService;
-import jakarta.persistence.EntityNotFoundException;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -110,9 +109,11 @@ public class EtudiantjeffService {
 
 
 
+    @Transactional
     public Etudiant getEtudiantById(Long id) {
-        return etudiantjeffRepository.findById(id).orElse(null);
+        return etudiantjeffRepository.findEtudiantWithRelations(id);
     }
+
 
     //Les notes en fonction du niveau d'étude
     public List<Note> getNotesParNiveauEtude(Long etudiantId) {

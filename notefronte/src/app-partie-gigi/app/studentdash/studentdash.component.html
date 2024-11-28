@@ -5,9 +5,13 @@
     </div>
     <nav class="nav-menu">
       <ul>
-
         <li class="nav-item" [ngClass]="{'active': isActive('/app-gigi/studentdash/studenttab')}">
-          <a routerLink="/app-gigi/studentdash/textBook">
+          <a routerLink="/app-gigi/studentdash/studenttab">
+            <i class="ri-dashboard-line"></i><span>Tableau de bord</span>
+          </a>
+        </li>
+        <li class="nav-item" [ngClass]="{'active': isActive('/app-gigi/studentdash/textbookhisto')}">
+          <a routerLink="/app-gigi/studentdash/textbookhisto">
             <i class="ri-dashboard-line"></i><span>Cahier de texte</span>
           </a>
         </li>
@@ -21,11 +25,12 @@
   </mat-sidenav>
   <mat-sidenav-content class="content">
     <div class="dashboard">
+      <span>Tableau de bord</span>
       <span *ngIf="studentData">{{ studentData.nom }} {{ studentData.prenom }}</span>
-      <div class="decc">
-        <i class="ri-arrow-left-circle-line" (click)="logout()"></i>
-      </div>    </div>
-
+    </div>
+    <div class="decc">
+      <i class="ri-logout-box-r-line" (click)="logout()"></i>
+    </div>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
