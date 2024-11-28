@@ -140,18 +140,21 @@ export class SalleComponent implements OnInit {
   fermerSeance(callback?: Function): void {
     if (this.seanceId) {
       this.http.post(`http://localhost:8060/api/auth/professeur/fermer-seance/${this.seanceId}`, {})
-        .subscribe(
-          response => {
-            console.log('Séance fermée avec succès', response);
-            this.reinitialiserSeance();
-            if (callback) {
-              callback();
-            }
-          },
-          error => {
-            console.error('Erreur lors de la fermeture de la séance', error);
+      .subscribe(
+        response => {
+          console.log('Séance fermée avec succès', response);
+          this.reinitialiserSeance();
+          if (callback) {
+            callback();
           }
-        );
+          // Rechargez seulement les données nécessaires
+          this.seanceFermee = true; // Ou tout autre état nécessaire
+        },
+        error => {
+          console.error('Erreur lors de la fermeture de la séance', error);
+        }
+      );
+
     }
   }
 

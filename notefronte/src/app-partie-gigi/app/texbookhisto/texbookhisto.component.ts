@@ -15,7 +15,7 @@ export class TexbookhistoComponent implements OnInit {
   successMessage: string = '';
   selectedCourse: string | null = null; // Cours sélectionné
   courses: string[] = []; // Liste des noms des cours
-  etudiantId= localStorage.getItem("etudiantId"); // ID de l'étudiant (à ajuster selon votre logique)
+  etudiantId= localStorage.getItem("id"); // ID de l'étudiant (à ajuster selon votre logique)
   apiUrlCahiers = 'http://localhost:8060/api/auth/etudiant/cahierparfiliere'; // API pour les cahiers de texte
   apiUrlSeances = 'http://localhost:8060/api/auth/etudiant/seance/open-without-cahier'; // API pour les séances sans cahier de texte
   seances: any[] = []; // Liste des séances sans cahier de texte

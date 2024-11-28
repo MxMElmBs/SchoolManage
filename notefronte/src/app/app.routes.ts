@@ -145,6 +145,7 @@ export const routes: Routes = [
           { path: 'participants', component: ParticipantsComponent },
           { path: 'emploidutemps', component: EmploidutempsComponent },
           { path: 'attendance', component: AttendanceMarkingComponent },
+          { path: 'textBook/:seanceId', component: TextBookComponent },
           { path: 'presence', component: PresenceComponent },
         ],
       },
